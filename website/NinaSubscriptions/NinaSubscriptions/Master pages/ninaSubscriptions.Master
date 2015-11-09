@@ -9,7 +9,7 @@
     </asp:ContentPlaceHolder>
 </head>
 
-<body ng-controller="masterController">
+<body>
     <form id="frmMaster" runat="server">
         <div>
         <!-- header -->
@@ -26,10 +26,10 @@
         <!-- navigation -->
             <nav>
                 <ul>
-                    <li>Bekijk aanbod</li>
-                    <li>Mijn gegevens</li>
-                    <li>Beheer cursussen</li>
-                    <li>Bekijk inschrijvingen</li>
+                    <li><a href="#/bekijkAanbod">Bekijk aanbod</a></li>
+                    <li><a href="#/mijnGegevens">Mijn gegevens</a></li>
+                    <li><a href="#/beheerCursussen">Beheer cursussen</a></li>
+                    <li><a href="#/bekijkInschrijvingen">Bekijk inschrijvingen</a></li>
                 </ul>
             </nav>
 
@@ -45,8 +45,13 @@
 
         <!-- SCRIPTS -->
             <script src="Scripts/Vendor/jquery-1.11.3.min.js"></script>
-            <script src="Scripts/Vendor/angular.min.js"></script>
+            <script src="Scripts/Vendor/angular.js"></script>
+            <script src="Scripts/Vendor/angular-route.js"></script>
+
+        <!-- ANGULAR -->
             <script src="../Scripts/ng/apps/app.js"></script>
+            <script src="../Scripts/ng/routing/route.js"></script>
+            <script src="../Scripts/ng/controllers/bekijkAanbodController.js"></script>
 
             <asp:ContentPlaceHolder ID="phScripts" runat="server">
             </asp:ContentPlaceHolder>

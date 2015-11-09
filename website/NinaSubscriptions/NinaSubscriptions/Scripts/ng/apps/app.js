@@ -1,1 +1,1 @@
-﻿var ninapp = angular.module('ninapp', []);
+﻿var ninapp = angular.module('ninapp', ['ngRoute']);

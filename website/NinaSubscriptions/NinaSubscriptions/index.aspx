@@ -5,7 +5,7 @@
 
 <asp:Content ID="ctBody" ContentPlaceHolderID="phContent" runat="server">
 
-    <div id="divMain" ng-controller="mainController">
+    <div id="divMain">
         <div ng-view></div>
     </div>
 

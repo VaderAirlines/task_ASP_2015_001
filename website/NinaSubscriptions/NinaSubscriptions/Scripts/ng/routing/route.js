@@ -1,11 +1,12 @@
-﻿ninapp.config(function($routeProvider, $locationProvider) {
-  $routeProvider
-   .when('/home', {
-    templateUrl: '../book.html',
-    controller: 'BookController',
-  })
-  .when('/Book/:bookId/ch/:chapterId', {
-    templateUrl: 'chapter.html',
-    controller: 'ChapterController'
-  });
-});
+﻿ninapp.config(['$routeProvider',
+  function($routeProvider) {
+    $routeProvider
+       .when('bekijk-aanbod', {
+        templateUrl: 'views/bekijkAanbod.html',
+        controller: 'bekijkAanbodController',
+      })
+      .otherwise({
+          templateUrl: 'Views/bekijkAanbod.html',
+          controller: 'bekijkAanbodController'
+      })
+}]);
