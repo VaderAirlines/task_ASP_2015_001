@@ -1,0 +1,1 @@
+﻿var ninapp = angular.module('ninapp', []);

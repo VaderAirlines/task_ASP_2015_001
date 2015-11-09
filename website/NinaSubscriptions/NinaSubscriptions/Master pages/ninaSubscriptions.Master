@@ -1,0 +1,59 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="ninaSubscriptions.master.cs" Inherits="NinaSubscriptions.Master_pages.ninaSubscriptions" %>
+
+<!DOCTYPE html>
+
+<html ng-app="ninapp">
+<head runat="server">
+    <title>Niña skateboarding organiseert! Schrijf u nu in!</title>
+    <asp:ContentPlaceHolder ID="phHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body ng-controller="masterController">
+    <form id="frmMaster" runat="server">
+        <div>
+        <!-- header -->
+            <header>
+                <div id="divLoggedInUser"></div>
+                <div id="divBanner">
+                    <div id="divLoginForm">
+
+                    </div>
+                </div>
+                <div id="divBreadcrumb"></div>
+            </header>
+
+        <!-- navigation -->
+            <nav>
+                <ul>
+                    <li>Bekijk aanbod</li>
+                    <li>Mijn gegevens</li>
+                    <li>Beheer cursussen</li>
+                    <li>Bekijk inschrijvingen</li>
+                </ul>
+            </nav>
+
+        <!-- body placeholder -->
+            <asp:ContentPlaceHolder ID="phContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+        <!-- footer -->
+            <footer>
+                <div id="divFooterLinks"></div>
+                <div id="divCopyright"></div>
+            </footer>
+
+        <!-- SCRIPTS -->
+            <script src="Scripts/Vendor/jquery-1.11.3.min.js"></script>
+            <script src="Scripts/Vendor/angular.min.js"></script>
+            <script src="../Scripts/ng/apps/app.js"></script>
+
+            <asp:ContentPlaceHolder ID="phScripts" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+
+</body>
+
+</html>
