@@ -1,0 +1,27 @@
+﻿<div class="component-wrapper">
+    <div class="title">{{ title }}</div>
+    <div class="content">
+        <div class="top">
+            <div class="center">
+                <table>
+                    <tr>
+                        <td>gebruikersnaam</td>
+                        <td><input type="text" class="large" ng-model="user.username" /></td>
+                    </tr>
+                    <tr>
+                        <td>wachtwoord</td>
+                        <td><input type="password" class="large" ng-model="user.password" /></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <div class="button-top" ng-click="login();">
+            Aanmelden
+        </div>
+        <div class="button-bottom smaller-text" ng-click="register();">
+            or register
+        </div>
+    </div>
+</div>

@@ -1,2 +1,47 @@
-﻿bekijk hier het aanbod
-{{ test }}
+﻿<div class="component-wrapper" ng-repeat="cursus in cursussen">
+    <div class="title">{{ cursus.title }}</div>
+    <div class="content">
+        <div class="left">
+            <div class="photo"></div>
+        </div>
+        <div class="right">
+            <div class="form">
+                <table>
+                    <tr>
+                        <td>beschrijving</td>
+                        <td><span class="large" />{{ cursus.description }}</td>
+                    </tr>
+                    <tr>
+                        <td>leeftijd</td>
+                        <td><span class="large" />vanaf {{ cursus.minAge }} jaar tem {{ cursus.maxAge }}</td>
+                    </tr>
+                    <tr>
+                        <td>wanneer</td>
+                        <td><span class="large" />{{ cursus.timing }}</td>
+                    </tr>
+                    <tr>
+                        <td>locatie</td>
+                        <td><span class="large" />{{ cursus.location }}</td>
+                    </tr>
+                    <tr>
+                        <td>adres</td>
+                        <td><span class="large" />{{ cursus.address }}</td>
+                    </tr>
+                    <tr>
+                        <td>beschikbare plaatsen</td>
+                        <td><span class="large" />{{ cursus.availablePlaces }}</td>
+                    </tr>
+                    <tr>
+                        <td>prijs</td>
+                        <td><span class="large" />{{ cursus.price }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="button-bottom" ng-click="subscribe(cursus);">
+                Ik schrijf me in!
+            </div>
+        </div>
+    </div>
+</div>
