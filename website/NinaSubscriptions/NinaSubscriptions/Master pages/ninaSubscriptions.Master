@@ -58,6 +58,14 @@
             <script src="../scripts/ng/controllers/mijnGegevensController.js"></script>
             <script src="../scripts/ng/controllers/registerOrLoginController.js"></script>
             <script src="../scripts/ng/controllers/registerController.js"></script>
+            <script src="../scripts/ng/controllers/subscribeController.js"></script>
+
+            <script src="../scripts/ng/factories/pathFactory.js"></script>
+            <script src="../scripts/ng/factories/loginFactory.js"></script>
+            <script src="../scripts/ng/factories/courseFactory.js"></script>
+
+            <script src="../scripts/ng/services/loginService.js"></script>
+            <script src="../scripts/ng/services/courseService.js"></script>
 
             <asp:ContentPlaceHolder ID="phScripts" runat="server">
             </asp:ContentPlaceHolder>

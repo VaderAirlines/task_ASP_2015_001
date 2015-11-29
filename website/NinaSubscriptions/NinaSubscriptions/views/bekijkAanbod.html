@@ -1,5 +1,5 @@
-﻿<div class="component-wrapper" ng-repeat="cursus in cursussen">
-    <div class="title">{{ cursus.title }}</div>
+﻿<div class="component-wrapper" ng-repeat="course in cf.courses">
+    <div class="title">{{ course.title }}</div>
     <div class="content">
         <div class="left">
             <div class="photo"></div>
@@ -9,37 +9,37 @@
                 <table>
                     <tr>
                         <td>beschrijving</td>
-                        <td><span class="large" />{{ cursus.description }}</td>
+                        <td><span class="large" />{{ course.description }}</td>
                     </tr>
                     <tr>
                         <td>leeftijd</td>
-                        <td><span class="large" />vanaf {{ cursus.minAge }} jaar tem {{ cursus.maxAge }}</td>
+                        <td><span class="large" />vanaf {{ course.minAge }} jaar tem {{ course.maxAge }}</td>
                     </tr>
                     <tr>
                         <td>wanneer</td>
-                        <td><span class="large" />{{ cursus.timing }}</td>
+                        <td><span class="large" />{{ course.timing }}</td>
                     </tr>
                     <tr>
                         <td>locatie</td>
-                        <td><span class="large" />{{ cursus.location }}</td>
+                        <td><span class="large" />{{ course.location }}</td>
                     </tr>
                     <tr>
                         <td>adres</td>
-                        <td><span class="large" />{{ cursus.address }}</td>
+                        <td><span class="large" />{{ course.address }}</td>
                     </tr>
                     <tr>
                         <td>beschikbare plaatsen</td>
-                        <td><span class="large" />{{ cursus.availablePlaces }}</td>
+                        <td><span class="large" />{{ course.availablePlaces }}</td>
                     </tr>
                     <tr>
                         <td>prijs</td>
-                        <td><span class="large" />{{ cursus.price }}</td>
+                        <td><span class="large" />{{ course.price }}</td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="buttons">
-            <div class="button-bottom" ng-click="subscribe(cursus);">
+            <div class="button-bottom" ng-click="subscribe(course);">
                 Ik schrijf me in!
             </div>
         </div>

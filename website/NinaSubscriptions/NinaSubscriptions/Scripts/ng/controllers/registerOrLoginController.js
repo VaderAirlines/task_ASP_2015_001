@@ -1,16 +1,24 @@
-﻿ninapp.controller('registerOrLoginController', function($scope) {
+﻿ninapp.controller('registerOrLoginController', function($scope, $location,
+                                                        pathFactory,
+                                                        loginFactory, loginService) {
+    // services/factories
+    $scope.lf = loginFactory;
+    $scope.ls = loginService;
+    $scope.pf = pathFactory;
+
+
+    // scopers
     $scope.title = 'Aanmelden (of registeren)';
 
-    $scope.user = {
-        username: '',
-        password: ''
-    };
 
+    // UI handlers
     $scope.login = function () {
-        alert('log maar in ' + $scope.user.username + ' met als paswoord ' + $scope.user.password + '!');
+        $scope.ls.getLoginStatus();
+        alert($scope.pf.gotoPath);
+        if ($scope.lf.isLoggedIn) { $location.path($scope.pf.gotoPath); };
     };
 
     $scope.register = function () {
-        alert('registreer maar ' + $scope.user.username + ' met als paswoord ' + $scope.user.password + '!');
+        $location.path('/register');
     };
 });

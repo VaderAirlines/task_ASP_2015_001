@@ -1,29 +1,28 @@
-﻿ninapp.controller('bekijkAanbodController', function($scope) {
-    $scope.cursussen =
-        [
-            { title: 'aaa',
-              description: 'dit is de eerste cursus',
-              minAge: '0',
-              maxAge: '99',
-              timing: 'elke zaterdag van januari, van 11u00 tot 21u00',
-              location: 'sporthal joske en lowieke',
-              address: 'een straat ofzo 25, 2235 Hulshout',
-              availablePlaces: 13,
-              price: 98
-            },
-            { title: 'bbb',
-              description: 'dit is de eerste cursus',
-              minAge: '0',
-              maxAge: '99',
-              timing: 'elke zaterdag van januari, van 11u00 tot 21u00',
-              location: 'sporthal joske en lowieke',
-              address: 'een straat ofzo 25, 2235 Hulshout',
-              availablePlaces: 13,
-              price: 98
-            },
-        ];
-
-    $scope.subscribe = function(cursus) {
-        alert('So you want to subscribe to ' + cursus.title + '?');
+﻿ninapp.controller('bekijkAanbodController', function($scope, $location, $timeout,
+                                                     pathFactory,
+                                                     loginService, loginFactory, 
+                                                     courseService, courseFactory) {
+    // services/factories
+    $scope.ls = loginService;
+    $scope.lf = loginFactory;
+    $scope.cs = courseService;
+    $scope.cf = courseFactory;
+    $scope.pf = pathFactory;
+    
+    // initializers
+    //$scope.cs.getAllCourses();
+    
+    // scopers       
+    
+    // UI handlers
+    $scope.subscribe = function(course) {
+        $scope.pf.gotoPath = getSubscribePath(course.id);
+        $location.path($scope.lf.isLoggedIn ? $scope.pf.gotoPath : '/registerOrLogin');
     };
+
+
+    // helpers
+    function getSubscribePath(courseID) {
+        return '/subscribe/' + courseID;
+    }; 
 });

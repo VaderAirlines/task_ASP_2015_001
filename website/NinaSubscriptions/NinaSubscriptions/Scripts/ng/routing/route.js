@@ -25,6 +25,10 @@
           templateUrl: 'views/register.html',
           controller: 'registerController'
       })
+      .when('/subscribe/:courseID', {
+          templateUrl: 'views/subscribe.html',
+          controller: 'subscribeController'
+      })
       .otherwise({
           redirectTo: '/bekijkAanbod'
       })

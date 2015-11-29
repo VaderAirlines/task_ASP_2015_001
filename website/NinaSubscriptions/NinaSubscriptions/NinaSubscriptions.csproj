@@ -57,7 +57,13 @@
     <Content Include="scripts\ng\controllers\mijnGegevensController.js" />
     <Content Include="scripts\ng\controllers\registerController.js" />
     <Content Include="scripts\ng\controllers\registerOrLoginController.js" />
+    <Content Include="scripts\ng\controllers\subscribeController.js" />
+    <Content Include="scripts\ng\factories\courseFactory.js" />
+    <Content Include="scripts\ng\factories\loginFactory.js" />
+    <Content Include="scripts\ng\factories\pathFactory.js" />
     <Content Include="scripts\ng\routing\route.js" />
+    <Content Include="scripts\ng\services\courseService.js" />
+    <Content Include="scripts\ng\services\loginService.js" />
     <Content Include="scripts\vendor\angular-route.js" />
     <Content Include="scripts\vendor\angular.min.js" />
     <Content Include="scripts\vendor\jquery-1.11.3.min.js" />
@@ -67,6 +73,7 @@
     <Content Include="views\mijnGegevens.html" />
     <Content Include="views\register.html" />
     <Content Include="views\registerOrLogin.html" />
+    <Content Include="views\subscribe.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -93,7 +100,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="bin\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="scripts\ng\services\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="master pages\ninaSubscriptions.Master" />
