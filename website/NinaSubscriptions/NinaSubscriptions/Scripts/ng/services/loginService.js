@@ -4,6 +4,7 @@
 
     // ajax calls
     function getLoginStatus() {
+        // TODO: remove when webmethod in place
         if (lf.username == 'a' && lf.password == 'b') { lf.isLoggedIn = true; };
         console.log('now returning');
         return;

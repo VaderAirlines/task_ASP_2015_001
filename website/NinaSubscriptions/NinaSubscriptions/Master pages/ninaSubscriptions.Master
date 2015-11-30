@@ -26,10 +26,10 @@
         <!-- navigation -->
             <nav>
                 <ul>
-                    <li><a ng-href="#/bekijkAanbod">Bekijk aanbod</a></li>
-                    <li><a ng-href="#/mijnGegevens">Mijn gegevens</a></li>
-                    <li><a ng-href="#/beheerCursussen">Beheer cursussen</a></li>
-                    <li><a ng-href="#/bekijkInschrijvingen">Bekijk inschrijvingen</a></li>
+                    <li><a ng-href="index.aspx#/bekijkAanbod">Bekijk aanbod</a></li>
+                    <li><a ng-href="index.aspx#/mijnGegevens">Mijn gegevens</a></li>
+                    <li><a href="test.aspx?login=joske" target="_self">Beheer cursussen</a></li>
+                    <li><a ng-href="test.aspx?login=lowieke">Bekijk inschrijvingen</a></li>
                 </ul>
             </nav>
 
