@@ -13,10 +13,26 @@ namespace NinaSubscriptions.webservices {
     [ScriptService]
     public class loginService:System.Web.Services.WebService {
 
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
         public bool getLoginStatus(string username, string password) {
             using (SqlConnection con = connectionManager.getConnection()) {
-                throw new NotImplementedException();
+                using (SqlCommand com = new SqlCommand("checkLogin", con)) {
+                    com.CommandType = System.Data.CommandType.StoredProcedure;
+                    com.Parameters.AddWithValue("login", username);
+                    com.Parameters.AddWithValue("password", password);
+
+                    con.Open();
+
+                    int userID = Convert.ToInt32(com.ExecuteScalar());
+
+                    if (userID > 0) {
+                        HttpContext.Current.Session["userID"] = userID;
+                        return true; 
+                    };
+
+					HttpContext.Current.Session["userID"] = null;
+                    return false;
+                }
             }
         }
     }

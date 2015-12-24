@@ -22,14 +22,5 @@ namespace NinaSubscriptions.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=dennis;Initial Catalog=Nina_skateboarding;Integrated Security=True")]
-        public string connection {
-            get {
-                return ((string)(this["connection"]));
-            }
-        }
     }
 }

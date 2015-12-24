@@ -14,7 +14,15 @@
     // UI handlers
     $scope.login = function () {
         $scope.ls.getLoginStatus(); 
-        if ($scope.lf.isLoggedIn) { $location.path($scope.pf.gotoPath); };
+
+        if ($scope.lf.isLoggedIn) { 
+            $scope.lf.username = '';
+            $scope.lf.password = '';
+
+            $location.path($scope.pf.gotoPath); 
+        } else {
+            console.log("combinatie niet gevonden");
+        };
     };
 
     $scope.register = function () {

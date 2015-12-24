@@ -1,7 +1,7 @@
 ﻿ninapp.factory('loginFactory', function () {
     return {
-        username: 'dennis',
-        password: 'joske',
+        username: '',
+        password: '',
         isLoggedIn: false
     };
 

@@ -15,6 +15,7 @@
 
         req.done(function (data) {
             lf.isLoggedIn = data.d || false;
+            console.log('test' + data.d);
         });
 
         req.fail(function (xhr, status, error) {

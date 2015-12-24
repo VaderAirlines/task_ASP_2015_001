@@ -5,6 +5,9 @@
 <html ng-app="ninapp">
 <head runat="server">
     <title>Niña skateboarding organiseert! Schrijf u nu in!</title>
+
+    <link href="../css/master.css" rel="stylesheet" />
+
     <asp:ContentPlaceHolder ID="phHead" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -25,6 +28,7 @@
 
         <!-- navigation -->
             <nav>
+                <asp:Label ID="txtOutputter" runat="server"></asp:Label>
                 <ul>
                     <li><a ng-href="index.aspx#/bekijkAanbod">Bekijk aanbod</a></li>
                     <li><a ng-href="index.aspx#/mijnGegevens">Mijn gegevens</a></li>

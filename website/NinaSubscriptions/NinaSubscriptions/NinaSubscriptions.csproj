@@ -56,6 +56,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\master.css" />
     <Content Include="index.aspx" />
     <Content Include="scripts\ng\apps\app.js" />
     <Content Include="scripts\ng\controllers\beheerCursussenController.js" />
@@ -82,7 +83,9 @@
     <Content Include="views\register.html" />
     <Content Include="views\registerOrLogin.html" />
     <Content Include="views\subscribe.html" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="webservices\loginService.asmx" />
   </ItemGroup>
   <ItemGroup>

@@ -9,7 +9,7 @@ namespace NinaSubscriptions {
     public partial class test:System.Web.UI.Page {
 
         protected void Page_Load(object sender,EventArgs e) {
-            if (Request.QueryString["login"] != "joske") { Response.Redirect("index.aspx"); };
+            if (Session["userID"] == null) { Response.Redirect("index.aspx"); };
         }
     }
 }
