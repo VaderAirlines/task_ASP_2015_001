@@ -13,8 +13,7 @@
 
     // UI handlers
     $scope.login = function () {
-        $scope.ls.getLoginStatus();
-        alert($scope.pf.gotoPath);
+        $scope.ls.getLoginStatus(); 
         if ($scope.lf.isLoggedIn) { $location.path($scope.pf.gotoPath); };
     };
 
