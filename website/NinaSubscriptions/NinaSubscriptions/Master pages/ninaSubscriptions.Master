@@ -17,13 +17,16 @@
         <div>
         <!-- header -->
             <header>
-                <div id="divLoggedInUser"></div>
+                <div id="divLoggedInUser">change to logged in user</div>
                 <div id="divBanner">
                     <div id="divLoginForm">
-
+                        login<br />
+                        <input type="text" id="txtEmail" class="mail" maxlength="50" /><br />
+                        paswoord<br />
+                        <input type="password" id="txtPassword" maxlength="50" /><br />
+                        <a href="#">log in</a>
                     </div>
                 </div>
-                <div id="divBreadcrumb"></div>
             </header>
 
         <!-- navigation -->
@@ -34,8 +37,10 @@
                     <li><a ng-href="index.aspx#/mijnGegevens">Mijn gegevens</a></li>
                     <li><a href="test.aspx?login=joske" target="_self">Beheer cursussen</a></li>
                     <li><a ng-href="test.aspx?login=lowieke">Bekijk inschrijvingen</a></li>
-                </ul>
+                </ul>                
             </nav>
+
+            <section id="divBreadcrumb">breadcrumb hier</section>
 
         <!-- body placeholder -->
             <asp:ContentPlaceHolder ID="phContent" runat="server">
