@@ -56,7 +56,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="css\content-general.css" />
     <Content Include="css\master.css" />
+    <Content Include="images\beeld_nina_skateboarding.png" />
     <Content Include="index.aspx" />
     <Content Include="scripts\ng\apps\app.js" />
     <Content Include="scripts\ng\controllers\beheerCursussenController.js" />

@@ -1,0 +1,5 @@
+kleuren
+-------------------
+	- roze: #DF4A79
+	- donkergrijs: #989898
+	- lichtgrijs: #BBBBBB

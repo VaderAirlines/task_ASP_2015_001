@@ -6,7 +6,9 @@
 <head runat="server">
     <title>Niña skateboarding organiseert! Schrijf u nu in!</title>
 
+    <%--CSS--%>
     <link href="../css/master.css" rel="stylesheet" />
+    <link href="../css/content-general.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="phHead" runat="server">
     </asp:ContentPlaceHolder>
@@ -25,6 +27,10 @@
                         paswoord<br />
                         <input type="password" id="txtPassword" maxlength="50" /><br />
                         <a href="#">log in</a>
+                    </div>
+                    <div id="divPageTitle">dit is een titel</div>
+                    <div id="divCutie">
+                        <img src="images/beeld_nina_skateboarding.png" alt="beeld Niña skateboarding: schattig meisje op skateboard, vectorieel" />
                     </div>
                 </div>
             </header>
@@ -48,8 +54,16 @@
 
         <!-- footer -->
             <footer>
-                <div id="divFooterLinks"></div>
-                <div id="divCopyright"></div>
+                <div id="divFooterLinks">
+                    <ul>
+                        <li>regelement</li>
+                        <li>voorwaarden</li>
+                        <li>contact</li>
+                    </ul>
+                </div>
+                <div id="divCopyright">
+                    copyright&copy; 2015 - Niña skateboarding
+                </div>
             </footer>
 
         <!-- SCRIPTS -->

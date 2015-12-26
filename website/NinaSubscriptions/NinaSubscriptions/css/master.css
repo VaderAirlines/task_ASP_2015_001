@@ -1,5 +1,5 @@
 ﻿/* ALGEMEEN -----------------------------------------------  */
-div {
+* {
     padding: 0;
     margin: 0;
     -moz-box-sizing: border-box;
@@ -23,35 +23,60 @@ a, a:hover, a:visited {
 header {
 }
 
-#divLoggedInUser {
-    text-align: right;
-    padding: 0.5em;
-    margin-right: 1em;
-}
-
-#divBanner {
-    background-color: gray;
-    border-top: 2px solid red;
-    border-bottom: 2px solid red;
-    padding: 1.3em;
-}
-
-#divLoginForm {
-    text-align: right;
-}
-
-    #divLoginForm a {
-        display: inline-block;
-        padding: 0.2em 0.5em;
-        margin-top: 0.5em;
-        border-radius: 0.5em;
-        background-color: white;
+    header #divLoggedInUser {
+        text-align: right;
+        padding: 0.5em;
+        /* margin-right: 1em; */
+        color: #989898;
     }
+
+    header #divBanner {
+        background-color: #989898;
+        border-top: 2px solid #DF4A79;
+        border-bottom: 2px solid #DF4A79;
+        padding: 0.5em 1.3em;
+        position: relative;
+        height: 178px;
+    }
+
+        header #divBanner #divLoginForm {
+            text-align: right;
+            color: #BBBBBB;
+        }
+
+            header #divBanner #divLoginForm a {
+                display: inline-block;
+                padding: 0.2em 0.5em;
+                margin-top: 0.5em;
+                border-radius: 0.5em;
+                background-color: white;
+                color: #BBBBBB;
+            }
+
+
+        header #divBanner #divPageTitle {
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 20pt;
+            margin-top: 1em;
+            width: 100%;
+            bottom: 0.8em;
+        }
+
+        header #divBanner #divCutie {
+            position: absolute;
+            bottom: -5px;
+        }
+
+            header #divBanner #divCutie img {
+                height: 162px;
+            }
 
 /* NAVIGATIE -----------------------------------------------  */
 nav {
-    background-color: lightgray;
-    padding: 0.1em;
+    background-color: #BDBBBB;
+    padding: 0.5em;
     text-align: center;
     border-bottom: 2px solid gray;
 }
@@ -59,57 +84,52 @@ nav {
     nav ul li {
         /* text-decoration: none; */
         display: inline-block;
-        padding: 0.5em 0.8em;
-        margin-right: 0.3em;
+        padding: 0.3em 0.8em;
+        margin-right: 2.3em;
         background-color: white;
         border-radius: 0.5em;
     }
-    
+
+        nav ul li a:hover {
+            color: #DF4A79;
+            text-decoration: underline;
+        }
+
+        nav ul li a {
+            color: #989898;
+            font-size: 12pt;
+        }
+
 #divBreadcrumb {
     padding: 0.2em 0.5em;
     margin-bottom: 1em;
-}
-
-/* CONTENT -----------------------------------------------  */
-#divMain {
-    padding: 0em 0.5em;
-}
-
-.component-wrapper {
-    background-color: lightgray;
-    padding: 0.5em;
-    border-radius: 1em;
-    margin-bottom: 1em;
+    color: #989898;
 }
 
 /* FOOTER -----------------------------------------------  */
 footer {
     min-height: 2em;
-    background-color: blue;
+    background-color: #989898;
+    border-top: 2px solid #DF4A79;
+    text-align: center;
+    margin-top: 2em;
+    padding: 0.5em 0.5em 2em 0.5em;
 }
 
-/*************************************************************************************************/
- /* TODO: MOVE INTO OWN FILE -> bekijkAanbod.css */
-.component-wrapper .content {
-    position: relative;
-}
+    footer #divFooterLinks ul {
+        padding-left: 0;
+    }
 
-.component-wrapper .content .left {
-    position: absolute;
-    width: 150px;
-    background-color: green;
-    height: calc(100% - 1em);
-    display: inline-block;
-}
+        footer #divFooterLinks ul li {
+            display: inline;
+            color: white;
+        }
 
-.component-wrapper .content .right {
-    margin-left: 160px;
-}
+            footer #divFooterLinks ul li:not(:last-of-type) {
+                margin-right: 2em;
+            }
 
-.component-wrapper .content .right td {
-    padding: 0em 1em 0em 0em;
-}
-
-    .component-wrapper .content .buttons {
-        margin-left: 163px;
+    footer #divCopyright {
+        color: #DF4A79;
+        margin-top: 1em;
     }
