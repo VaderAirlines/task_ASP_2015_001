@@ -1,1 +1,114 @@
-﻿{{ description }}
+﻿<div class="component-wrapper">
+    <div class="title">{{ cf.subscriptionCourse.naam }}</div>
+    <div class="content">
+        <div class="content-top">
+            <div class="left photo"></div>
+            <div class="right">
+                <div class="form">
+                    <table>
+                        <tr>
+                            <td>beschrijving</td>
+                            <td><span class="large" />{{ cf.subscriptionCourse.omschrijving }}</td>
+                        </tr>
+                        <tr>
+                            <td>leeftijd</td>
+                            <td><span class="large" />vanaf {{ cf.subscriptionCourse.leeftijdVanaf }} jaar tem {{ cf.subscriptionCourse.leeftijdTotEnMet }}</td>
+                        </tr>
+                        <tr>
+                            <td>wanneer</td>
+                            <td><span class="large" />van {{ cf.subscriptionCourse.datumVan }} tem {{ cf.subscriptionCourse.datumTot }}</td>
+                        </tr>
+                        <tr>
+                            <td>locatie</td>
+                            <td><span class="large" />{{ cf.subscriptionCourse.locatieNaam }}</td>
+                        </tr>
+                        <tr>
+                            <td>adres</td>
+                            <td><span class="large" />{{ cf.subscriptionCourse.locatieAdres }}</td>
+                        </tr>
+                        <tr>
+                            <td>beschikbare plaatsen</td>
+                            <td><span class="large" />{{ cf.subscriptionCourse.maxDeelnemers }}</td>
+                        </tr>
+                        <tr>
+                            <td>prijs</td>
+                            <td><span class="large" />{{ cf.subscriptionCourse.kostprijs }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="subscriptions userdata">
+            <div class="child" ng-repeat="child in lf.userData.childrenToSubscribe">
+                <table>
+                    <tr>
+                        <td>Voornaam kind</td>
+                        <td>{{ child.firstName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Achternaam kind</td>
+                        <td>{{ child.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Emailadres</td>
+                        <td>{{ child.emailAddress }}"</td>
+                    </tr>
+                    <tr>
+                        <td>Telefoon of gsm</td>
+                        <td>{{ child.phoneOrCell }}"</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">remove</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="buttons">
+            <div class="addChild button full" ng-hide="lf.userData.addNewChild" ng-click="setAddNewChild();">
+                <div>Voeg een kind toe</div>
+            </div>
+
+            <div ng-show="lf.userData.addNewChild">
+                <select ng-options="child.fullName for child in lf.userData.allChildren" ng-model="childToAdd"></select>
+                <input type="button" value="voeg dit kind toe" ng-click="addChildToSubcribe(childToAdd)" ng-show="childToAdd !== {}" />
+                <input type="button" value="voeg nieuw kind toe" ng-click="createChildToAdd(childToAdd)" ng-show="childToAdd == {} && newChildCreated == true" />
+            </div>
+
+            <div class="child" ng-show="newChildCreated == true">
+                <table>
+                    <tr>
+                        <td>Voornaam kind</td>
+                        <td>
+                            <input type="text" class="large" value="{{ childToAdd.firstName }}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Achternaam kind</td>
+                        <td>
+                            <input type="text" class="large" value="{{ childToAdd.lastName }}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Emailadres</td>
+                        <td>
+                            <input type="text" class="large" value="{{ childToAdd.emailAddress }}" /></td>
+                    </tr>
+                    <tr>
+                        <td>Telefoon of gsm</td>
+                        <td>
+                            <input type="text" class="large" value="{{ childToAdd.phoneOrCell }}" /></td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="conditions button full">
+                <label for="chkConditions">ik ga akkoord met de algemene voorwaarden</label>
+                <input type="checkbox" id="chkConditions" name="chkConditions" ng-model="lf.userData.acceptedConditions" />
+            </div>
+
+            <div class="button bottom full" ng-click="subscribe(cf.subscriptionCourse.id, userData);">
+                Ik schrijf me in!
+            </div>
+        </div>
+    </div>
+</div>

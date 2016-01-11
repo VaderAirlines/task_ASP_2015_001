@@ -88,10 +88,12 @@
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="webservices\courseService.asmx" />
     <Content Include="webservices\loginService.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="classes\connectionManager.cs" />
+    <Compile Include="classes\BO\course.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +123,10 @@
     </Compile>
     <Compile Include="test.aspx.designer.cs">
       <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webservices\courseService.asmx.cs">
+      <DependentUpon>courseService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="webservices\loginService.asmx.cs">
       <DependentUpon>loginService.asmx</DependentUpon>

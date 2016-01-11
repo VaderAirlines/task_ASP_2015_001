@@ -18,7 +18,8 @@
         border-bottom: 2px solid gray;
     }
 
-    .component-wrapper .content {
+    .component-wrapper .content,
+    .component-wrapper .content .content-top {
         position: relative;
     }
 
@@ -26,7 +27,8 @@
             padding: 0em 1em 0em 0em;
         }
 
-        .component-wrapper .content > .left {
+        .component-wrapper .content > .left,
+        .component-wrapper .content .content-top > .left {
             position: absolute;
             width: 150px;
             height: 100%;
@@ -34,12 +36,14 @@
             display: inline-block;
         }
 
-            .component-wrapper .content > .left.photo {
+            .component-wrapper .content > .left.photo,
+            .component-wrapper .content .content-top > .left.photo {
                 background-image: url("../images/beeld_nina_skateboarding.png");
                 background-size: cover;
             }
 
-        .component-wrapper .content > .right {
+        .component-wrapper .content > .right,
+        .component-wrapper .content .content-top > .right {
             margin-left: 160px;
         }
 

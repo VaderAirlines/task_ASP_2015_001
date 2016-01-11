@@ -10,7 +10,7 @@
     $scope.pf = pathFactory;
     
     // initializers
-    //$scope.cs.getAllCourses();
+    $scope.cs.getAllCourses();
     
     // scopers       
     

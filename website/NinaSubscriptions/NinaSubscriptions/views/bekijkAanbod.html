@@ -1,5 +1,5 @@
 ﻿<div class="component-wrapper" ng-repeat="course in cf.courses">
-    <div class="title">{{ course.title }}</div>
+    <div class="title">{{ course.naam }}</div>
     <div class="content">
         <div class="left photo"></div>
         <div class="right">
@@ -7,31 +7,31 @@
                 <table>
                     <tr>
                         <td>beschrijving</td>
-                        <td><span class="large" />{{ course.description }}</td>
+                        <td><span class="large" />{{ course.omschrijving }}</td>
                     </tr>
                     <tr>
                         <td>leeftijd</td>
-                        <td><span class="large" />vanaf {{ course.minAge }} jaar tem {{ course.maxAge }}</td>
+                        <td><span class="large" />vanaf {{ course.leeftijdVanaf }} jaar tem {{ course.leeftijdTotEnMet }}</td>
                     </tr>
                     <tr>
                         <td>wanneer</td>
-                        <td><span class="large" />{{ course.timing }}</td>
+                        <td><span class="large" />van {{ course.datumVan }} tem {{ course.datumTot }}</td>
                     </tr>
                     <tr>
                         <td>locatie</td>
-                        <td><span class="large" />{{ course.location }}</td>
+                        <td><span class="large" />{{ course.locatieNaam }}</td>
                     </tr>
                     <tr>
                         <td>adres</td>
-                        <td><span class="large" />{{ course.address }}</td>
+                        <td><span class="large" />{{ course.locatieAdres }}</td>
                     </tr>
                     <tr>
                         <td>beschikbare plaatsen</td>
-                        <td><span class="large" />{{ course.availablePlaces }}</td>
+                        <td><span class="large" />{{ course.maxDeelnemers }}</td>
                     </tr>
                     <tr>
                         <td>prijs</td>
-                        <td><span class="large" />{{ course.price }}</td>
+                        <td><span class="large" />{{ course.kostprijs }}</td>
                     </tr>
                 </table>
             </div>
