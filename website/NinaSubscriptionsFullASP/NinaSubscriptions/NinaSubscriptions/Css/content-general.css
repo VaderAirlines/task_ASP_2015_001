@@ -1,0 +1,78 @@
+﻿/* CONTENT -----------------------------------------------  */
+#divMain {
+    padding: 0em 0.5em;
+}
+
+.component-wrapper {
+    background-color: lightgray;
+    padding: 0.5em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+    .component-wrapper .title {
+        font-size: 14pt;
+        color: #DF4A79;
+        padding: 0.3em;
+        margin-bottom: 0.5em;
+        border-bottom: 2px solid gray;
+    }
+
+    .component-wrapper .content,
+    .component-wrapper .content .content-top {
+        position: relative;
+    }
+
+        .component-wrapper .content td {
+            padding: 0em 1em 0em 0em;
+        }
+
+        .component-wrapper .content > .left,
+        .component-wrapper .content .content-top > .left {
+            position: absolute;
+            width: 150px;
+            height: 100%;
+            border-bottom-left-radius: 0.6em;
+            display: inline-block;
+        }
+
+            .component-wrapper .content > .left.photo,
+            .component-wrapper .content .content-top > .left.photo {
+                background-image: url("../images/beeld_nina_skateboarding.png");
+                background-size: cover;
+            }
+
+        .component-wrapper .content > .right,
+        .component-wrapper .content .content-top > .right {
+            margin-left: 160px;
+        }
+
+        .component-wrapper .content .buttons {
+            cursor: pointer;
+        }
+
+            .component-wrapper .content .buttons.right {
+                margin-left: 163px;
+            }
+
+            .component-wrapper .content .buttons .button {
+                color: white;
+                background-color: gray;
+                text-align: center;
+                margin-top: 1em;
+                padding: 0.5em;
+            }
+
+                .component-wrapper .content .buttons .button.bottom.right {
+                    border-bottom-right-radius: 0.6em;
+                }
+
+                .component-wrapper .content .buttons .button.bottom.full {
+                    border-bottom-left-radius: 0.6em;
+                    border-bottom-right-radius: 0.6em;
+                }
+
+                    .component-wrapper .content .buttons .button.bottom.full.smaller-text {
+                        font-size: smaller;
+                        margin-top: 0.3em;
+                    }

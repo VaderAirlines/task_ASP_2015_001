@@ -1,0 +1,135 @@
+﻿/* ALGEMEEN -----------------------------------------------  */
+* {
+    padding: 0;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Verdana, sans-serif;
+    font-size: 10pt;
+}
+
+body {
+    width: 940px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+a, a:hover, a:visited {
+    text-decoration: none;
+}
+
+/* HEADER ------------------------------------------------*/
+header {
+}
+
+    header #divLoggedInUser {
+        text-align: right;
+        padding: 0.5em;
+        /* margin-right: 1em; */
+        color: #989898;
+    }
+
+    header #divBanner {
+        background-color: #989898;
+        border-top: 2px solid #DF4A79;
+        border-bottom: 2px solid #DF4A79;
+        padding: 0.5em 1.3em;
+        position: relative;
+        height: 178px;
+    }
+
+        header #divBanner #divLoginForm {
+            text-align: right;
+            color: #BBBBBB;
+        }
+
+            header #divBanner #divLoginForm a {
+                display: inline-block;
+                padding: 0.2em 0.5em;
+                margin-top: 0.5em;
+                border-radius: 0.5em;
+                background-color: white;
+                color: #BBBBBB;
+            }
+
+
+        header #divBanner #divPageTitle {
+            position: absolute;
+            text-align: center;
+            color: white;
+            font-size: 20pt;
+            margin-top: 1em;
+            width: 100%;
+            bottom: 0.8em;
+        }
+
+        header #divBanner #divCutie {
+            position: absolute;
+            bottom: -5px;
+        }
+
+            header #divBanner #divCutie img {
+                height: 162px;
+            }
+
+/* NAVIGATIE -----------------------------------------------  */
+nav {
+    background-color: #BDBBBB;
+    padding: 0.5em;
+    text-align: center;
+    border-bottom: 2px solid gray;
+}
+
+    nav ul li {
+        /* text-decoration: none; */
+        display: inline-block;
+        padding: 0.3em 0.8em;
+        margin-right: 2.3em;
+        background-color: white;
+        border-radius: 0.5em;
+    }
+
+        nav ul li a:hover {
+            color: #DF4A79;
+            text-decoration: underline;
+        }
+
+        nav ul li a {
+            color: #989898;
+            font-size: 12pt;
+        }
+
+#divBreadcrumb {
+    padding: 0.2em 0.5em;
+    margin-bottom: 1em;
+    color: #989898;
+}
+
+/* FOOTER -----------------------------------------------  */
+footer {
+    min-height: 2em;
+    background-color: #989898;
+    border-top: 2px solid #DF4A79;
+    text-align: center;
+    margin-top: 2em;
+    padding: 0.5em 0.5em 2em 0.5em;
+}
+
+    footer #divFooterLinks ul {
+        padding-left: 0;
+    }
+
+        footer #divFooterLinks ul li {
+            display: inline;
+            color: white;
+        }
+
+            footer #divFooterLinks ul li:not(:last-of-type) {
+                margin-right: 2em;
+            }
+
+    footer #divCopyright {
+        color: #DF4A79;
+        margin-top: 1em;
+    }

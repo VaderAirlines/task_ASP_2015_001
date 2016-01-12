@@ -1,0 +1,79 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NinaSubscriptionsMaster.master.cs" Inherits="NinaSubscriptions.Master_Pages.NinaSubscriptionsMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head id="Head1" runat="server">
+    <title>Niña skateboarding organiseert! Schrijf u nu in!</title>
+
+    <%--CSS--%>
+    <link href="../css/master.css" rel="stylesheet" />
+    <link href="../css/content-general.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="phHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="frmMaster" runat="server">
+        <div>
+        <!-- header -->
+            <header>
+                <div id="divLoggedInUser" runat="server">change to logged in user</div>
+                <div id="divBanner">
+                    <div id="divLoginForm">
+                        login<br />
+                        <asp:TextBox ID="txtUsername" runat="server" CssClass="login" maxlength="50"></asp:TextBox><br />
+                        paswoord<br />
+                        <asp:TextBox ID="txtPassword" runat="server" CssClass="login" maxlength="50" TextMode="Password"></asp:TextBox><br />
+                        <asp:HyperLink ID="lnkBannerLogin" runat="server">log in</asp:HyperLink>
+                    </div>
+                    <div id="divPageTitle"><asp:Label ID="lblBannerTitle" runat="server" Text=""></asp:Label></div>
+                    <div id="divCutie">
+                        <img src="../../Images/beeld_nina_skateboarding.png" alt="beeld Niña skateboarding: schattig meisje op skateboard, vectorieel" />
+                    </div>
+                </div>
+            </header>
+
+        <!-- navigation -->
+            <nav>
+                <ul>
+                    <li><asp:HyperLink ID="lnkBekijkAanbod" runat="server" NavigateUrl="~/Pages/Public/bekijkAanbod.aspx">Bekijk aanbod</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="lnkMijnGegevens" runat="server" NavigateUrl="~/Pages/Public/mijnGegevens.aspx">Mijn gegevens</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="lnkBeheerCursussen" runat="server" NavigateUrl="~/Pages/Admin/beheerCursussen.aspx">Beheer cursussen</asp:HyperLink></li>
+                    <li><asp:HyperLink ID="lnkBekijkInschrijvingen" runat="server" NavigateUrl="~/Pages/Admin/bekijkInschrijvingen.aspx">Bekijk inschrijvingen</asp:HyperLink></li>
+                </ul>
+            </nav>
+
+            <section id="divBreadcrumb" runat="server">breadcrumb hier</section>
+
+        <!-- body placeholder -->
+            <asp:ContentPlaceHolder ID="phContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+        <!-- footer -->
+            <footer>
+                <div id="divFooterLinks">
+                    <ul>
+                        <li>regelement</li>
+                        <li>voorwaarden</li>
+                        <li>contact</li>
+                    </ul>
+                </div>
+                <div id="divCopyright">
+                    copyright&copy; 2015 - Niña skateboarding
+                </div>
+            </footer>
+
+        <!-- SCRIPTS -->
+            <script src="Scripts/Vendor/jquery-1.11.3.min.js"></script>
+
+            <asp:ContentPlaceHolder ID="phScripts" runat="server">
+            </asp:ContentPlaceHolder>
+
+        </div>
+    </form>
+
+</body>
+
+</html>

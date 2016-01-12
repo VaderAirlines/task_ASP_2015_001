@@ -74,8 +74,9 @@
     <Content Include="scripts\ng\routing\route.js" />
     <Content Include="scripts\ng\services\courseService.js" />
     <Content Include="scripts\ng\services\loginService.js" />
+    <Content Include="scripts\vendor\angular-cookies.js" />
     <Content Include="scripts\vendor\angular-route.js" />
-    <Content Include="scripts\vendor\angular.min.js" />
+    <Content Include="scripts\vendor\angular.js" />
     <Content Include="scripts\vendor\jquery-1.11.3.min.js" />
     <Content Include="test.aspx" />
     <Content Include="views\beheerCursussen.html" />
@@ -94,6 +95,7 @@
   <ItemGroup>
     <Compile Include="classes\connectionManager.cs" />
     <Compile Include="classes\BO\course.cs" />
+    <Compile Include="classes\loginStatus.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

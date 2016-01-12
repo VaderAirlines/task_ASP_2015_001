@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="phHead" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" runat="server">
-    dit is een test
+    dit is een test, userid uit session = <%= Session["userID"] %>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
 </asp:Content>

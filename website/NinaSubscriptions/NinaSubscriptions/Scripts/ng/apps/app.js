@@ -1,1 +1,1 @@
-﻿var ninapp = angular.module('ninapp', ['ngRoute']);
+﻿var ninapp = angular.module('ninapp', ['ngRoute', 'ngCookies']);

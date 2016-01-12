@@ -1,0 +1,13 @@
+combinatie van localstorage, computernaam in database en userid
+
+-> bij inloggen: 
+	- object in localstorage vullen met userid
+	- computernaam opslaan in database (table loggedInUsers bijmaken)
+
+-> bij page/view load:
+	- kijken of object in localstorage bestaat
+		- ja: check computernaam met computernaam in tabel loggedInUsers (op userID)
+		- nee: user moet opnieuw inloggen
+
+	- bij logout: object in localstorage leegmaken
+			+ tabel loggedInUsers leegmaken voor userID

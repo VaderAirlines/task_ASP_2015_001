@@ -8,6 +8,7 @@
 
     $scope.addExistingChild = false;
     $scope.newChildCreated = false;
+    $scope.addNewChild = false;
     $scope.childToAdd = {};
 
     // get course on id
@@ -19,7 +20,7 @@
     };
 
     $scope.setAddNewChild = function() {
-        $scope.lf.userData.addNewChild = true;
+        $scope.addNewChild = true;
     };
 
     $scope.addChildToSubcribe = function() {
@@ -27,7 +28,7 @@
     };
 
     $scope.createChildToAdd = function() {
-        $scope.childToAdd = lf.userData.createChild();
+        $timeout(function() { $scope.childToAdd = lf.userData.createChild(); }, 0);
         $scope.newChildCreated = true;
     };
 

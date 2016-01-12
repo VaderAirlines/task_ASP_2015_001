@@ -66,17 +66,22 @@
         </div>
 
         <div class="buttons">
-            <div class="addChild button full" ng-hide="lf.userData.addNewChild" ng-click="setAddNewChild();">
+            <div class="addChild button full" ng-hide="addNewChild" ng-click="setAddNewChild();">
                 <div>Voeg een kind toe</div>
             </div>
 
-            <div ng-show="lf.userData.addNewChild">
-                <select ng-options="child.fullName for child in lf.userData.allChildren" ng-model="childToAdd"></select>
-                <input type="button" value="voeg dit kind toe" ng-click="addChildToSubcribe(childToAdd)" ng-show="childToAdd !== {}" />
-                <input type="button" value="voeg nieuw kind toe" ng-click="createChildToAdd(childToAdd)" ng-show="childToAdd == {} && newChildCreated == true" />
+            <div ng-show="addNewChild">
+                <div ng-show="lf.userData.allChildren.length > 0">
+                    <select ng-options="child.fullName for child in lf.userData.allChildren" ng-model="childToAdd"></select>
+                    <input type="button" value="voeg dit kind toe" ng-click="addChildToSubcribe(childToAdd)" />
+                </div>
+                
+                <input type="button" value="voeg nieuw kind toe" ng-click="createChildToAdd(childToAdd)" ng-show="childToAdd == {}" />
             </div>
 
-            <div class="child" ng-show="newChildCreated == true">
+            <div> childtoadd firstname {{ childToAdd.firstName }}</div>
+
+            <div class="child" ng-show="childToAdd.firstName == ''">
                 <table>
                     <tr>
                         <td>Voornaam kind</td>

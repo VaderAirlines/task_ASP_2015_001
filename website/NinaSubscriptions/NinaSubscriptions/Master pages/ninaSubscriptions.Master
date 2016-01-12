@@ -70,6 +70,7 @@
             <script src="Scripts/Vendor/jquery-1.11.3.min.js"></script>
             <script src="Scripts/Vendor/angular.js"></script>
             <script src="Scripts/Vendor/angular-route.js"></script>
+            <script src="Scripts/Vendor/angular-cookies.js"></script>
 
         <!-- ANGULAR -->
             <script src="../Scripts/ng/apps/app.js"></script>

@@ -1,7 +1,7 @@
 ﻿ninapp.factory('loginFactory', function () {
     function createChild() {
         return {
-            firstName: '',
+            firstName: 'test',
             lastName: '',
             emailAddress: '',
             phoneOrCell: '',
