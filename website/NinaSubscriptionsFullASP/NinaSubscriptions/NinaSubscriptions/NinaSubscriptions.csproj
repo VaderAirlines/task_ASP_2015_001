@@ -69,6 +69,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="dataHelper.cs" />
     <Compile Include="Master_Pages\NinaSubscriptionsMaster.Master.cs">
       <DependentUpon>NinaSubscriptionsMaster.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -107,7 +108,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Helpers\" />
+    <Folder Include="App_Data\" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Master_Pages\NinaSubscriptionsMaster.Master" />
@@ -117,6 +119,20 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NinaSubscriptions.BO\NinaSubscriptions.BO.csproj">
+      <Project>{343caf0b-f8c9-48c8-9a40-5cd4ac166ae6}</Project>
+      <Name>NinaSubscriptions.BO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NinaSubscriptions.DAL\NinaSubscriptions.DAL.csproj">
+      <Project>{b6857822-d61f-42b5-8f97-8d1ba6bae799}</Project>
+      <Name>NinaSubscriptions.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Ninasubscriptions.IDAL\NinaSubscriptions.IDAL.csproj">
+      <Project>{a82adeb0-b2d4-406f-941d-7545afe5e7c4}</Project>
+      <Name>NinaSubscriptions.IDAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
