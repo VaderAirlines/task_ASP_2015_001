@@ -121,17 +121,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\NinaSubscriptions.BLL\NinaSubscriptions.BLL.csproj">
+      <Project>{be71e0ab-c155-4d43-ac3c-d5dfda13aba3}</Project>
+      <Name>NinaSubscriptions.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\NinaSubscriptions.BO\NinaSubscriptions.BO.csproj">
       <Project>{343caf0b-f8c9-48c8-9a40-5cd4ac166ae6}</Project>
       <Name>NinaSubscriptions.BO</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NinaSubscriptions.DAL\NinaSubscriptions.DAL.csproj">
-      <Project>{b6857822-d61f-42b5-8f97-8d1ba6bae799}</Project>
-      <Name>NinaSubscriptions.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ninasubscriptions.IDAL\NinaSubscriptions.IDAL.csproj">
+    <ProjectReference Include="..\Ninasubscriptions.IDAL\NinaSubscriptions.Interfaces.csproj">
       <Project>{a82adeb0-b2d4-406f-941d-7545afe5e7c4}</Project>
-      <Name>NinaSubscriptions.IDAL</Name>
+      <Name>NinaSubscriptions.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

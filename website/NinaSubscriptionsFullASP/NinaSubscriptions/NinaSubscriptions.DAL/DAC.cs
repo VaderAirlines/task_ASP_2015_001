@@ -88,6 +88,8 @@ namespace NinaSubscriptions.DAL {
 
 	public enum spBase {
 		course,
+		courseType,
+		location,
 		subscription,
 		userProfile,
 		child
@@ -99,7 +101,8 @@ namespace NinaSubscriptions.DAL {
 		update,
 		delete,
 		selectAll,
-		selectAllForUserProfile
+		selectAllForUserProfile,
+		selectAllForCourse
 	}
 
 }

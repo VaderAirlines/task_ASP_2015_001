@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using NinaSubscriptions.IDAL;
+using NinaSubscriptions.Interfaces;
 
 namespace NinaSubscriptions.DAL {
-	public class crud:INinaSubscriptions {
+	public class crud:IDAL {
 
 		string sqlDateFormat = "yyyy-MM-dd HH:MM:ss";
 
@@ -29,7 +29,7 @@ namespace NinaSubscriptions.DAL {
 		}
 
 		public DataTable selectCourse(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.course, spCommand.select, new Dictionary<string,string>() { {"id", id.ToString() } });
 		}
 
 		public DataTable updateCourse(int id,int courseTypeID,DateTime startDate,DateTime endDateInclusive,int startHour,int endHour,int locationID,int maxSubscriptions,int price,string description,string name) {
@@ -99,6 +99,18 @@ namespace NinaSubscriptions.DAL {
 		public DataTable getAllChildrenForUserProfile(int userProfileID) {
 			throw new NotImplementedException();
 		}
+		
+		public DataTable getAllSubscriptionsForCourse(int courseID) {
+			throw new NotImplementedException();
+		}
 
+
+		public DataTable selectCourseType(int id) {
+			throw new NotImplementedException();
+		}
+
+		public DataTable selectLocation(int id) {
+			throw new NotImplementedException();
+		}
 	}
 }

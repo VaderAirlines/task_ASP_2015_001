@@ -7,7 +7,7 @@
     <ProjectGuid>{A82ADEB0-B2D4-406F-941D-7545AFE5E7C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NinaSubscriptions.IDAL</RootNamespace>
+    <RootNamespace>NinaSubscriptions.Interfaces</RootNamespace>
     <AssemblyName>Ninasubscriptions.IDAL</AssemblyName>
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -35,8 +35,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="INinaSubscriptions.cs" />
+    <Compile Include="IBLL.cs" />
+    <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NinaSubscriptions.BO\NinaSubscriptions.BO.csproj">
+      <Project>{343caf0b-f8c9-48c8-9a40-5cd4ac166ae6}</Project>
+      <Name>NinaSubscriptions.BO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

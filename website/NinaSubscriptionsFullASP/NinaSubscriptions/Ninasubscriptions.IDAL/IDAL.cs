@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 
-namespace NinaSubscriptions.IDAL {
-	public interface INinaSubscriptions {
+namespace NinaSubscriptions.Interfaces {
+	public interface IDAL {
 
 		// COURSES -------------------------------------------------------------------------------------
 		DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, 
@@ -33,6 +33,8 @@ namespace NinaSubscriptions.IDAL {
 
 		DataTable getAllSubscriptionsForUserProfile(int userProfileID);
 
+		DataTable getAllSubscriptionsForCourse(int courseID);
+
 
 		// USERPROFILES ------------------------------------------------------------------------------
 		DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, 
@@ -56,6 +58,14 @@ namespace NinaSubscriptions.IDAL {
 		DataTable deleteChild(int id);
 
 		DataTable getAllChildrenForUserProfile(int userProfileID);
+
+
+		// COURSE TYPES
+		DataTable selectCourseType(int id);
+
+
+		// LOCATIONS
+		DataTable selectLocation(int id);
 
 	}
 }
