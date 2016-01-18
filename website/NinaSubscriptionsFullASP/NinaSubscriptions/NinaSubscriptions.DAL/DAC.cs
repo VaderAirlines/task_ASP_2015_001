@@ -83,7 +83,6 @@ namespace NinaSubscriptions.DAL {
 			retTable.Rows.Add(newRow);
 		}
 
-
 	}
 
 	public enum spBase {

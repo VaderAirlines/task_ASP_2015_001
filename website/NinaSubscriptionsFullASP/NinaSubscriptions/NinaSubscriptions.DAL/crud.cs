@@ -5,14 +5,14 @@ using System.Text;
 using NinaSubscriptions.Interfaces;
 
 namespace NinaSubscriptions.DAL {
-	public class crud:IDAL {
+	public class crud : IDAL {
 
 		string sqlDateFormat = "yyyy-MM-dd HH:MM:ss";
 
-		public DataTable insertCourse(int courseTypeID,DateTime startDate,DateTime endDateInclusive,int startHour,int endHour,
-									  int locationID,int maxSubscriptions,int price,string description,string name) {
+		public DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, int startHour, int endHour,
+									  int locationID, int maxSubscriptions, int price, string description, string name) {
 
-			Dictionary<string,string> parameters = new Dictionary<string,string>() {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() {
 				{ "courseTypeID", courseTypeID.ToString() },
 				{ "startDate", startDate.ToString(sqlDateFormat) },
 				{ "endDateInclusive", endDateInclusive.ToString(sqlDateFormat) },
@@ -25,92 +25,188 @@ namespace NinaSubscriptions.DAL {
 				{ "name", name }
 			};
 
-			return DAC.execute(spBase.course,spCommand.insert,parameters);
+			return DAC.execute(spBase.course, spCommand.insert, parameters);
 		}
 
 		public DataTable selectCourse(int id) {
-			return DAC.execute(spBase.course, spCommand.select, new Dictionary<string,string>() { {"id", id.ToString() } });
+			return DAC.execute(spBase.course, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() } 
+			});
 		}
 
-		public DataTable updateCourse(int id,int courseTypeID,DateTime startDate,DateTime endDateInclusive,int startHour,int endHour,int locationID,int maxSubscriptions,int price,string description,string name) {
-			throw new NotImplementedException();
+		public DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive, int startHour,
+			int endHour, int locationID, int maxSubscriptions, int price, string description, string name) {
+
+			Dictionary<string, string> parameters = new Dictionary<string, string>() {
+				{ "id", id.ToString() },
+				{ "courseTypeID", courseTypeID.ToString() },
+				{ "startDate", startDate.ToString(sqlDateFormat) },
+				{ "endDateInclusive", endDateInclusive.ToString(sqlDateFormat) },
+				{ "startHour", startHour.ToString() },
+				{ "endHour", endHour.ToString() },
+				{ "locationID", locationID.ToString() },
+				{ "maxSubscriptions", maxSubscriptions.ToString() },
+				{ "price", price.ToString() },
+				{ "description", description },
+				{ "name", name }
+			};
+
+			return DAC.execute(spBase.course, spCommand.update, parameters);
 		}
 
 		public DataTable deleteCourse(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.course, spCommand.delete, new Dictionary<string, string>() { 
+				{ "id", id.ToString() } 
+			});
 		}
 
 		public DataTable selectAllCourses() {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.course, spCommand.selectAll);
 		}
 
-		public DataTable insertSubscription(int courseID,int childID,bool hasPayed) {
-			throw new NotImplementedException();
+		public DataTable insertSubscription(int courseID, int childID, bool hasPayed) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() {
+				{ "courseID", courseID.ToString() },
+				{ "childID", childID.ToString() },
+				{ "hasPayed", hasPayed.ToString() }
+			};
+
+			return DAC.execute(spBase.subscription, spCommand.insert, parameters);
 		}
 
 		public DataTable selectSubscription(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.subscription, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() } 
+			});
 		}
 
-		public DataTable updateSubscription(int id,int courseID,int childID,bool hasPayed) {
-			throw new NotImplementedException();
+		public DataTable updateSubscription(int id, int courseID, int childID, bool hasPayed) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() {
+				{ "id", id.ToString() },
+				{ "courseID", courseID.ToString() },
+				{ "childID", childID.ToString() },
+				{ "hasPayed", hasPayed.ToString() }
+			};
+
+			return DAC.execute(spBase.subscription, spCommand.update, parameters);
 		}
 
 		public DataTable deleteSubscription(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.subscription, spCommand.delete, new Dictionary<string, string>() { 
+				{ "id", id.ToString() } 
+			});
 		}
 
 		public DataTable getAllSubscriptionsForUserProfile(int userProfileID) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.subscription, spCommand.selectAllForUserProfile, new Dictionary<string, string>() { 
+				{ "userProfileID", userProfileID.ToString() } 
+			});
 		}
 
-		public DataTable insertUserProfile(string name,string firstName,string street,int number,int postalCode,string place,string phone,string emailAddress,string username,string passwordHash) {
-			throw new NotImplementedException();
+		public DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, string place, string phone, string emailAddress, string username, string passwordHash) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
+				{ "name", name },
+				{ "firstName", firstName },
+				{ "street", street },
+				{ "number", number.ToString() },
+				{ "postalCode", postalCode.ToString() },
+				{ "place", place },
+				{ "phone", phone },
+				{ "emailAddress", emailAddress },
+				{ "userName", username },
+				{ "passwordHash", passwordHash }
+			};
+
+			return DAC.execute(spBase.userProfile, spCommand.insert, parameters);
 		}
 
 		public DataTable selectUserProfile(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.userProfile, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 
-		public DataTable updateUserProfile(int id,string name,string firstName,string street,int number,int postalCode,string place,string phone,string emailAddress,string username,string passwordHash) {
-			throw new NotImplementedException();
+		public DataTable updateUserProfile(int id, string name, string firstName, string street, int number, int postalCode, string place, string phone, string emailAddress, string username, string passwordHash) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
+				{ "id", id.ToString() },
+				{ "name", name },
+				{ "firstName", firstName },
+				{ "street", street },
+				{ "number", number.ToString() },
+				{ "postalCode", postalCode.ToString() },
+				{ "place", place },
+				{ "phone", phone },
+				{ "emailAddress", emailAddress },
+				{ "userName", username },
+				{ "passwordHash", passwordHash }
+			};
+
+			return DAC.execute(spBase.userProfile, spCommand.update, parameters);
 		}
 
 		public DataTable deleteUserProfile(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.userProfile, spCommand.delete, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 
-		public DataTable insertChild(string name,string firstName,DateTime dateOfBirth,int userProfileID) {
-			throw new NotImplementedException();
+		public DataTable insertChild(string name, string firstName, DateTime dateOfBirth, int userProfileID) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
+				{ "name", name },
+				{ "firstName", firstName },
+				{ "dateOfBirth", dateOfBirth.ToString(sqlDateFormat) },
+				{ "userProfileID", userProfileID.ToString() }
+			};
+
+			return DAC.execute(spBase.child, spCommand.insert, parameters);
 		}
 
 		public DataTable selectChild(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.child, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 
-		public DataTable updateChild(int id,string name,string firstName,DateTime dateOfBirth,int userProfileID) {
-			throw new NotImplementedException();
+		public DataTable updateChild(int id, string name, string firstName, DateTime dateOfBirth, int userProfileID) {
+			Dictionary<string, string> parameters = new Dictionary<string, string>() {
+				{ "id", id.ToString() },
+				{ "name", name },
+				{ "firstName", firstName },
+				{ "dateOfBirth", dateOfBirth.ToString(sqlDateFormat) },
+				{ "userProfileID", userProfileID.ToString() }
+			};
+
+			return DAC.execute(spBase.child, spCommand.update, parameters);
 		}
 
 		public DataTable deleteChild(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.child, spCommand.delete, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 
 		public DataTable getAllChildrenForUserProfile(int userProfileID) {
-			throw new NotImplementedException();
-		}
-		
-		public DataTable getAllSubscriptionsForCourse(int courseID) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.child, spCommand.selectAllForUserProfile, new Dictionary<string, string>() { 
+				{ "userProfileID", userProfileID.ToString() }
+			});
 		}
 
+		public DataTable getAllSubscriptionsForCourse(int courseID) {
+			return DAC.execute(spBase.subscription, spCommand.selectAllForCourse, new Dictionary<string, string>() { 
+				{ "courseID", courseID.ToString() }
+			});
+		}
 
 		public DataTable selectCourseType(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.courseType, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 
 		public DataTable selectLocation(int id) {
-			throw new NotImplementedException();
+			return DAC.execute(spBase.location, spCommand.select, new Dictionary<string, string>() { 
+				{ "id", id.ToString() }
+			});
 		}
 	}
 }
