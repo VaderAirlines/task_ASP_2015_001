@@ -19,6 +19,7 @@ namespace NinaSubscriptions.BO {
 		public string userName { get; set; }
 		public string passwordHash { get; set; }
 		public List<child> children { get; set; }
+		public Boolean isAdmin { get; set; }
 
 	}
 }

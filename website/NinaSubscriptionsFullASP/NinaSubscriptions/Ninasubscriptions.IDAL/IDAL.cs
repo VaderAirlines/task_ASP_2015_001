@@ -38,12 +38,14 @@ namespace NinaSubscriptions.Interfaces {
 
 		// USERPROFILES ------------------------------------------------------------------------------
 		DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, 
-								   string place, string phone, string emailAddress, string username, string passwordHash);
+								   string place, string phone, string emailAddress, string username, string passwordHash,
+								   Boolean isAdmin);
 
 		DataTable selectUserProfile(int id);
 
 		DataTable updateUserProfile(int id, string name, string firstName, string street, int number, int postalCode, 
-								   string place, string phone, string emailAddress, string username, string passwordHash);
+								   string place, string phone, string emailAddress, string username, string passwordHash,
+								   Boolean isAdmin);
 
 		DataTable deleteUserProfile(int id);
 

@@ -103,7 +103,9 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
-		public DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, string place, string phone, string emailAddress, string username, string passwordHash) {
+		public DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, 
+											string place, string phone, string emailAddress, string username, 
+											string passwordHash, Boolean isAdmin) {
 			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
 				{ "name", name },
 				{ "firstName", firstName },
@@ -114,7 +116,8 @@ namespace NinaSubscriptions.DAL {
 				{ "phone", phone },
 				{ "emailAddress", emailAddress },
 				{ "userName", username },
-				{ "passwordHash", passwordHash }
+				{ "passwordHash", passwordHash },
+				{ "isAdmin", isAdmin.ToString() }
 			};
 
 			return DAC.execute(spBase.userProfile, spCommand.insert, parameters);
@@ -126,7 +129,9 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
-		public DataTable updateUserProfile(int id, string name, string firstName, string street, int number, int postalCode, string place, string phone, string emailAddress, string username, string passwordHash) {
+		public DataTable updateUserProfile(int id, string name, string firstName, string street, int number, int postalCode, 
+										   string place, string phone, string emailAddress, string username, 
+										   string passwordHash, Boolean isAdmin) {
 			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
 				{ "id", id.ToString() },
 				{ "name", name },
@@ -138,7 +143,8 @@ namespace NinaSubscriptions.DAL {
 				{ "phone", phone },
 				{ "emailAddress", emailAddress },
 				{ "userName", username },
-				{ "passwordHash", passwordHash }
+				{ "passwordHash", passwordHash },
+				{ "isAdmin", isAdmin.ToString() }
 			};
 
 			return DAC.execute(spBase.userProfile, spCommand.update, parameters);

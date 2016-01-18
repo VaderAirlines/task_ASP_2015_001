@@ -1,7 +1,7 @@
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\Ninasubscriptions.IDAL.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\Ninasubscriptions.IDAL.pdb
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\NinaSubscriptions.BO.dll
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\NinaSubscriptions.BO.pdb
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\obj\Debug\NinaSubscriptions.Interfaces.csprojResolveAssemblyReference.cache
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\obj\Debug\Ninasubscriptions.IDAL.dll
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\obj\Debug\Ninasubscriptions.IDAL.pdb
-C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\Ninasubscriptions.IDAL.dll
-C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\Ninasubscriptions.IDAL\bin\Debug\Ninasubscriptions.IDAL.pdb
