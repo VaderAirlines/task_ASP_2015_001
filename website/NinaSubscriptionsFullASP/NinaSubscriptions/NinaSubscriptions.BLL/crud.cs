@@ -7,54 +7,57 @@ using NinaSubscriptions.DAL;
 using System.Data;
 
 namespace NinaSubscriptions.BLL {
-	public class crud:IBLL {
+	public class crud : IBLL {
 		// DAL class
 		private IDAL dal = new DAL.crud();
 
 		// IBLL implementation
 		public int insertCourse(course course) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.insertCourse(course.courseType.id, course.startDate, course.endDateInclusive, course.startHour,
+							 course.endHour, course.location.id, course.maxSubscriptions, course.price, course.description,
+							 course.name))["id"]);
 		}
 
 		public course getCourse(int id) {
 			DataTable courseTable = dal.selectCourse(id);
 			DataRow r = getFirstRow(courseTable);
 
-			course course = new course() {
-				id = Convert.ToInt32(r["id"]),
-				name = r["naam"].ToString(),
-				description = r["omschrijving"].ToString(),
-				courseType = new courseType() { id = 1, ageFrom = 4, ageToInclusive = 6, referrer = "kleuters" },//this.selectCourseType(Convert.ToInt32(r["cursusTypeID"])),
-				startDate = Convert.ToDateTime(r["datum_van"]),
-				endDateInclusive = Convert.ToDateTime(r["datum_tot"]),
-				startHour = Convert.ToInt32(r["startuur"]),
-				endHour = Convert.ToInt32(r["einduur"]),
-				location = new location() { id = 1, name = "locatie van joske" }, //this.selectLocation(Convert.ToInt32(r["locatieID"])),
-				maxSubscriptions = Convert.ToInt32(r["max_deelnemers"]),
-				price = Convert.ToInt32(r["kostprijs"])
-			};
-
-			return course;
+			return getCourseFromDataRow(r);
 		}
 
 		public int updateCourse(course course) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.updateCourse(course.id, course.courseType.id, course.startDate, course.endDateInclusive,
+													course.startHour, course.endHour, course.location.id, course.maxSubscriptions,
+													course.price, course.description, course.name))["id"]);
 		}
 
 		public int deleteCourse(int id) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.deleteCourse(id))["id"]);
 		}
 
 		public List<course> getAllCourses() {
-			throw new NotImplementedException();
+			DataTable table = dal.selectAllCourses();
+			List<course> retlist = new List<course>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getCourseFromDataRow(row));
+			}
+
+			return retlist;
 		}
 
-		public int insertSubscription(subscription subscription) {
-			throw new NotImplementedException();
+		public List<int> insertSubscription(subscription subscription) {
+			List<int> retList = new List<int>();
+
+			foreach (child child in subscription.children) {
+				retList.Add(Convert.ToInt32(getFirstRow(dal.insertSubscription(subscription.course.id, child.id, subscription.paymentConfirmed))["id"]));
+			}
+
+			return retList;
 		}
 
 		public subscription selectSubscription(int id) {
-			throw new NotImplementedException();
+			return getSubscriptionFromDatarow(getFirstRow(dal.selectSubscription(id)));
 		}
 
 		public int updateSubscription(subscription subscription) {
@@ -119,9 +122,37 @@ namespace NinaSubscriptions.BLL {
 
 		// PRIVATE HELPERS	
 		private DataRow getFirstRow(DataTable table) {
-			if(table.Rows.Count < 1) { throw new courseNotFoundException(); };
+			if (table.Rows.Count < 1) { throw new courseNotFoundException(); };
 			return table.Rows[0];
 		}
 
+		private course getCourseFromDataRow(DataRow row) {
+			course course = new course();
+
+			course.courseType = selectCourseType(Convert.ToInt32(row["cursustypeID"]));
+			course.description = row["omschrijving"].ToString();
+			course.id = Convert.ToInt32(row["id"]);
+			course.name = row["naam"].ToString();
+			course.endDateInclusive = Convert.ToDateTime(row["datum_tot"]);
+			course.endHour = Convert.ToInt32(row["einduur"]);
+			course.location = selectLocation(Convert.ToInt32(row["locatieID"]));
+			course.maxSubscriptions = Convert.ToInt32(row["max_deelnemers"]);
+			course.price = Convert.ToInt32(row["kostprijs"]);
+			course.startDate = Convert.ToDateTime(row["datum_van"]);
+			course.startHour = Convert.ToInt32(row["startuur"]);
+
+			return course;
+		}
+
+		private subscription getSubscriptionFromDatarow(DataRow row) {
+			subscription subscription = new subscription();
+
+			subscription.id = Convert.ToInt32(row["id"]);
+			subscription.course = getCourse(Convert.ToInt32(row["cursusID"]));
+			subscription.children = getAllChildrenForUserProfile(Convert.ToInt32(row["profielID"]));
+			subscription.paymentConfirmed = Convert.ToBoolean(row["heeftBetaald"]);
+
+			return subscription;
+		}
 	}
 }

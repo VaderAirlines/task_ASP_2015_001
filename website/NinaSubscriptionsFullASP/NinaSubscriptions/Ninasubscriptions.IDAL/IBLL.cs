@@ -14,7 +14,7 @@ namespace NinaSubscriptions.Interfaces {
 		List<course> getAllCourses();
 
 		// SUBSCRIPTIONS
-		int insertSubscription(subscription subscription);
+		List<int> insertSubscription(subscription subscription);
 		subscription selectSubscription(int id);
 		int updateSubscription(subscription subscription);
 		int deleteSubscription(int id);
