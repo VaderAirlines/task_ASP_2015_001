@@ -10,15 +10,15 @@
 namespace NinaSubscriptions.Pages.Public {
     
     
-    public partial class bekijkAanbod {
+    public partial class subscribeToCourse {
         
         /// <summary>
-        /// lstvCourses control.
+        /// lblTest control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView lstvCourses;
+        protected global::System.Web.UI.WebControls.Label lblTest;
     }
 }

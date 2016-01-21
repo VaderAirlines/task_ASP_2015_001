@@ -46,14 +46,9 @@ namespace NinaSubscriptions.BLL {
 			return retlist;
 		}
 
-		public List<int> insertSubscription(subscription subscription) {
-			List<int> retList = new List<int>();
-
-			foreach (child child in subscription.children) {
-				retList.Add(Convert.ToInt32(getFirstRow(dal.insertSubscription(subscription.course.id, child.id, subscription.paymentConfirmed))["id"]));
-			}
-
-			return retList;
+		public int insertSubscription(subscription subscription) {
+				return Convert.ToInt32(getFirstRow(dal.insertSubscription(subscription.course.id, subscription.child.id, 
+																			   subscription.paymentConfirmed))["id"]);
 		}
 
 		public subscription selectSubscription(int id) {
@@ -61,63 +56,92 @@ namespace NinaSubscriptions.BLL {
 		}
 
 		public int updateSubscription(subscription subscription) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.updateSubscription(subscription.id, subscription.course.id,
+																	  subscription.child.id, subscription.paymentConfirmed))["id"]);
 		}
 
 		public int deleteSubscription(int id) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.deleteSubscription(id)));
 		}
 
 		public List<subscription> getAllSubscriptionsForUserProfile(int userProfileID) {
-			throw new NotImplementedException();
+			DataTable table = dal.getAllSubscriptionsForUserProfile(userProfileID);
+			List<subscription> retlist = new List<subscription>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getSubscriptionFromDatarow(row));
+			}
+
+			return retlist;
 		}
 
 		public List<subscription> getAllSubscriptionsForCourse(int courseID) {
-			throw new NotImplementedException();
+			DataTable table = dal.getAllSubscriptionsForCourse(courseID);
+			List<subscription> retlist = new List<subscription>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getSubscriptionFromDatarow(row));
+			}
+
+			return retlist;
 		}
 
 		public int insertUserProfile(userProfile profile) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.insertUserProfile(profile.name, profile.firstName, profile.street, profile.number,
+																	 profile.postalCode, profile.place, profile.phone, profile.emailAddress,
+																	 profile.userName, profile.passwordHash, profile.isAdmin))["id"]);
 		}
 
 		public userProfile selectUserProfile(int id) {
-			throw new NotImplementedException();
+			return getProfileFromDatarow(getFirstRow(dal.selectUserProfile(id)));
 		}
 
 		public int updateUserProfile(userProfile profile) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.updateUserProfile(profile.id, profile.name, profile.firstName, profile.street, profile.number,
+																	 profile.postalCode, profile.place, profile.phone, profile.emailAddress,
+																	 profile.userName, profile.passwordHash, profile.isAdmin))["id"]);
 		}
 
 		public int deleteUserProfile(int id) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.deleteUserProfile(id)));
 		}
 
 		public int insertChild(child child) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.insertChild(child.name, child.firstName, 
+															   child.dateOfBirth, child.userProfileID))["id"]);
 		}
 
 		public child selectChild(int id) {
-			throw new NotImplementedException();
+			return getChildFromDatarow(getFirstRow(dal.selectChild(id)));
 		}
 
 		public int updateChild(child child) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.updateChild(child.id, child.name, 
+															   child.firstName, child.dateOfBirth, 
+															   child.userProfileID))["id"]);
 		}
 
 		public int deleteChild(int id) {
-			throw new NotImplementedException();
+			return Convert.ToInt32(getFirstRow(dal.deleteChild(id)));
 		}
 
 		public List<child> getAllChildrenForUserProfile(int userProfileID) {
-			throw new NotImplementedException();
+			DataTable table = dal.getAllSubscriptionsForUserProfile(userProfileID);
+			List<child> retlist = new List<child>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getChildFromDatarow(row));
+			}
+
+			return retlist;
 		}
 
 		public courseType selectCourseType(int id) {
-			throw new NotImplementedException();
+			return getCourseTypeFromDatarow(getFirstRow(dal.selectCourseType(id)));
 		}
 
 		public location selectLocation(int id) {
-			throw new NotImplementedException();
+			return getLocationFromDatarow(getFirstRow(dal.selectLocation(id)));
 		}
 
 		// PRIVATE HELPERS	
@@ -149,10 +173,70 @@ namespace NinaSubscriptions.BLL {
 
 			subscription.id = Convert.ToInt32(row["id"]);
 			subscription.course = getCourse(Convert.ToInt32(row["cursusID"]));
-			subscription.children = getAllChildrenForUserProfile(Convert.ToInt32(row["profielID"]));
+			subscription.child = selectChild(Convert.ToInt32(row["kindID"]));
 			subscription.paymentConfirmed = Convert.ToBoolean(row["heeftBetaald"]);
 
 			return subscription;
 		}
+
+		private userProfile getProfileFromDatarow(DataRow row) {
+			userProfile profile = new userProfile();
+
+			profile.id = Convert.ToInt32(row["id"]);
+			profile.children = getAllChildrenForUserProfile(profile.id);
+			profile.emailAddress = row["emailadres"].ToString();
+			profile.firstName = row["voornaam"].ToString();
+			profile.isAdmin = Convert.ToBoolean(row["isAdmin"]);
+			profile.name = row["naam"].ToString();
+			profile.number = Convert.ToInt32(row["nummer"].ToString());
+			profile.passwordHash = row["paswoord"].ToString();
+			profile.phone = row["telefoonnummer"].ToString();
+			profile.place = row["plaats"].ToString();
+			profile.postalCode = Convert.ToInt32(row["postcode"]);
+			profile.street = row["straat"].ToString();
+			profile.userName = row["login"].ToString();
+
+			return profile;
+		}
+
+		private child getChildFromDatarow(DataRow row) {
+			child child = new child();
+
+			child.id = Convert.ToInt32(row["id"]);
+			child.name = row["achternaam"].ToString();
+			child.firstName = row["voornaam"].ToString();
+			child.dateOfBirth = Convert.ToDateTime(row["geboortedatum"]);
+			child.userProfileID = Convert.ToInt32(row["profielID"]);
+
+			return child;
+		}
+
+		private courseType getCourseTypeFromDatarow(DataRow row) {
+			courseType ctype = new courseType();
+
+			ctype.id = Convert.ToInt32(row["id"]);
+			ctype.referrer = row["naam"].ToString();
+			ctype.ageFrom = Convert.ToInt32(row["leeftijd_vanaf"]);
+			ctype.ageToInclusive = Convert.ToInt32(row["leeftijd_tot_en_met"]);
+
+			return ctype;
+		}
+
+		private location getLocationFromDatarow(DataRow row) {
+			location location = new location();
+
+			location.id = Convert.ToInt32(row["id"]);
+			location.name = row["naam"].ToString();
+			location.emailAddress = row["emailadres"].ToString();
+			location.number = Convert.ToInt32(row["nummer"]);
+			location.phone = row["telefoonnummer"].ToString();
+			location.photoLink = row["foto_link"].ToString();
+			location.street = row["straat"].ToString();
+			location.place = row["plaats"].ToString();
+			location.postalCode = row["postcode"].ToString();
+
+			return location;
+		}
+
 	}
 }

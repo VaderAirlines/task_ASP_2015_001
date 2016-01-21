@@ -8,7 +8,7 @@ namespace NinaSubscriptions.BO {
 
 		public int id { get; set; }
 		public course course { get; set; }
-		public List<child> children { get; set; }
+		public child child { get; set; }
 		public bool paymentConfirmed { get; set; }
 
 	}

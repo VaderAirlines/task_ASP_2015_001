@@ -63,6 +63,7 @@
     <Content Include="Pages\Admin\bekijkInschrijvingen.aspx" />
     <Content Include="Pages\Public\bekijkAanbod.aspx" />
     <Content Include="Pages\Public\mijnGegevens.aspx" />
+    <Content Include="Pages\Public\subscribeToCourse.aspx" />
     <Content Include="Scripts\vendor\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\vendor\jquery-1.7.1.js" />
     <Content Include="Scripts\vendor\jquery-1.7.1.min.js" />
@@ -104,6 +105,13 @@
     </Compile>
     <Compile Include="Pages\Public\mijnGegevens.aspx.designer.cs">
       <DependentUpon>mijnGegevens.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Public\subscribeToCourse.aspx.cs">
+      <DependentUpon>subscribeToCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Public\subscribeToCourse.aspx.designer.cs">
+      <DependentUpon>subscribeToCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,7 +8,7 @@ namespace NinaSubscriptions.BO {
 
 		public int id { get; set; }
 		public string street { get; set; }
-		public string number { get; set; }
+		public int number { get; set; }
 		public string postalCode { get; set; }
 		public string place { get; set; }
 		public string name { get; set; }
