@@ -15,13 +15,10 @@ namespace NinaSubscriptions.Pages.Public {
 		protected void Page_Load(object sender,EventArgs e) {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
-			// check if user is already logged in
-			if(Session["userID"] != null) { master.setLoggedInUser(Convert.ToInt32(Session["userID"])); }
-
 			// set page title
 			master.setHeaderTitle("Bekijk aanbod");
 
-			// tests
+			// load courses
 			crud crud = new crud();
 
 			List<course> allCourses = crud.getAllCourses();

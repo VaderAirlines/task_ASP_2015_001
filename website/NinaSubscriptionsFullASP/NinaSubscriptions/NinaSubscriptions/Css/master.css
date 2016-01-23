@@ -54,7 +54,7 @@ header {
             }
 
 
-        header #divBanner #divPageTitle {
+        header #divBanner #divPageTitle > span {
             position: absolute;
             text-align: center;
             color: white;

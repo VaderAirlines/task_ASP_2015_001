@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PNV_Cryptor, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\PNV_Cryptor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -62,6 +66,7 @@
     <Content Include="Pages\Admin\beheerCursussen.aspx" />
     <Content Include="Pages\Admin\bekijkInschrijvingen.aspx" />
     <Content Include="Pages\Public\bekijkAanbod.aspx" />
+    <Content Include="Pages\Public\loginOrRegister.aspx" />
     <Content Include="Pages\Public\mijnGegevens.aspx" />
     <Content Include="Pages\Public\subscribeToCourse.aspx" />
     <Content Include="Scripts\vendor\jquery-1.7.1.intellisense.js" />
@@ -98,6 +103,13 @@
     </Compile>
     <Compile Include="Pages\Public\bekijkAanbod.aspx.designer.cs">
       <DependentUpon>bekijkAanbod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Public\loginOrRegister.aspx.cs">
+      <DependentUpon>loginOrRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Public\loginOrRegister.aspx.designer.cs">
+      <DependentUpon>loginOrRegister.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Public\mijnGegevens.aspx.cs">
       <DependentUpon>mijnGegevens.aspx</DependentUpon>

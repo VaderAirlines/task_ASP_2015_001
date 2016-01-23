@@ -69,5 +69,7 @@ namespace NinaSubscriptions.Interfaces {
 		// LOCATIONS
 		DataTable selectLocation(int id);
 
+		// HELPERS
+		DataTable getIdForCredentials(string username, string passwordHash);
 	}
 }

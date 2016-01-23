@@ -49,6 +49,15 @@ namespace NinaSubscriptions.Master_Pages {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLoggedInUser;
         
         /// <summary>
+        /// divLoginControls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLoginControls;
+        
+        /// <summary>
         /// txtUsername control.
         /// </summary>
         /// <remarks>
@@ -73,7 +82,25 @@ namespace NinaSubscriptions.Master_Pages {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkBannerLogin;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBannerLogin;
+        
+        /// <summary>
+        /// divLogoutControls control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLogoutControls;
+        
+        /// <summary>
+        /// lnkBannerLogout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton lnkBannerLogout;
         
         /// <summary>
         /// lblBannerTitle control.

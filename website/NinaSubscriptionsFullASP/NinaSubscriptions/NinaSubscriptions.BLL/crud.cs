@@ -47,7 +47,7 @@ namespace NinaSubscriptions.BLL {
 		}
 
 		public int insertSubscription(subscription subscription) {
-				return Convert.ToInt32(getFirstRow(dal.insertSubscription(subscription.course.id, subscription.child.id, 
+				return Convert.ToInt32(getFirstRow(dal.insertSubscription(subscription.course.id, subscription.child.id,
 																			   subscription.paymentConfirmed))["id"]);
 		}
 
@@ -61,7 +61,7 @@ namespace NinaSubscriptions.BLL {
 		}
 
 		public int deleteSubscription(int id) {
-			return Convert.ToInt32(getFirstRow(dal.deleteSubscription(id)));
+			return Convert.ToInt32(getFirstRow(dal.deleteSubscription(id))["id"]);
 		}
 
 		public List<subscription> getAllSubscriptionsForUserProfile(int userProfileID) {
@@ -103,11 +103,11 @@ namespace NinaSubscriptions.BLL {
 		}
 
 		public int deleteUserProfile(int id) {
-			return Convert.ToInt32(getFirstRow(dal.deleteUserProfile(id)));
+			return Convert.ToInt32(getFirstRow(dal.deleteUserProfile(id))["id"]);
 		}
 
 		public int insertChild(child child) {
-			return Convert.ToInt32(getFirstRow(dal.insertChild(child.name, child.firstName, 
+			return Convert.ToInt32(getFirstRow(dal.insertChild(child.name, child.firstName,
 															   child.dateOfBirth, child.userProfileID))["id"]);
 		}
 
@@ -117,21 +117,25 @@ namespace NinaSubscriptions.BLL {
 
 		public int updateChild(child child) {
 			return Convert.ToInt32(getFirstRow(dal.updateChild(child.id, child.name, 
-															   child.firstName, child.dateOfBirth, 
+															   child.firstName, child.dateOfBirth,
 															   child.userProfileID))["id"]);
 		}
 
 		public int deleteChild(int id) {
-			return Convert.ToInt32(getFirstRow(dal.deleteChild(id)));
+			return Convert.ToInt32(getFirstRow(dal.deleteChild(id))["id"]);
 		}
 
 		public List<child> getAllChildrenForUserProfile(int userProfileID) {
-			DataTable table = dal.getAllSubscriptionsForUserProfile(userProfileID);
+			DataTable table = dal.getAllChildrenForUserProfile(userProfileID);
 			List<child> retlist = new List<child>();
 
-			foreach (DataRow row in table.Rows) {
-				retlist.Add(getChildFromDatarow(row));
-			}
+			DataRow firstRow = getFirstRow(table);
+
+			if (Convert.ToInt32(firstRow["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getChildFromDatarow(row));
+				}
+			};
 
 			return retlist;
 		}
@@ -144,9 +148,14 @@ namespace NinaSubscriptions.BLL {
 			return getLocationFromDatarow(getFirstRow(dal.selectLocation(id)));
 		}
 
+		public int getIdForCredentials(string username, string passwordHash) {
+			return Convert.ToInt32(getFirstRow(dal.getIdForCredentials(username, passwordHash))["id"]);
+		}
+
+
 		// PRIVATE HELPERS	
 		private DataRow getFirstRow(DataTable table) {
-			if (table.Rows.Count < 1) { throw new courseNotFoundException(); };
+			if (table.Rows.Count < 1) { throw new requestedDataNotFoundException(); };
 			return table.Rows[0];
 		}
 

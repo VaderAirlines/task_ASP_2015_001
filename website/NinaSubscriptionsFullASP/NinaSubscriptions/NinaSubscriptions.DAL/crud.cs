@@ -214,5 +214,12 @@ namespace NinaSubscriptions.DAL {
 				{ "id", id.ToString() }
 			});
 		}
+		
+		public DataTable getIdForCredentials(string username, string passwordHash) {
+			return DAC.execute(spBase.credentials, spCommand.check, new Dictionary<string, string>() { 
+				{ "username", username },
+				{ "password", passwordHash }
+			});
+		}
 	}
 }

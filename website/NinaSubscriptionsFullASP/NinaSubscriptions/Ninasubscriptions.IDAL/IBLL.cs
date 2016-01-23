@@ -39,5 +39,8 @@ namespace NinaSubscriptions.Interfaces {
 
 		// LOCATIONS
 		location selectLocation(int id);
+
+		// HELPERS
+		int getIdForCredentials(string username, string passwordHash);
 	}
 }

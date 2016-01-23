@@ -50,6 +50,8 @@ namespace NinaSubscriptions.DAL {
 						default:
 							adapter.SelectCommand = command;
 							adapter.Fill(retTable);
+
+							if (retTable.Rows.Count < 1) { fillReturnTable(retTable, -1); };
 							break;
 					}
 
@@ -76,10 +78,10 @@ namespace NinaSubscriptions.DAL {
 			return param;
 		}
 
-		private static void fillReturnTable(DataTable retTable,int id) {
-			retTable.Columns.Add("id");
+		private static void fillReturnTable(DataTable retTable,int returnValue) {
+			if (!retTable.Columns.Contains("id")) { retTable.Columns.Add("id"); };
 			DataRow newRow = retTable.NewRow();
-			newRow["id"] = id;
+			newRow["id"] = returnValue;
 			retTable.Rows.Add(newRow);
 		}
 
@@ -91,7 +93,8 @@ namespace NinaSubscriptions.DAL {
 		location,
 		subscription,
 		userProfile,
-		child
+		child,
+		credentials
 	}
 
 	public enum spCommand {
@@ -101,7 +104,8 @@ namespace NinaSubscriptions.DAL {
 		delete,
 		selectAll,
 		selectAllForUserProfile,
-		selectAllForCourse
+		selectAllForCourse,
+		check
 	}
 
 }

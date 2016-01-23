@@ -28,7 +28,7 @@
                                 </tr>
                                 <tr>
                                     <td>wanneer</td>
-                                    <td><span class="large" />van <%#Eval("startDate", "{0:dd MMMM yyyy}") %> tem <%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %>}</td>
+                                    <td><span class="large" />van <%#Eval("startDate", "{0:dd MMMM yyyy}") %> tem <%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %></td>
                                 </tr>
                                 <tr>
                                     <td>locatie</td>

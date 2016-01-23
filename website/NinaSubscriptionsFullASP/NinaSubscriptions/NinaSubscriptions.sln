@@ -2,6 +2,9 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinaSubscriptions", "NinaSubscriptions\NinaSubscriptions.csproj", "{F135ACBB-B5AF-4D7C-96AF-6C8FA955E698}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B6857822-D61F-42B5-8F97-8D1BA6BAE799} = {B6857822-D61F-42B5-8F97-8D1BA6BAE799}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NinaSubscriptions.BO", "NinaSubscriptions.BO\NinaSubscriptions.BO.csproj", "{343CAF0B-F8C9-48C8-9A40-5CD4AC166AE6}"
 EndProject
