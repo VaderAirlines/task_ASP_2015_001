@@ -9,7 +9,7 @@ using System.Data;
 namespace NinaSubscriptions.BLL {
 	public class crud : IBLL {
 		// DAL class
-		private IDAL dal = new DAL.crud();
+		private  IDAL dal = new DAL.crud();
 
 		// IBLL implementation
 		public int insertCourse(course course) {
@@ -18,7 +18,7 @@ namespace NinaSubscriptions.BLL {
 							 course.name))["id"]);
 		}
 
-		public course getCourse(int id) {
+		public course selectCourse(int id) {
 			DataTable courseTable = dal.selectCourse(id);
 			DataRow r = getFirstRow(courseTable);
 
@@ -133,7 +133,7 @@ namespace NinaSubscriptions.BLL {
 
 			if (Convert.ToInt32(firstRow["id"]) != -1) {
 				foreach (DataRow row in table.Rows) {
-					retlist.Add(getChildFromDatarow(row));
+					retlist.Add(selectChild((int) row["id"]));
 				}
 			};
 
@@ -181,7 +181,7 @@ namespace NinaSubscriptions.BLL {
 			subscription subscription = new subscription();
 
 			subscription.id = Convert.ToInt32(row["id"]);
-			subscription.course = getCourse(Convert.ToInt32(row["cursusID"]));
+			subscription.course = selectCourse(Convert.ToInt32(row["cursusID"]));
 			subscription.child = selectChild(Convert.ToInt32(row["kindID"]));
 			subscription.paymentConfirmed = Convert.ToBoolean(row["heeftBetaald"]);
 

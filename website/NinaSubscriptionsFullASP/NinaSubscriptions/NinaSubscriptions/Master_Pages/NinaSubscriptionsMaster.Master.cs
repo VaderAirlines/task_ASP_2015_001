@@ -62,12 +62,16 @@ namespace NinaSubscriptions.Master_Pages {
 			};
 		}
 
+		internal void setUIatLogin() {
+			getLoggedInUserProfile();
+			setLoggedInUserTitle();
+			setLoginUI();
+		}
+
 		// UI handlers
 		protected void lnkBannerLogin_Click(object sender, EventArgs e) {
 			if (login(txtUsername.Text, txtPassword.Text)) {
-				getLoggedInUserProfile();
-				setLoggedInUserTitle();
-				setLoginUI();
+				setUIatLogin();
 			} else {
 				divLoggedInUser.InnerHtml = "Gebruikersnaam of paswoord incorrect.";
 				txtUsername.Focus();
@@ -78,6 +82,8 @@ namespace NinaSubscriptions.Master_Pages {
 			Session["userID"] = null;
 			loggedInUser = null;
 			setLoginUI();
+
+			Response.Redirect("~/Pages/Public/bekijkAanbod.aspx");
 		}
 
 		// private helpers

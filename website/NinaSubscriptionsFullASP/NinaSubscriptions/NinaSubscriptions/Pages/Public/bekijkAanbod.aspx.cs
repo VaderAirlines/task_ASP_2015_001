@@ -28,7 +28,14 @@ namespace NinaSubscriptions.Pages.Public {
 
 		protected void lstvCourses_ItemCommand(object sender, ListViewCommandEventArgs e) {
 			if (string.Equals(e.CommandName, "subscribeToCourse")) {
-				Response.Redirect("subscribeToCourse.aspx?courseID=" + e.CommandArgument.ToString());
+				NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
+
+				if (master.getLoggedInUserProfile() != null) {
+					Response.Redirect("subscribeToCourse.aspx?courseID=" + e.CommandArgument.ToString());
+				} else {
+					Session["urlBeforeLogin"] = "subscribeToCourse.aspx?courseID=" + e.CommandArgument.ToString();
+					Response.Redirect("loginOrRegister.aspx");
+				};
 			}
 		}
 	}

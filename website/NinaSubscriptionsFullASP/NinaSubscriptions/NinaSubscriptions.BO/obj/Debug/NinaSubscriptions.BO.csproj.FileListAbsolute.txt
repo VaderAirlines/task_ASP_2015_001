@@ -1,4 +1,5 @@
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions.BO\bin\Debug\NinaSubscriptions.BO.dll
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions.BO\bin\Debug\NinaSubscriptions.BO.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions.BO\obj\Debug\NinaSubscriptions.BO.csprojResolveAssemblyReference.cache
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions.BO\obj\Debug\NinaSubscriptions.BO.dll
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions.BO\obj\Debug\NinaSubscriptions.BO.pdb
