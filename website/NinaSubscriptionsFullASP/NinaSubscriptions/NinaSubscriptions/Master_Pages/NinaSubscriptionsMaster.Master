@@ -75,8 +75,8 @@
                 </div>
             </footer>
 
-            <!-- SCRIPTS -->
-            <script src="Scripts/Vendor/jquery-1.11.3.min.js"></script>
+            <%--JAVASCRIPT LIBRARIES--%>
+            <script src="<%= ResolveUrl("~/Scripts/Vendor/jquery-1.7.1.min.js") %>" type="text/javascript"></script>
 
             <asp:ContentPlaceHolder ID="phScripts" runat="server">
             </asp:ContentPlaceHolder>

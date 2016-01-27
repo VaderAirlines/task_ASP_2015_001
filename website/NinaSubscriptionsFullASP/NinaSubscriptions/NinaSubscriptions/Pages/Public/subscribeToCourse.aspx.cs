@@ -28,20 +28,34 @@ namespace NinaSubscriptions.Pages.Public {
 			if (string.Equals(e.CommandName, "removeChild")) {
 				List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 				subscribedChildren.Remove(subscribedChildren.Find(x => x.id == Convert.ToInt32(e.CommandArgument.ToString())));
+
 				refreshLists();
 			}
 		}
 
 		protected void btnAddExistingChild_Click(object sender, EventArgs e) {
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
-
 			List<int> selectedChildIndices = lstAllChildren.GetSelectedIndices().ToList();
 			
-			crud crud = new crud();
-			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(crud.selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));			
+			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));			
 			Session["subscribedChildren"] = subscribedChildren;
 
 			refreshLists();
+		}
+
+		protected void btnAddNewChild_Click(object sender, EventArgs e) {
+			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
+			
+			child newChild = new child();
+			newChild.name = txtName.Text;
+			newChild.firstName = txtFirstName.Text;
+			newChild.dateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+			newChild.id = generateTemporaryChildID(subscribedChildren.Select(child => child.id).ToList());
+
+			subscribedChildren.Add(newChild);
+
+			refreshLists();
+			clearNewChildUI();
 		}
 
 		// HELPERS
@@ -78,6 +92,23 @@ namespace NinaSubscriptions.Pages.Public {
 			lstSubscribedChildren.DataSource = subscribedChildren;
 			lstSubscribedChildren.DataBind();
 						
+		}
+
+		private int generateTemporaryChildID(List<int> ids) {
+			Random r = new Random();
+			while (true) {
+				int newID = r.Next(int.MaxValue - 10000, int.MaxValue);
+				if (!ids.Contains(newID)) { return newID; };
+			}
+		}
+
+		private void clearNewChildUI() {
+			foreach (Control control in divNewChildSelector.Controls) {
+				if (control.GetType() == typeof(TextBox)) {
+					TextBox textbox = control as TextBox;
+					textbox.Text = "";
+				}
+			}
 		}
 	}
 }

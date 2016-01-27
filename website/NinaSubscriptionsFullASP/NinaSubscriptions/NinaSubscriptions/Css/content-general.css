@@ -77,3 +77,12 @@
                         font-size: smaller;
                         margin-top: 0.3em;
                     }
+
+    .button-accordion.title {
+        font-size: 14pt;
+        color: #DF4A79;
+        padding: 0.3em;
+        margin-bottom: 0.5em;
+        border-bottom: 2px solid gray;
+        cursor: pointer;
+    }

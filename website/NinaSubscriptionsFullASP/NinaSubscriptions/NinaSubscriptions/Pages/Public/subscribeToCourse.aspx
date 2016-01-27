@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                                 <div class="buttons">
-                                    <asp:LinkButton runat="server" ID="btnRemoveChild" CssClass="button bottom right"
+                                    <asp:LinkButton runat="server" ID="btnRemoveChild" CssClass="button bottom"
                                         Text="verwijderen" CommandName="removeChild" CommandArgument='<%#Eval("id") %>' />
                                 </div>
                             </div>
@@ -110,10 +110,10 @@
             <%--CHILD ADDERS--%>
             <div id="divChildSelectors" runat="server">
                 <%--EXISTING CHILDREN--%>
-                <div id="divExistingChildSelectorAccordionButton" class="button-accordion" runat="server">+ Voeg een bestaand kind toe</div>
+                <div id="divExistingChildSelectorAccordionButton" class="button-accordion title" runat="server"><span class="accordion-icon">+</span> Voeg een bestaand kind toe</div>
                 <div id="divExistingChildSelector" class="subscriptions userdata all-children" runat="server">
                     <div class="component-wrapper">
-                        <div class="title">Voeg een bestaand kind toe</div>
+                        <%--<div class="title">Voeg een bestaand kind toe</div>--%>
                         <div class="content">
                             <div class="top">
                                 <div class="center">
@@ -129,7 +129,7 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <asp:LinkButton ID="btnAddExistingChild" CssClass="button bottom right" runat="server" OnClick="btnAddExistingChild_Click">
+                            <asp:LinkButton ID="btnAddExistingChild" CssClass="button bottom" runat="server" OnClick="btnAddExistingChild_Click">
                                 Voeg het gekozen kind toe aan de lijst
                             </asp:LinkButton>
                         </div>
@@ -137,18 +137,30 @@
                 </div>
 
                 <%--NEW CHILDREN--%>
-                <div id="divNewChildSelectorAccordionButton" class="button-accordion" runat="server">+ Voeg een nieuw kind toe</div>
+                <div id="divNewChildSelectorAccordionButton" class="button-accordion title" runat="server"><span class="accordion-icon">+</span> Voeg een nieuw kind toe</div>
                 <div id="divNewChildSelector" class="subscriptions userdata new-child" runat="server">
                     <div class="component-wrapper">
-                        <div class="title"> Voeg een nieuw kind toe</div>
+                        <%--<div class="title">Voeg een nieuw kind toe</div>--%>
                         <div class="content">
                             <div class="top">
                                 <div class="center">
                                     <table>
                                         <tr>
-                                            <td>Kies een kind</td>
+                                            <td>Voornaam</td>
                                             <td>
-                                                <asp:ListBox ID="ListBox1" SelectionMode="Multiple" runat="server"></asp:ListBox>
+                                                <asp:TextBox ID="txtFirstName" class="large" runat="server"></asp:TextBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Achternaam</td>
+                                            <td>
+                                                <asp:TextBox ID="txtName" class="large" runat="server"></asp:TextBox>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Geboortedatum</td>
+                                            <td>
+                                                <asp:TextBox ID="txtDateOfBirth" class="large" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>
@@ -156,8 +168,8 @@
                             </div>
                         </div>
                         <div class="buttons">
-                            <asp:LinkButton ID="LinkButton1" CssClass="button bottom right" runat="server" OnClick="btnAddExistingChild_Click">
-                                Voeg het gekozen kind toe aan de lijst
+                            <asp:LinkButton ID="btnAddNewChild" CssClass="button bottom" runat="server" OnClick="btnAddNewChild_Click">
+                                Voeg dit kind toe aan de lijst
                             </asp:LinkButton>
                         </div>
                     </div>
@@ -178,9 +190,11 @@
                     Ik schrijf me in!
                 </div>
             </div>
-
         </div>
+    </div>
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
+    <script src="<%= ResolveUrl("~/Scripts/subscribeToCourse.js") %>" type="text/javascript"></script>
 </asp:Content>
