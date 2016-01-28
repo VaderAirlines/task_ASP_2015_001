@@ -36,8 +36,8 @@ namespace NinaSubscriptions.Pages.Public {
 		protected void btnAddExistingChild_Click(object sender, EventArgs e) {
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 			List<int> selectedChildIndices = lstAllChildren.GetSelectedIndices().ToList();
-			
-			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));			
+
+			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));
 			Session["subscribedChildren"] = subscribedChildren;
 
 			refreshLists();
@@ -45,17 +45,42 @@ namespace NinaSubscriptions.Pages.Public {
 
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
-			
+
 			child newChild = new child();
 			newChild.name = txtName.Text;
 			newChild.firstName = txtFirstName.Text;
 			newChild.dateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
 			newChild.id = generateTemporaryChildID(subscribedChildren.Select(child => child.id).ToList());
+			newChild.userProfileID = Convert.ToInt32(Session["userID"]);
 
 			subscribedChildren.Add(newChild);
 
+			Session["subscribedChildren"] = subscribedChildren;
+
 			refreshLists();
 			clearNewChildUI();
+		}
+
+		protected void btnSaveSubscriptions_Click(object sender, EventArgs e) {
+			crud crud = new crud();
+
+			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
+
+			int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
+			course course = crud.selectCourse(courseID);
+
+			subscription subscription = new subscription();
+			subscription.course = course;
+			subscription.paymentConfirmed = false;
+
+			subscribedChildren.ForEach(child => child.id = child.id >= int.MaxValue - 10000 ? crud.insertChild(child) : child.id);
+
+			foreach (child child in subscribedChildren) {
+				subscription.child = child;
+				crud.insertSubscription(subscription);
+			};
+
+			lblMessage.Text = "De inschrijvingen zijn bewaard.";
 		}
 
 		// HELPERS
@@ -91,7 +116,7 @@ namespace NinaSubscriptions.Pages.Public {
 			// fill list of children to subscribe
 			lstSubscribedChildren.DataSource = subscribedChildren;
 			lstSubscribedChildren.DataBind();
-						
+
 		}
 
 		private int generateTemporaryChildID(List<int> ids) {
@@ -110,5 +135,6 @@ namespace NinaSubscriptions.Pages.Public {
 				}
 			}
 		}
+
 	}
 }

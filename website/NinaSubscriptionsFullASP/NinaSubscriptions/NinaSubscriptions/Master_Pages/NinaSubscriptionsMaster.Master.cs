@@ -19,9 +19,11 @@ namespace NinaSubscriptions.Master_Pages {
 		protected void Page_Load(object sender, EventArgs e) {
 			loggedInUser = getLoggedInUserProfile();
 			setLoggedInUserTitle();
+			
 
 			if (!IsPostBack) {
 				setLoginUI();
+				setAdminNavigation();
 			}
 		}
 
@@ -66,6 +68,7 @@ namespace NinaSubscriptions.Master_Pages {
 			getLoggedInUserProfile();
 			setLoggedInUserTitle();
 			setLoginUI();
+			setAdminNavigation();
 		}
 
 		// UI handlers
@@ -82,6 +85,7 @@ namespace NinaSubscriptions.Master_Pages {
 			Session["userID"] = null;
 			loggedInUser = null;
 			setLoginUI();
+			setAdminNavigation();
 
 			Response.Redirect("~/Pages/Public/bekijkAanbod.aspx");
 		}
@@ -105,5 +109,11 @@ namespace NinaSubscriptions.Master_Pages {
 			};
 		}
 
+		private void setAdminNavigation() {
+			bool showAdminSection = loggedInUser == null ? false : loggedInUser.isAdmin == true ? true : false;
+
+			liBeheerCursussen.Visible = showAdminSection;
+			liBekijkInschrijvingen.Visible = showAdminSection;
+		}
 	}
 }

@@ -186,9 +186,10 @@
 
             <%--CONFIRM SUBSCRIPTIONS BUTTON--%>
             <div class="buttons">
-                <div class="button bottom full" ng-click="subscribe(cf.subscriptionCourse.id, userData);">
+                <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
+                <asp:LinkButton ID="btnSaveSubscriptions" CssClass="button bottom full" runat="server" OnClick="btnSaveSubscriptions_Click" >
                     Ik schrijf me in!
-                </div>
+                </asp:LinkButton>
             </div>
         </div>
     </div>
