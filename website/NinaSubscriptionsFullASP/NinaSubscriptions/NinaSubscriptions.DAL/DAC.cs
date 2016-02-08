@@ -55,8 +55,8 @@ namespace NinaSubscriptions.DAL {
 							break;
 					}
 
-				} catch {
-					throw;
+				} catch (Exception ex) {
+					throw ex;
 				}
 
 				return retTable;

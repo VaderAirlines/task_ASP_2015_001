@@ -209,17 +209,26 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
+		public DataTable getAllCourseTypes() {
+			return DAC.execute(spBase.courseType, spCommand.selectAll);
+		}
+
 		public DataTable selectLocation(int id) {
 			return DAC.execute(spBase.location, spCommand.select, new Dictionary<string, string>() { 
 				{ "id", id.ToString() }
 			});
 		}
-		
+
+		public DataTable getAllLocations() {
+			return DAC.execute(spBase.location, spCommand.selectAll);
+		}	
+	
 		public DataTable getIdForCredentials(string username, string passwordHash) {
 			return DAC.execute(spBase.credentials, spCommand.check, new Dictionary<string, string>() { 
 				{ "username", username },
 				{ "password", passwordHash }
 			});
 		}
+		
 	}
 }

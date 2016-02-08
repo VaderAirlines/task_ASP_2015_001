@@ -36,9 +36,11 @@ namespace NinaSubscriptions.Interfaces {
 
 		// COURSE TYPES
 		courseType selectCourseType(int id);
+		List<courseType> getAllCourseTypes();
 
 		// LOCATIONS
 		location selectLocation(int id);
+		List<location> getAllLocations();
 
 		// HELPERS
 		int getIdForCredentials(string username, string passwordHash);

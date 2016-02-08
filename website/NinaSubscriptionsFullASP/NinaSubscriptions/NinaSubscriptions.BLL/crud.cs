@@ -144,8 +144,30 @@ namespace NinaSubscriptions.BLL {
 			return getCourseTypeFromDatarow(getFirstRow(dal.selectCourseType(id)));
 		}
 
+		public List<courseType> getAllCourseTypes() {
+			DataTable table = dal.getAllCourseTypes();
+			List<courseType> retlist = new List<courseType>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getCourseTypeFromDatarow(row));
+			}
+
+			return retlist;
+		}
+
 		public location selectLocation(int id) {
 			return getLocationFromDatarow(getFirstRow(dal.selectLocation(id)));
+		}
+
+		public List<location> getAllLocations() {
+			DataTable table = dal.getAllLocations();
+			List<location> retlist = new List<location>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getLocationFromDatarow(row));
+			}
+
+			return retlist;
 		}
 
 		public int getIdForCredentials(string username, string passwordHash) {

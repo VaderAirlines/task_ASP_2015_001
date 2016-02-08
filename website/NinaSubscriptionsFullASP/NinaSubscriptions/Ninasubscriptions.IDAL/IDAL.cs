@@ -64,10 +64,12 @@ namespace NinaSubscriptions.Interfaces {
 
 		// COURSE TYPES
 		DataTable selectCourseType(int id);
+		DataTable getAllCourseTypes();
 
 
 		// LOCATIONS
 		DataTable selectLocation(int id);
+		DataTable getAllLocations();
 
 		// HELPERS
 		DataTable getIdForCredentials(string username, string passwordHash);

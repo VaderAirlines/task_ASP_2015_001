@@ -24,6 +24,8 @@ namespace NinaSubscriptions.Master_Pages {
 			if (!IsPostBack) {
 				setLoginUI();
 				setAdminNavigation();
+				txtUsername.Text = "dennis";
+				txtPassword.Text = "dennis";
 			}
 		}
 

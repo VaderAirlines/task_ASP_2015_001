@@ -6,10 +6,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" runat="server">
 
     <div class="component-wrapper">
-
         <div class="title">
             <asp:Label ID="lblName" runat="server"></asp:Label>
         </div>
+
         <div class="content">
             <%-- COURSE DATA --%>
             <div class="content-top">

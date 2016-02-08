@@ -56,55 +56,6 @@
 
     </asp:ListView>
 
-
-
-
-
-    <%--<div class="component-wrapper" ng-repeat="course in cf.courses">
-        <div class="title">{{ course.naam }}</div>
-        <div class="content">
-            <div class="left photo"></div>
-            <div class="right">
-                <div class="form">
-                    <table>
-                        <tr>
-                            <td>beschrijving</td>
-                            <td><span class="large" />{{ course.omschrijving }}</td>
-                        </tr>
-                        <tr>
-                            <td>leeftijd</td>
-                            <td><span class="large" />vanaf {{ course.leeftijdVanaf }} jaar tem {{ course.leeftijdTotEnMet }}</td>
-                        </tr>
-                        <tr>
-                            <td>wanneer</td>
-                            <td><span class="large" />van {{ course.datumVan }} tem {{ course.datumTot }}</td>
-                        </tr>
-                        <tr>
-                            <td>locatie</td>
-                            <td><span class="large" />{{ course.locatieNaam }}</td>
-                        </tr>
-                        <tr>
-                            <td>adres</td>
-                            <td><span class="large" />{{ course.locatieAdres }}</td>
-                        </tr>
-                        <tr>
-                            <td>beschikbare plaatsen</td>
-                            <td><span class="large" />{{ course.maxDeelnemers }}</td>
-                        </tr>
-                        <tr>
-                            <td>prijs</td>
-                            <td><span class="large" />{{ course.kostprijs }}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="buttons right">
-                <div class="button bottom right" ng-click="subscribe(course);">
-                    Ik schrijf me in!
-                </div>
-            </div>
-        </div>
-    </div>--%>
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
