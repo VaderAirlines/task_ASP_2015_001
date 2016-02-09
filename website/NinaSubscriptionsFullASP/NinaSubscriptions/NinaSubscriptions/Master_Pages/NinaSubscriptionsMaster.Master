@@ -46,7 +46,7 @@
                 <ul>
                     <li>
                         <asp:HyperLink ID="lnkBekijkAanbod" runat="server" NavigateUrl="~/Pages/Public/bekijkAanbod.aspx">Bekijk aanbod</asp:HyperLink></li>
-                    <li>
+                    <li id="liMijngegevens" runat="server">
                         <asp:HyperLink ID="lnkMijnGegevens" runat="server" NavigateUrl="~/Pages/Public/mijnGegevens.aspx">Mijn gegevens</asp:HyperLink></li>
                     <li id="liBeheerCursussen" runat="server">
                         <asp:HyperLink ID="lnkBeheerCursussen" runat="server" NavigateUrl="~/Pages/Admin/beheerCursussen.aspx">Beheer cursussen</asp:HyperLink></li>

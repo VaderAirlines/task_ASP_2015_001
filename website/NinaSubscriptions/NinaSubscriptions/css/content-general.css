@@ -61,6 +61,7 @@
                 text-align: center;
                 margin-top: 1em;
                 padding: 0.5em;
+                display: block;
             }
 
                 .component-wrapper .content .buttons .button.bottom.right {
@@ -76,3 +77,19 @@
                         font-size: smaller;
                         margin-top: 0.3em;
                     }
+
+    .button-accordion.title {
+        font-size: 14pt;
+        color: #DF4A79;
+        padding: 0.3em;
+        margin-bottom: 0.5em;
+        border-bottom: 2px solid gray;
+        cursor: pointer;
+    }
+
+
+second-wrapper .title {}
+
+.second-wrapper .title {
+    font-size: 17px;
+}

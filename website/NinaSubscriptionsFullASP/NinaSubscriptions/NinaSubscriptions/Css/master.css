@@ -53,13 +53,13 @@ header {
                 color: #BBBBBB;
             }
 
-
         header #divBanner #divPageTitle > span {
             position: absolute;
             text-align: center;
             color: white;
             font-size: 20pt;
             margin-top: 1em;
+            left: 0;
             width: 100%;
             bottom: 0.8em;
         }
@@ -89,6 +89,10 @@ nav {
         background-color: white;
         border-radius: 0.5em;
     }
+
+        nav ul li:last-of-type {
+            margin-right: 0;
+        }
 
         nav ul li a:hover {
             color: #DF4A79;

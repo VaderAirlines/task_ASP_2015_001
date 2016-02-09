@@ -18,6 +18,10 @@
         border-bottom: 2px solid gray;
     }
 
+    .component-wrapper .second-wrapper .title {
+        font-size: 17px;
+    }
+
     .component-wrapper .content,
     .component-wrapper .content .content-top {
         position: relative;

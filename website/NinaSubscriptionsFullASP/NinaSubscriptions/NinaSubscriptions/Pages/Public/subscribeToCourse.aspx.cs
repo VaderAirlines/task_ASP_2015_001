@@ -14,6 +14,12 @@ namespace NinaSubscriptions.Pages.Public {
 
 		// initializers
 		protected void Page_Load(object sender, EventArgs e) {
+			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
+			master.setHeaderTitle("Inschrijven op een cursus");
+
+			userProfile user = master.getLoggedInUserProfile();
+			if (user == null) { Response.Redirect("~/Pages/Public/bekijkAanbod.aspx"); };
+
 			int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
 
 			crud crud = new crud();

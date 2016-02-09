@@ -114,6 +114,7 @@ namespace NinaSubscriptions.Master_Pages {
 		private void setAdminNavigation() {
 			bool showAdminSection = loggedInUser == null ? false : loggedInUser.isAdmin == true ? true : false;
 
+			liMijngegevens.Visible = showAdminSection;
 			liBeheerCursussen.Visible = showAdminSection;
 			liBekijkInschrijvingen.Visible = showAdminSection;
 		}

@@ -10,24 +10,25 @@ using System.Web.UI.WebControls;
 
 namespace NinaSubscriptions.Pages.Admin {
 
-	public partial class beheerCursussen:System.Web.UI.Page {
+	public partial class beheerCursussen : System.Web.UI.Page {
 
 		// fields
 		List<location> locations = new List<location>();
 		List<courseType> courseTypes = new List<courseType>();
 
 		// initializers
-		protected void Page_Load(object sender,EventArgs e) {
+		protected void Page_Load(object sender, EventArgs e) {
+			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
+			master.setHeaderTitle("Beheer cursussen");
+
+			userProfile user = master.getLoggedInUserProfile();
+			if (user == null || user.isAdmin == false) { Response.Redirect("~/Pages/Public/bekijkAanbod.aspx"); };
+
 			crud crud = new crud();
 			locations = crud.getAllLocations();
 			courseTypes = crud.getAllCourseTypes();
 
 			if (!IsPostBack) {
-				NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
-
-				// set page title
-				master.setHeaderTitle("Beheer cursussen");
-
 				// load courses
 				fillCoursesList(crud);
 			};
