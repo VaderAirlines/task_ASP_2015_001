@@ -20,11 +20,13 @@ namespace NinaSubscriptions.Webservices {
 		[WebMethod]
 		public bool saveChangesToCourse(string courseID, string description, string courseTypeID,
 										string startDate, string endDate, string locationID,
-										string maxSubscriptions, string price) {
+										string maxSubscriptions, string price, string startHour, 
+										string endHour, string name) {
 
 			crud crud = new crud();
 			course course = crud.selectCourse(Convert.ToInt32(courseID));
 
+			course.name = name;
 			course.description = description;
 			course.courseType = crud.selectCourseType(Convert.ToInt32(courseTypeID));
 			course.startDate = Convert.ToDateTime(startDate);
@@ -32,6 +34,8 @@ namespace NinaSubscriptions.Webservices {
 			course.location = crud.selectLocation(Convert.ToInt32(locationID));
 			course.maxSubscriptions = Convert.ToInt32(maxSubscriptions);
 			course.price = Convert.ToInt32(price);
+			course.startHour = Convert.ToInt32(startHour);
+			course.endHour = Convert.ToInt32(endHour);
 
 			if (crud.updateCourse(course) > 0) { return true; };
 

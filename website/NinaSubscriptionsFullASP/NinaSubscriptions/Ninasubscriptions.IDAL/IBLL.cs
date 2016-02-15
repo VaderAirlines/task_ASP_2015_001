@@ -20,12 +20,14 @@ namespace NinaSubscriptions.Interfaces {
 		int deleteSubscription(int id);
 		List<subscription> getAllSubscriptionsForUserProfile(int userProfileID);
 		List<subscription> getAllSubscriptionsForCourse(int courseID);
+		List<subscription> getAllSubscriptionsForCoursesOnDate(DateTime courseDate);
 		
 		// USERPROFILES
 		int insertUserProfile(userProfile profile);
 		userProfile selectUserProfile(int id);
 		int updateUserProfile(userProfile profile);
 		int deleteUserProfile(int id);
+		List<userProfile> getAllUserProfiles();
 		
 		// CHILDREN
 		int insertChild(child child);

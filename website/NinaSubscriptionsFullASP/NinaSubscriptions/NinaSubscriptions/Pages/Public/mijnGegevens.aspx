@@ -93,7 +93,7 @@
         </div>
     </div>
 
-        <div class="component-wrapper">
+    <div class="component-wrapper">
         <div class="title">Mijn inschrijvingen</div>
         <div class="content">
             <div class="top">

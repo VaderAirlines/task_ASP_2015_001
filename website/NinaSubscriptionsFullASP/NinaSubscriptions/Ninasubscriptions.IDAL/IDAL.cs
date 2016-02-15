@@ -35,6 +35,8 @@ namespace NinaSubscriptions.Interfaces {
 
 		DataTable getAllSubscriptionsForCourse(int courseID);
 
+		DataTable getAllSubscriptionsForCoursesOnDate(DateTime courseDate);
+
 
 		// USERPROFILES ------------------------------------------------------------------------------
 		DataTable insertUserProfile(string name, string firstName, string street, int number, int postalCode, 
@@ -48,6 +50,8 @@ namespace NinaSubscriptions.Interfaces {
 								   Boolean isAdmin);
 
 		DataTable deleteUserProfile(int id);
+
+		DataTable getAllUserProfiles();
 
 
 		// CHILDREN ---------------------------------------------------------------------------------

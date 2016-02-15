@@ -156,6 +156,10 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
+		public DataTable getAllUserProfiles() {
+			return DAC.execute(spBase.userProfile, spCommand.selectAll);
+		}
+
 		public DataTable insertChild(string name, string firstName, DateTime dateOfBirth, int userProfileID) {
 			Dictionary<string, string> parameters = new Dictionary<string, string>() { 
 				{ "name", name },
@@ -203,6 +207,12 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
+		public DataTable getAllSubscriptionsForCoursesOnDate(DateTime courseDate) {
+			return DAC.execute(spBase.subscription, spCommand.selectAllForCoursesOnDate, new Dictionary<string, string>() { 
+				{ "courseDate", courseDate.Year + "/" + courseDate.Month + "/" + courseDate.Day }
+			});
+		}
+
 		public DataTable selectCourseType(int id) {
 			return DAC.execute(spBase.courseType, spCommand.select, new Dictionary<string, string>() { 
 				{ "id", id.ToString() }
@@ -229,6 +239,6 @@ namespace NinaSubscriptions.DAL {
 				{ "password", passwordHash }
 			});
 		}
-		
+
 	}
 }

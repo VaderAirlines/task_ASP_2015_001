@@ -68,8 +68,10 @@ namespace NinaSubscriptions.BLL {
 			DataTable table = dal.getAllSubscriptionsForUserProfile(userProfileID);
 			List<subscription> retlist = new List<subscription>();
 
-			foreach (DataRow row in table.Rows) {
-				retlist.Add(getSubscriptionFromDatarow(row));
+			if (Convert.ToInt32(table.Rows[0]["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getSubscriptionFromDatarow(row));
+				}
 			}
 
 			return retlist;
@@ -79,8 +81,23 @@ namespace NinaSubscriptions.BLL {
 			DataTable table = dal.getAllSubscriptionsForCourse(courseID);
 			List<subscription> retlist = new List<subscription>();
 
-			foreach (DataRow row in table.Rows) {
-				retlist.Add(getSubscriptionFromDatarow(row));
+			if (Convert.ToInt32(table.Rows[0]["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getSubscriptionFromDatarow(row));
+				}
+			}
+
+			return retlist;
+		}
+
+		public List<subscription> getAllSubscriptionsForCoursesOnDate(DateTime courseDate) {
+			DataTable table = dal.getAllSubscriptionsForCoursesOnDate(courseDate);
+			List<subscription> retlist = new List<subscription>();
+
+			if (Convert.ToInt32(table.Rows[0]["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getSubscriptionFromDatarow(row));
+				}
 			}
 
 			return retlist;
@@ -104,6 +121,17 @@ namespace NinaSubscriptions.BLL {
 
 		public int deleteUserProfile(int id) {
 			return Convert.ToInt32(getFirstRow(dal.deleteUserProfile(id))["id"]);
+		}
+
+		public List<userProfile> getAllUserProfiles() {
+			DataTable table = dal.getAllUserProfiles();
+			List<userProfile> retlist = new List<userProfile>();
+
+			foreach (DataRow row in table.Rows) {
+				retlist.Add(getProfileFromDatarow(row));
+			}
+
+			return retlist;
 		}
 
 		public int insertChild(child child) {
@@ -202,10 +230,12 @@ namespace NinaSubscriptions.BLL {
 		private subscription getSubscriptionFromDatarow(DataRow row) {
 			subscription subscription = new subscription();
 
-			subscription.id = Convert.ToInt32(row["id"]);
-			subscription.course = selectCourse(Convert.ToInt32(row["cursusID"]));
-			subscription.child = selectChild(Convert.ToInt32(row["kindID"]));
-			subscription.paymentConfirmed = Convert.ToBoolean(row["heeftBetaald"]);
+			if (Convert.ToInt32(row["id"].ToString()) != -1) {
+				subscription.id = Convert.ToInt32(row["id"]);
+				subscription.course = selectCourse(Convert.ToInt32(row["cursusID"]));
+				subscription.child = selectChild(Convert.ToInt32(row["kindID"]));
+				subscription.paymentConfirmed = Convert.ToBoolean(row["heeftBetaald"]);
+			}
 
 			return subscription;
 		}

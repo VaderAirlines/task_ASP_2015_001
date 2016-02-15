@@ -75,13 +75,16 @@
 			var locationID = $wrapper.find('.location').val();
 			var maxSubscriptions = $wrapper.find('.maxSubscriptions').val();
 			var price = $wrapper.find('.price').val();
+			var startHour = $wrapper.find('.startHour').val();
+			var endHour = $wrapper.find('.endHour').val();
+			var name = $wrapper.find('.name').val();
 
-			saveChangesToCourse($wrapper, courseID, description, courseType, startDate, endDate, locationID, maxSubscriptions, price);
+			saveChangesToCourse($wrapper, courseID, description, courseType, startDate, endDate, locationID, maxSubscriptions, price, startHour, endHour, name);
 		});
 
 	});
 
-	function saveChangesToCourse($wrapper, courseID, description, courseType, startDate, endDate, locationID, maxSubscriptions, price) {
+	function saveChangesToCourse($wrapper, courseID, description, courseType, startDate, endDate, locationID, maxSubscriptions, price, startHour, endHour, name) {
 		var $ready = $wrapper.find('.ready');
 		var $saving = $wrapper.find('.saving');
 		var $message = $wrapper.find('.callbackMessage');
@@ -97,7 +100,8 @@
 			data: JSON.stringify({
 				courseID: courseID, description: description, courseTypeID: courseType,
 				startDate: startDate, endDate: endDate, locationID: locationID,
-				maxSubscriptions: maxSubscriptions, price: price
+				maxSubscriptions: maxSubscriptions, price: price, startHour: startHour,
+				endHour: endHour, name: name
 			}),
 			dataType: "json"
 		});

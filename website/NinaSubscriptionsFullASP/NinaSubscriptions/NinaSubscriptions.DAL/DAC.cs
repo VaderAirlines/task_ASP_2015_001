@@ -105,6 +105,7 @@ namespace NinaSubscriptions.DAL {
 		selectAll,
 		selectAllForUserProfile,
 		selectAllForCourse,
+		selectAllForCoursesOnDate,
 		check
 	}
 

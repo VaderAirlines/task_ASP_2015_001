@@ -52,6 +52,28 @@ namespace NinaSubscriptions.Pages.Admin {
 			dropdown.DataBind();
 		}
 
+		protected void btnSaveNewCourse_Click(object sender, EventArgs e) {
+			crud crud = new crud();
+
+			course course = new course() {
+				name = txtNewName.Text,
+				description = txtNewDescription.Text,
+				courseType = crud.selectCourseType(Convert.ToInt32(ddNewCourseType.SelectedValue)),
+				location = crud.selectLocation(Convert.ToInt32(ddNewLocation.SelectedValue)),
+				startDate = Convert.ToDateTime(txtNewStartDate.Text),
+				endDateInclusive = Convert.ToDateTime(txtNewEndDateInclusive.Text),
+				startHour = Convert.ToInt32(txtNewStartHour.Text),
+				endHour = Convert.ToInt32(txtNewEndHour.Text),
+				maxSubscriptions = Convert.ToInt32(txtNewMaxSubscriptions.Text),
+				price = Convert.ToInt32(txtNewPrice.Text)
+			};
+
+			crud.insertCourse(course);
+
+			clearNewCourseForm();
+			fillCoursesList(crud);
+		}
+
 		// helpers
 		private void fillCoursesList(crud crud) {
 			if (crud == null) { crud = new crud(); };
@@ -59,6 +81,19 @@ namespace NinaSubscriptions.Pages.Admin {
 			List<course> allCourses = crud.getAllCourses();
 			lstvCourses.DataSource = allCourses;
 			lstvCourses.DataBind();
+		}
+
+		private void clearNewCourseForm() {
+			txtNewName.Text = "";
+			txtNewDescription.Text = "";
+			ddNewCourseType.SelectedIndex = -1;
+			ddNewLocation.SelectedIndex = -1;
+			txtNewStartDate.Text = "";
+			txtNewEndDateInclusive.Text = "";
+			txtNewStartHour.Text = "";
+			txtNewEndHour.Text = "";
+			txtNewMaxSubscriptions.Text = "";
+			txtNewPrice.Text = "";
 		}
 
 	}
