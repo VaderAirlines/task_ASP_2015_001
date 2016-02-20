@@ -14,7 +14,7 @@
                         <tr>
                             <td>gebruikersnaam</td>
                             <td>
-                                <asp:TextBox ID="txtUsername" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtUsername" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>naam</td>
@@ -24,56 +24,47 @@
                         <tr>
                             <td>voornaam</td>
                             <td>
-                                <asp:TextBox ID="txtFirstName" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtFirstName" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>emailadres</td>
                             <td>
-                                <asp:TextBox ID="txtEmailAddress" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtEmailAddress" MaxLength="50" class="large" runat="server" TextMode="Email"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>telefoon/gsm</td>
                             <td>
-                                <asp:TextBox ID="txtPhone" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPhone" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>straat</td>
                             <td>
-                                <asp:TextBox ID="txtStreet" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtStreet" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>nummer</td>
                             <td>
-                                <asp:TextBox ID="txtNumber" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtNumber" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>postcode</td>
                             <td>
-                                <asp:TextBox ID="txtPostalCode" class="large" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPostalCode" MaxLength="50" class="large" runat="server" TextMode="Number"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>plaats</td>
                             <td>
-                                <asp:TextBox ID="txtPlace" class="large" runat="server"></asp:TextBox></td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td>
-                                <label for="chkShowPassword">
-                                    <asp:CheckBox ID="chkShowPassword" runat="server" />
-                                    toon wachtwoord
-                                </label>
-                            </td>
+                                <asp:TextBox ID="txtPlace" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>wachtwoord</td>
                             <td>
-                                <asp:TextBox ID="txtPassword" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPassword" MaxLength="50" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td>herhaal wachtwoord</td>
                             <td>
-                                <asp:TextBox ID="txtPasswordRepeat" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
+                                <asp:TextBox ID="txtPasswordRepeat" MaxLength="50" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
                             <td colspan="2" class="errorMessage">
@@ -87,7 +78,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom" Text="Registreer" OnClick="btnRegister_Click" />
+                <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full" Text="Registreer" OnClick="btnRegister_Click" />
             </div>
         </div>
     </div>

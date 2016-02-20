@@ -27,7 +27,8 @@
                             <asp:TextBox ID="txtUsername" runat="server" CssClass="login" MaxLength="50"></asp:TextBox><br />
                             paswoord<br />
                             <asp:TextBox ID="txtPassword" runat="server" CssClass="login" MaxLength="50" TextMode="Password"></asp:TextBox><br />
-                            <asp:LinkButton ID="lnkBannerLogin" runat="server" OnClick="lnkBannerLogin_Click">log in</asp:LinkButton>
+                            <asp:LinkButton ID="lnkBannerLogin" CssClass="button-banner-loginform" runat="server" OnClick="lnkBannerLogin_Click">log in</asp:LinkButton>
+                            <asp:HyperLink ID="lnkBannerRegister" CssClass="button-banner-loginform" runat="server" NavigateUrl="~/Pages/Public/register.aspx">registreer</asp:HyperLink>
                         </div>
                         <div id="divLogoutControls" runat="server">
                             <asp:LinkButton ID="lnkBannerLogout" runat="server" OnClick="lnkBannerLogout_Click">log out</asp:LinkButton>
@@ -55,7 +56,7 @@
                 </ul>
             </nav>
 
-            <section id="divBreadcrumb" runat="server">breadcrumb hier</section>
+            <%--<section id="divBreadcrumb" runat="server">breadcrumb hier</section>--%>
 
             <!-- body placeholder -->
             <asp:ContentPlaceHolder ID="phContent" runat="server">

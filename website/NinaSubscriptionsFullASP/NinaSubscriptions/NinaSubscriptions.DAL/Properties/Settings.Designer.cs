@@ -26,8 +26,7 @@ namespace NinaSubscriptions.DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=dennis;Initial Catalog=Nina_skateboarding;Persist Security Info=True;" +
-            "User ID=ninaskateboarding;Password=forgirlswholoveskateboarding")]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"C/gsWXlanJ5QgkeVYQ9rYXUoM3OlCl74yav9D5FPve+Z0cPYjb4osinPPOgjMYS2yDBHVpYOZr+TysgboqGc2V/rrX9anYX52iXWbEPa3jriMrwfcjTNwCx0UD34/xR4C2XQMQk5LFvz6xuaT71uJSazaqc0WGnSU2UY+MAWJ8IjNnUy32JJaDBKAHECQQJjlfyRjlBVY9ES2xEKzmaRGMtU/PteSuvLoypyeLHv1+2iliXmyQVFhxSv7IyIw8/DgbBC1P8HuiV8oumPLEq+52282TgWTJHzPx8YMmJLmwWksqrxxC0bXId81i9zfUARoChAvjDuLm9w+3EvnXn4YJic9mkRcOVKmfeBi6ei6Kt5QmRg89WTBrOzPtZq8Xwg6j4sLqft/cY=")]
         public string connectionString {
             get {
                 return ((string)(this["connectionString"]));

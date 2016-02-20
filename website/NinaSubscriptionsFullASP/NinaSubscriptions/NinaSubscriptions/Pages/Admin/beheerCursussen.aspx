@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="phContent" runat="server">
 
-    <asp:ListView ID="lstvCourses" runat="server">
+    <asp:ListView ID="lstvCourses" runat="server" OnItemCommand="lstvCourses_ItemCommand">
         <ItemTemplate>
             <div class="component-wrapper" runat="server">
                 <div class="title">
@@ -13,7 +13,7 @@
                         <span><%#Eval("name") %></span>
                     </div>
                     <div class="edit">
-                        <asp:TextBox ID="txtName" CssClass="name" runat="server" Text='<%#Eval("name") %>' data-originalValue='<%#Eval("name") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtName" MaxLength="50" CssClass="name" runat="server" Text='<%#Eval("name") %>' data-originalValue='<%#Eval("name") %>'></asp:TextBox>
                     </div>
                 </div>
                 <div class="content">
@@ -28,7 +28,7 @@
                                             <span class="large"><%#Eval("description") %></span>
                                         </div>
                                         <div class="edit">
-                                            <asp:TextBox ID="txtDescription" CssClass="description" runat="server" Text='<%#Eval("description") %>' data-originalValue='<%#Eval("description") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtDescription" MaxLength="200" CssClass="description" runat="server" Text='<%#Eval("description") %>' data-originalValue='<%#Eval("description") %>'></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -53,15 +53,14 @@
                                         </div>
                                         <div class="edit">
                                             van
-                                            <asp:TextBox ID="txtStartDate" CssClass="startDate" runat="server"
+                                            <asp:TextBox ID="txtStartDate" MaxLength="9" CssClass="startDate" runat="server"
                                                 Text='<%#Eval("startDate", "{0:dd MMMM yyyy}") %>' data-originalValue='<%#Eval("startDate", "{0:dd MMMM yyyy}") %>'></asp:TextBox>&nbsp;
                                             tem
-                                            <asp:TextBox ID="txtEndDateInclusive" CssClass="endDate" runat="server"
+                                            <asp:TextBox ID="txtEndDateInclusive" MaxLength="9" CssClass="endDate" runat="server"
                                                 Text='<%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %>' data-originalValue='<%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %>'></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
-                                <%--TODO--%>
                                 <tr>
                                     <td>begin/einduur</td>
                                     <td>
@@ -70,15 +69,14 @@
                                         </div>
                                         <div class="edit">
                                             van
-                                            <asp:TextBox ID="txtStartHour" CssClass="startHour" runat="server"
+                                            <asp:TextBox ID="txtStartHour" MaxLength="5" CssClass="startHour" runat="server"
                                                 Text='<%#Eval("startHour") %>' data-originalValue='<%#Eval("startHour") %>'></asp:TextBox>&nbsp;
                                             tem
-                                            <asp:TextBox ID="txtEndHour" CssClass="endHour" runat="server"
+                                            <asp:TextBox ID="txtEndHour" MaxLength="5" CssClass="endHour" runat="server"
                                                 Text='<%#Eval("endHour") %>' data-originalValue='<%#Eval("endHour") %>'></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
-                                <%--END OF TODO--%>
                                 <tr>
                                     <td>locatie</td>
                                     <td>
@@ -101,7 +99,7 @@
                                             </div>
                                         </span>
                                         <div class="edit">
-                                            <asp:TextBox ID="txtMaxSubscriptions" CssClass="maxSubscriptions" runat="server" Text='<%#Eval("maxSubscriptions") %>' data-originalValue='<%#Eval("maxSubscriptions") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtMaxSubscriptions" MaxLength="2" CssClass="maxSubscriptions" runat="server" Text='<%#Eval("maxSubscriptions") %>' data-originalValue='<%#Eval("maxSubscriptions") %>' TextMode="Number"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -112,7 +110,7 @@
                                             <span class="large">€&nbsp;<%#Eval("price") %></span>
                                         </div>
                                         <div class="edit">
-                                            €&nbsp;<asp:TextBox ID="txtPrice" CssClass="price" runat="server" Text='<%#Eval("price") %>' data-originalValue='<%#Eval("price") %>'></asp:TextBox>
+                                            €&nbsp;<asp:TextBox ID="txtPrice" MaxLength="2" CssClass="price" runat="server" Text='<%#Eval("price") %>' data-originalValue='<%#Eval("price") %>' TextMode="Number"></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -123,11 +121,13 @@
                     <div class="buttons right">
                         <div class="button bottom edit-course">Wijzigen</div>
                         <div class="button bottom no-edit-course">Wijzigingen ongedaan maken</div>
-                        <div class="button bottom full save-course">
+                        <div class="button bottom save-course">
                             <span class="ready">Wijzigingen opslaan</span><span class="saving">Bezig met opslaan ...</span>
                             <input type="hidden" class="course-id" value='<%#Eval("id") %>' />
                         </div>
                         <div class="callbackMessage"></div>
+                        <asp:LinkButton runat="server" ID="btnRemoveCourse" CssClass="button bottom full"
+                            Text="Verwijder cursus" CommandName="removeCourse" CommandArgument='<%#Eval("id") %>' />
                     </div>
                 </div>
             </div>

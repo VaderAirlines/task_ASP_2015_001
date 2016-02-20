@@ -12,11 +12,11 @@
                 <table>
                     <tr>
                         <td>gebruikersnaam</td>
-                        <td><asp:TextBox ID="txtUsername" class="large" runat="server"></asp:TextBox></td>
+                        <td><asp:TextBox ID="txtUsername" name="username" MaxLength="50" class="large" runat="server"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td>wachtwoord</td>
-                        <td><asp:TextBox ID="txtPassword" class="large" runat="server" TextMode="Password"></asp:TextBox></td>
+                        <td><asp:TextBox ID="txtPassword" name="password" MaxLength="50" class="large" runat="server" TextMode="Password"></asp:TextBox></td>
                     </tr>
                     <tr>
                         <td colspan="2" class="errorMessage">
@@ -26,7 +26,7 @@
             </div>
         </div>
         <div class="buttons">
-            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClick="btnLogin_Click" />
+            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClientClick="return validateForm('component-wrapper');" OnClick="btnLogin_Click" />
             <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full smaller-text" Text="Of registreren" OnClick="btnRegister_Click"/>
         </div>
     </div>
@@ -34,4 +34,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
+    <script src="<%= ResolveUrl("~/Scripts/loginOrRegister.js") %>" type="text/javascript"></script>
 </asp:Content>

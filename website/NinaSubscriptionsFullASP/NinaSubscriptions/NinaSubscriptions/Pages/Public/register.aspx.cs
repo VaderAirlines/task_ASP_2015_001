@@ -20,7 +20,7 @@ namespace NinaSubscriptions.Pages.Public {
 
 			userProfile profile = new userProfile();
 			profile.userName = txtUsername.Text;
-			profile.passwordHash = txtPassword.Text;
+			profile.passwordHash = new PNV_Cryptor.PNV_Cryptor("forgirlswholoveskateboarding", PNV_Cryptor.PNV_Cryptor.EncryptionMethods.TripleDes).EncryptData(txtPassword.Text);
 			profile.name = txtName.Text;
 			profile.firstName = txtFirstName.Text;
 			profile.emailAddress = txtEmailAddress.Text;

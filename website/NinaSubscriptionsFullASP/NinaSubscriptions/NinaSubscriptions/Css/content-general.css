@@ -51,6 +51,20 @@
             margin-left: 160px;
         }
 
+        .component-wrapper .content li {
+            list-style-type: none;
+            margin-top: 0.6em;
+        }
+
+            .component-wrapper .content li:last-of-type {
+                margin-bottom: 1em;
+            }
+
+            .component-wrapper .content li .filter.label,
+            .component-wrapper .content li .filter.input {
+                margin-left: 15px;
+            }
+
         .component-wrapper .content .buttons {
             cursor: pointer;
         }
@@ -82,11 +96,11 @@
                         margin-top: 0.3em;
                     }
 
-    .button-accordion.title {
-        font-size: 14pt;
-        color: #DF4A79;
-        padding: 0.3em;
-        margin-bottom: 0.5em;
-        border-bottom: 2px solid gray;
-        cursor: pointer;
-    }
+.button-accordion.title {
+    font-size: 14pt;
+    color: #DF4A79;
+    padding: 0.3em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid gray;
+    cursor: pointer;
+}

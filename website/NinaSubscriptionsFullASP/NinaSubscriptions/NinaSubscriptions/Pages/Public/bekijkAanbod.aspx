@@ -23,8 +23,12 @@
                                     <td><span class="large">vanaf <%#Eval("courseType.ageFrom") %> jaar tem <%#Eval("courseType.ageToInclusive") %> jaar</span></td>
                                 </tr>
                                 <tr>
-                                    <td>wanneer</td>
+                                    <td>datum van/tot</td>
                                     <td><span class="large">van <%#Eval("startDate", "{0:dd MMMM yyyy}") %> tem <%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %></span></td>
+                                </tr>
+                                <tr>
+                                    <td>begin/einduur</td>
+                                    <td><span class="large">van <%#Eval("startHour") %> tem <%#Eval("endHour") %></span></td>
                                 </tr>
                                 <tr>
                                     <td>locatie</td>
@@ -36,7 +40,7 @@
                                 </tr>
                                 <tr>
                                     <td>beschikbare plaatsen</td>
-                                    <td><span class="large"><%#Eval("maxSubscriptions") %></span></td>
+                                    <td><span class="large"><%#Eval("openSubscriptions") %>/<%#Eval("maxSubscriptions") %></span></td>
                                 </tr>
                                 <tr>
                                     <td>prijs</td>
@@ -47,7 +51,7 @@
                     </div>
                     <div class="buttons right">
                         <asp:LinkButton runat="server" ID="btnSubscribe" CssClass="button bottom right"
-                            Text="Ik schrijf me in!" CommandName="subscribeToCourse" CommandArgument='<%#Eval("id") %>' />
+                            Text="Ik schrijf me in!" CommandName="subscribeToCourse" CommandArgument='<%#Eval("id") %>' Enabled='<%#Eval("hasOpenSpots") %>'/>
                     </div>
                 </div>
             </div>
@@ -56,7 +60,16 @@
 
     </asp:ListView>
 
+    <div id="divNoCourses" class="component-wrapper" runat="server">
+        <div class="title">Spijtig&hellip;</div>
+        <div class="content">
+            Er zijn op dit moment nog geen nieuwe cursussen gepland. Probeer het later nog eens!
+        </div>
+    </div>
+
+
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
+    <script src="<%= ResolveUrl("~/Scripts/bekijkAanbod.js") %>" type="text/javascript"></script>
 </asp:Content>

@@ -96,5 +96,15 @@ namespace NinaSubscriptions.Pages.Admin {
 			txtNewPrice.Text = "";
 		}
 
+		protected void lstvCourses_ItemCommand(object sender, ListViewCommandEventArgs e) {
+			if (string.Equals(e.CommandName, "removeCourse")) {
+				crud crud = new crud();
+				crud.deleteCourse(Convert.ToInt32(e.CommandArgument));
+
+				clearNewCourseForm();
+				fillCoursesList(crud);
+			}
+		}
+
 	}
 }

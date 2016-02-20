@@ -36,8 +36,8 @@ namespace NinaSubscriptions.Master_Pages {
 		}
 
 		internal bool login(string username, string password) {
-			string passwordHash = password; //new PNV_Cryptor.PNV_Cryptor("forgirlswholoveskateboarding", PNV_Cryptor.PNV_Cryptor.EncryptionMethods.TripleDes).EncryptData(password);
-			int id = new crud().getIdForCredentials(username, passwordHash);
+			string encryptedPassword = new PNV_Cryptor.PNV_Cryptor("forgirlswholoveskateboarding", PNV_Cryptor.PNV_Cryptor.EncryptionMethods.TripleDes).EncryptData(password);
+			int id = new crud().getIdForCredentials(username, encryptedPassword);
 
 			if (id > 0) {
 				Session["userID"] = id;

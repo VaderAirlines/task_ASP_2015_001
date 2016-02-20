@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NinaSubscriptions.BO;
 using NinaSubscriptions.BLL;
 using NinaSubscriptions.Master_Pages;
+using System.Drawing;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -26,7 +27,10 @@ namespace NinaSubscriptions.Pages.Public {
 			course course = crud.selectCourse(courseID);
 			fillCourseData(course);
 
-			if (!IsPostBack) { refreshLists(); };
+			if (!IsPostBack) {
+				Session.Remove("subscribedChildren");
+				refreshLists(courseID);
+			};
 		}
 
 		// UI handlers
@@ -35,7 +39,7 @@ namespace NinaSubscriptions.Pages.Public {
 				List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 				subscribedChildren.Remove(subscribedChildren.Find(x => x.id == Convert.ToInt32(e.CommandArgument.ToString())));
 
-				refreshLists();
+				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
 			}
 		}
 
@@ -46,25 +50,31 @@ namespace NinaSubscriptions.Pages.Public {
 			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));
 			Session["subscribedChildren"] = subscribedChildren;
 
-			refreshLists();
+			refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
 		}
 
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 
-			child newChild = new child();
-			newChild.name = txtName.Text;
-			newChild.firstName = txtFirstName.Text;
-			newChild.dateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
-			newChild.id = generateTemporaryChildID(subscribedChildren.Select(child => child.id).ToList());
-			newChild.userProfileID = Convert.ToInt32(Session["userID"]);
+			try {
+				child newChild = new child();
+				newChild.name = txtName.Text;
+				newChild.firstName = txtFirstName.Text;
+				newChild.dateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+				newChild.id = generateTemporaryChildID(subscribedChildren.Select(child => child.id).ToList());
+				newChild.userProfileID = Convert.ToInt32(Session["userID"]);
 
-			subscribedChildren.Add(newChild);
+				subscribedChildren.Add(newChild);
 
-			Session["subscribedChildren"] = subscribedChildren;
+				Session["subscribedChildren"] = subscribedChildren;
 
-			refreshLists();
-			clearNewChildUI();
+				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
+				clearNewChildUI();
+
+			} catch {
+				lblMessage.ForeColor = Color.Red;
+				lblMessage.Text = "Gelieve alle velden na te kijken en correct in te vullen.";
+			}
 		}
 
 		protected void btnSaveSubscriptions_Click(object sender, EventArgs e) {
@@ -100,21 +110,27 @@ namespace NinaSubscriptions.Pages.Public {
 			lblLocationName.Text = course.location.name;
 			lblLocationAddress.Text = course.location.street + " " + course.location.number + ", " +
 									  course.location.postalCode + " " + course.location.place;
-			lblSubscriptionsLeft.Text = course.maxSubscriptions.ToString() + " plaatsen";
+			lblSubscriptionsLeft.Text = course.openSubscriptions.ToString() + " plaatsen vrij";
 			lblPrice.Text = "€ " + course.price;
 		}
 
-		private void refreshLists() {
-			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
+		private void refreshLists(int courseID) {
+			crud crud = new crud();
+
+			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? crud.getAllSubscriptionsForCourse(courseID).Select(x => x.child).ToList<child>();
 			List<child> childrenForUserProfile = new crud().getAllChildrenForUserProfile(Convert.ToInt32(Session["userID"]));
 
+			subscribedChildren = subscribedChildren.Where(sChild => childrenForUserProfile.Find(uChild => uChild.id == sChild.id) != null ? true : sChild.id > int.MaxValue - 10001 ? true : false).ToList<child>();
 			subscribedChildren.ForEach(sChild => childrenForUserProfile.Remove(childrenForUserProfile.Find(uChild => uChild.id == sChild.id)));
+
 
 			// fill select box (all children for user profile)
 			if (childrenForUserProfile.Count < 1) {
 				divExistingChildSelector.Visible = false;
+				divHasNoExistingChildren.Visible = true;
 			} else {
 				divExistingChildSelector.Visible = true;
+				divHasNoExistingChildren.Visible = false;
 				lstAllChildren.Items.Clear();
 				childrenForUserProfile.ForEach(uChild => lstAllChildren.Items.Add(new ListItem(uChild.firstName + " " + uChild.name, uChild.id.ToString())));
 			};

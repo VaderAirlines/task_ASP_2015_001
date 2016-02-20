@@ -39,9 +39,11 @@ namespace NinaSubscriptions.BLL {
 			DataTable table = dal.selectAllCourses();
 			List<course> retlist = new List<course>();
 
-			foreach (DataRow row in table.Rows) {
-				retlist.Add(getCourseFromDataRow(row));
-			}
+			if (Convert.ToInt32(table.Rows[0]["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getCourseFromDataRow(row));
+				}
+			};
 
 			return retlist;
 		}
@@ -220,6 +222,7 @@ namespace NinaSubscriptions.BLL {
 			course.endHour = Convert.ToInt32(row["einduur"]);
 			course.location = selectLocation(Convert.ToInt32(row["locatieID"]));
 			course.maxSubscriptions = Convert.ToInt32(row["max_deelnemers"]);
+			course.openSubscriptions = Convert.ToInt32(row["openAantalDeelnemers"]);
 			course.price = Convert.ToInt32(row["kostprijs"]);
 			course.startDate = Convert.ToDateTime(row["datum_van"]);
 			course.startHour = Convert.ToInt32(row["startuur"]);

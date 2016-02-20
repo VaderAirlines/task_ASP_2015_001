@@ -24,12 +24,19 @@ namespace NinaSubscriptions.Pages.Admin {
 			if (!IsPostBack) {
 				crud crud = new crud();
 
-				ddCourseNames.DataSource = crud.getAllCourses();
+				// fill course dropdown
+				List<course> allCourses = crud.getAllCourses();
+				course emptyCourse = new course() { id = 0 };
+				allCourses.Insert(0, emptyCourse);
+				ddCourseNames.DataSource = allCourses;
 				ddCourseNames.DataTextField = "name";
 				ddCourseNames.DataValueField = "id";
 				ddCourseNames.DataBind();
 
-				ddUserProfiles.DataSource = crud.getAllUserProfiles();
+				List<userProfile> allUserProfiles = crud.getAllUserProfiles();
+				userProfile emptyProfile = new userProfile() { id = 0 };
+				allUserProfiles.Insert(0, emptyProfile);
+				ddUserProfiles.DataSource = allUserProfiles;
 				ddUserProfiles.DataTextField = "fullname";
 				ddUserProfiles.DataValueField = "id";
 				ddUserProfiles.DataBind();
@@ -75,7 +82,7 @@ namespace NinaSubscriptions.Pages.Admin {
 			grdResults.DataSource = table;
 			grdResults.DataBind();
 
-			resultsFor.InnerText = ddUserProfiles.SelectedItem.Text;
+			resultsFor.InnerText = selectedDate.ToShortDateString();
 
 			//grdResults.DataSource = crud.getCoursesWithNrOfSubscriptionsOnDate(selectedDate);
 			//grdResults.DataBind();

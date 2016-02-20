@@ -113,7 +113,6 @@
                 <div id="divExistingChildSelectorAccordionButton" class="button-accordion title" runat="server"><span class="accordion-icon">+</span> Voeg een bestaand kind toe</div>
                 <div id="divExistingChildSelector" class="subscriptions userdata all-children" runat="server">
                     <div class="component-wrapper">
-                        <%--<div class="title">Voeg een bestaand kind toe</div>--%>
                         <div class="content">
                             <div class="top">
                                 <div class="center">
@@ -135,12 +134,20 @@
                         </div>
                     </div>
                 </div>
+                <div id="divHasNoExistingChildren" class="subscriptions userdata no-children" runat="server">
+                    <div class="component-wrapper">
+                        <div class="content">
+                            <div class="top">
+                                U heeft voorheen nog geen kinderen ingeschreven via deze site.
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <%--NEW CHILDREN--%>
                 <div id="divNewChildSelectorAccordionButton" class="button-accordion title" runat="server"><span class="accordion-icon">+</span> Voeg een nieuw kind toe</div>
                 <div id="divNewChildSelector" class="subscriptions userdata new-child" runat="server">
                     <div class="component-wrapper">
-                        <%--<div class="title">Voeg een nieuw kind toe</div>--%>
                         <div class="content">
                             <div class="top">
                                 <div class="center">
@@ -148,19 +155,19 @@
                                         <tr>
                                             <td>Voornaam</td>
                                             <td>
-                                                <asp:TextBox ID="txtFirstName" class="large" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtFirstName" MaxLength="50" class="large" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>Achternaam</td>
                                             <td>
-                                                <asp:TextBox ID="txtName" class="large" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtName" MaxLength="50" class="large" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Geboortedatum</td>
+                                            <td>Geboortedatum (01/02/1999)</td>
                                             <td>
-                                                <asp:TextBox ID="txtDateOfBirth" class="large" runat="server"></asp:TextBox>
+                                                <asp:TextBox ID="txtDateOfBirth" MaxLength="9" class="large" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
                                     </table>

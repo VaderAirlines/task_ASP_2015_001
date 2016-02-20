@@ -22,8 +22,17 @@ namespace NinaSubscriptions.Pages.Public {
 			crud crud = new crud();
 
 			List<course> allCourses = crud.getAllCourses();
-			lstvCourses.DataSource = allCourses;
-			lstvCourses.DataBind();
+
+			if (allCourses.Count < 1) {
+				divNoCourses.Visible = true;
+				lstvCourses.Visible = false;
+			} else {
+				divNoCourses.Visible = false;
+				lstvCourses.Visible = true;
+
+				lstvCourses.DataSource = allCourses;
+				lstvCourses.DataBind();
+			}
 		}
 
 		protected void lstvCourses_ItemCommand(object sender, ListViewCommandEventArgs e) {
