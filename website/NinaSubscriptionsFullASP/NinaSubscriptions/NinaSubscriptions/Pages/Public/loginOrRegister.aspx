@@ -19,14 +19,16 @@
                         <td><asp:TextBox ID="txtPassword" name="password" MaxLength="50" class="large" runat="server" TextMode="Password"></asp:TextBox></td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="errorMessage">
+                        <td>&nbsp;</td>
+                        <td class="errorMessage">
                             <asp:Label ID="lblErrorMessage" runat="server" Text=""></asp:Label></td>
                     </tr>
                 </table>
             </div>
         </div>
         <div class="buttons">
-            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClientClick="return validateForm('component-wrapper');" OnClick="btnLogin_Click" />
+            <%--<asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClientClick="return validateForm('component-wrapper');" OnClick="btnLogin_Click" />--%>
+            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClick="btnLogin_Click" />
             <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full smaller-text" Text="Of registreren" OnClick="btnRegister_Click"/>
         </div>
     </div>
