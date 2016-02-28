@@ -8,6 +8,7 @@ using NinaSubscriptions.BO;
 using NinaSubscriptions.BLL;
 using NinaSubscriptions.Master_Pages;
 using System.Drawing;
+using NinaSubscriptions.Custom_validation;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -54,6 +55,25 @@ namespace NinaSubscriptions.Pages.Public {
 		}
 
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
+			// validate fields before continuing
+			lblErrorMessage.Text = string.Empty;
+
+			customValidator validator = new customValidator();
+			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, "Gelieve een naam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, "Gelieve een voornaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.required, null, "Gelieve een geboortedatum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.validDate, null, "Gelieve een geldige datum in te vullen"));
+
+			List<string> errors = validator.validate();
+			if (errors.Count > 0) {
+				foreach (string error in errors) {
+					lblErrorMessage.Text += error + "<br>";
+				}
+				return;
+			}
+
+			// if all is validated, continue...
+
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 
 			try {

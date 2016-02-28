@@ -1,3 +1,39 @@
+// VALIDATION ----------------------------------------------------------------------------------------------------
+$(function () {
+	$(".component-wrapper #txtDateOfBirth").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
+});
+
+function validateForm(wrapperClass) {
+	var max50chars = "dit veld mag niet meer dan 50 karakters bevatten";
+	var max10chars = "dit veld mag niet meer dan 10 karakters bevatten";
+	var mustComplete = "gelieve dit veld in te vullen";
+	var giveDate = "gelieve een datum in te vullen (dd/mm/yyyy)";
+
+	var fields = [
+		{
+			id: 'txtName',
+			checks: [{ required: true }, { maxLength: 50 }],
+			messages: { required: mustComplete, maxLength: max50chars }
+		},
+		{
+			id: 'txtFirstName',
+			checks: [{ required: true }, { maxLength: 50 }],
+			messages: { required: mustComplete, maxLength: max50chars }
+		},
+		{
+			id: 'txtDateOfBirth',
+			checks: [{ required: true }, { maxLength: 10 }, { validDate: true }],
+			messages: { required: mustComplete, maxLength: max10chars, validDate: giveDate }
+		}
+	];
+
+	var retval = validateFields(wrapperClass, fields);
+
+	return retval;
+};
+
+
+// DOCUMENT READY ------------------------------------------------------------------------------------------------
 (function ($) {
 
 	$(function () {
@@ -31,7 +67,7 @@
 	};
 
 	// helper: open accordion element exclusively
-	function openAccordionElementExclusively($range, $elementToOpen) { 
+	function openAccordionElementExclusively($range, $elementToOpen) {
 		openAccordionElement($elementToOpen);
 
 		var elementToOpenIndex = 0;

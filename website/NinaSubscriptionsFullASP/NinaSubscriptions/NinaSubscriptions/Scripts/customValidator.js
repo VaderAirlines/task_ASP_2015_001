@@ -1,4 +1,4 @@
-﻿// fields parameter example:
+// fields parameter example:
 // var fields = [
 //	{
 //		id: 'txtUsername',
@@ -75,8 +75,26 @@ function email($element) {
 	return /[^\s@]+@[^\s@]+\.[^\s@]+/.test($element.val());
 }
 
+function validDate($element) {
+	if (!/^\d\d\/\d\d\/\d\d\d\d$/.test($element.val())) return false;
+
+	var split = $element.val().split('/');
+	var day = split[0];
+	var month = parseInt(split[1]) - 1;
+	var year = split[2];
+	
+	try {
+		var date = new Date(year, month, day, 0, 0, 0, 0);
+		if (date < Date.now) return true;
+	} catch (e) {
+		return false;
+	}
+
+	return false;
+}
+
 function hour($element) {
-	return /\d\d:\d\d/.test($element.val());
+	return /^\d\d:\d\d$/.test($element.val());
 }
 
 // error removers

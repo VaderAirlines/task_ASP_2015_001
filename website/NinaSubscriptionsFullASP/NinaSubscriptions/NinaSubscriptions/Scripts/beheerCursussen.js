@@ -4,6 +4,7 @@
 		/* HIDE NECESSARY FIELDS*/
 		$('.edit').hide();
 		$('.no-edit-course').hide();
+		$('.save-course').hide();
 		$('.originalValue').hide();
 		$('.newValue').hide();
 		$('.saving').hide();
@@ -36,6 +37,7 @@
 
 			$(this).hide();
 			$wrapper.find('.no-edit-course').show();
+			$wrapper.find('.save-course').show();
 		});
 
 		$('.no-edit-course').click(function () {
@@ -62,6 +64,7 @@
 			$saveButton.attr('data-enabled', '0');
 
 			$(this).hide();
+			$wrapper.find('.save-course').hide();
 			$wrapper.find('.edit-course').show();
 		});
 
@@ -88,6 +91,7 @@
 		var $ready = $wrapper.find('.ready');
 		var $saving = $wrapper.find('.saving');
 		var $message = $wrapper.find('.callbackMessage');
+		var $goBack = $wrapper.find('.no-edit-course');
 
 		$ready.hide();
 		$saving.show();
@@ -111,19 +115,19 @@
 			console.log(data.d === true);
 			
 			if (data.d == true) {
-				showMessage($message, 'success');
+				showMessage($message, 'success', $ready, $saving, $goBack);
 			} else {
-				showMessage($message, 'failed');
+				showMessage($message, 'failed', $ready, $saving, $goBack);
 			}
 		});
 
 		req.fail(function (xhr, status, error) {
 			console.log('course saving failed: ' + xhr.ResponseText);
-			showMessage($message, 'failed');
+			showMessage($message, 'failed', $ready, $saving);
 		});
 	};
 
-	function showMessage($element, which) {
+	function showMessage($element, which, $ready, $saving, $goBack) {
 		if (which == 'success') {
 			$element.text('De cursus is opgeslagen.').css('background-color', 'green');
 		} else {
@@ -135,6 +139,7 @@
 			$element.hide(500);
 			$ready.show();
 			$saving.hide();
+			$goBack.trigger('click');
 		}, 1500);
 	};
 

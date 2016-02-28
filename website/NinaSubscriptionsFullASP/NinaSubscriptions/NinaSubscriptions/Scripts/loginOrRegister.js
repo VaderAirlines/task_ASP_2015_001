@@ -1,7 +1,3 @@
-$(function () {
-	//$(".component-wrapper #txtUsername").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
-});
-
 function validateForm(wrapperClass) {
 	var max50chars = "dit veld mag niet meer dan 50 karakters bevatten";
 	var mustComplete = "gelieve dit veld in te vullen";

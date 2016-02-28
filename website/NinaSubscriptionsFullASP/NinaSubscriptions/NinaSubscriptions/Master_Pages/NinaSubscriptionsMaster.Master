@@ -21,7 +21,7 @@
             <header>
                 <div id="divLoggedInUser" runat="server"></div>
                 <div id="divBanner">
-                    <div id="divLoginForm">
+                    <div id="divLoginForm" class="login-form">
                         <div id="divLoginControls" runat="server">
                             login<br />
                             <asp:TextBox ID="txtUsername" runat="server" CssClass="login" MaxLength="50"></asp:TextBox><br />
@@ -56,7 +56,7 @@
                 </ul>
             </nav>
 
-            <%--<section id="divBreadcrumb" runat="server">breadcrumb hier</section>--%>
+            <section id="divBreadcrumb" runat="server">&nbsp;</section>
 
             <!-- body placeholder -->
             <asp:ContentPlaceHolder ID="phContent" runat="server">

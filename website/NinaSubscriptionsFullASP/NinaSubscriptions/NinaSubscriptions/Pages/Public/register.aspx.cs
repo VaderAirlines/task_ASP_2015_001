@@ -8,6 +8,7 @@ using NinaSubscriptions.BO;
 using NinaSubscriptions.BLL;
 using System.Timers;
 using NinaSubscriptions.Master_Pages;
+using NinaSubscriptions.Custom_validation;
 
 namespace NinaSubscriptions.Pages.Public {
 	public partial class register : System.Web.UI.Page {
@@ -16,6 +17,32 @@ namespace NinaSubscriptions.Pages.Public {
 		}
 
 		protected void btnRegister_Click(object sender, EventArgs e) {
+			// validate fields before continuing
+			lblErrorMessage.Text = string.Empty;
+
+			customValidator validator = new customValidator();
+			validator.addValidationRule(new customValidationRule(txtUsername, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, "Gelieve een naam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, "Gelieve een voornaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtEmailAddress, validator.required, null, "Gelieve een emailadres in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtEmailAddress, validator.email, null, "Gelieve een geldig emailadres in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPhone, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtStreet, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNumber, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPostalCode, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPlace, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPassword, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPasswordRepeat, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+
+			List<string> errors = validator.validate();
+			if (errors.Count > 0) {
+				foreach (string error in errors) {
+					lblErrorMessage.Text += error + "<br>";
+				}
+				return;
+			}
+
+			// if all is validated, continue...
 			crud crud = new crud();
 
 			userProfile profile = new userProfile();

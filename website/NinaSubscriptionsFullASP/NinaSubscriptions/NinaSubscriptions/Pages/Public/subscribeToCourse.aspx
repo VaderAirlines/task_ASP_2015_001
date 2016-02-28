@@ -165,17 +165,22 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Geboortedatum (01/02/1999)</td>
+                                            <td>Geboortedatum</td>
                                             <td>
                                                 <asp:TextBox ID="txtDateOfBirth" MaxLength="9" class="large" runat="server"></asp:TextBox>
                                             </td>
+                                        </tr>
+                                        <tr>
+                                            <td>&nbsp;</td>
+                                            <td>
+                                                <asp:Label ID="lblErrorMessage" runat="server" Text="Label"></asp:Label></td>
                                         </tr>
                                     </table>
                                 </div>
                             </div>
                         </div>
                         <div class="buttons">
-                            <asp:LinkButton ID="btnAddNewChild" CssClass="button bottom" runat="server" OnClick="btnAddNewChild_Click">
+                            <asp:LinkButton ID="btnAddNewChild" CssClass="button bottom" runat="server" OnClientClick="return validateForm('component-wrapper');" OnClick="btnAddNewChild_Click">
                                 Voeg dit kind toe aan de lijst
                             </asp:LinkButton>
                         </div>

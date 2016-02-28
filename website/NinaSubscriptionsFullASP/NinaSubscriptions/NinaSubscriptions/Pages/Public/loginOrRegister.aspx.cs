@@ -17,8 +17,9 @@ namespace NinaSubscriptions.Pages.Public {
 
 			customValidator validator = new customValidator();
 			validator.addValidationRule(new customValidationRule(txtUsername, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtUsername, validator.maxLength, "5", "Gebruikersnaam mag niet langer zijn van 5 karakters"));
+			validator.addValidationRule(new customValidationRule(txtUsername, validator.maxLength, "50", "Gebruikersnaam mag niet langer zijn dan 50 karakters"));
 			validator.addValidationRule(new customValidationRule(txtPassword, validator.required, null, "Gelieve een wachtwoord in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPassword, validator.maxLength, "50", "Wachtwoord mag niet langer zijn dan 50 karakters"));
 			List<string> errors = validator.validate();
 			if (errors.Count > 0) {
 				foreach (string error in errors) {
@@ -27,7 +28,7 @@ namespace NinaSubscriptions.Pages.Public {
 				return;
 			}
 
-			// if all is validate well, continue...
+			// if all is validated, continue...
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
 			if (master.login(txtUsername.Text, txtPassword.Text)) {

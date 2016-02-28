@@ -137,9 +137,9 @@
     </asp:ListView>
 
     <%-- NEW COURSE --%>
-    <div id="Div1" class="component-wrapper" runat="server">
+    <div id="divNewCourse" class="component-wrapper" runat="server">
         <div class="title">
-            <asp:TextBox ID="txtNewName" CssClass="description" runat="server" Text=""></asp:TextBox>
+            Titel: <asp:TextBox ID="txtNewName" CssClass="description" runat="server" Text=""></asp:TextBox>
         </div>
         <div class="content">
             <div class="left photo"></div>

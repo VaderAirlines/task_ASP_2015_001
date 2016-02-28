@@ -67,7 +67,8 @@
                                 <asp:TextBox ID="txtPasswordRepeat" MaxLength="50" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
                         </tr>
                         <tr>
-                            <td colspan="2" class="errorMessage">
+                            <td>&nbsp;</td>
+                            <td class="errorMessage">
                                 <asp:Label ID="lblErrorMessage" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
@@ -78,7 +79,7 @@
                 </div>
             </div>
             <div class="buttons">
-                <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full" Text="Registreer" OnClick="btnRegister_Click" />
+                <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full" Text="Registreer" OnClientClick="return validateForm('component-wrapper');" OnClick="btnRegister_Click" />
             </div>
         </div>
     </div>
@@ -86,4 +87,5 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="phScripts" runat="server">
+    <script src="<%= ResolveUrl("~/Scripts/register.js") %>" type="text/javascript"></script>
 </asp:Content>
