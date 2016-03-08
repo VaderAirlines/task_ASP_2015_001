@@ -35,6 +35,38 @@ td {
             padding: 0em 1em 0em 0em;
         }
 
+        .component-wrapper .content #grdResults {
+            margin-left: 8px;
+        }
+
+            .component-wrapper .content #grdResults tr:nth-child(odd) {
+                background-color: #fbc5d6;
+            }
+
+            .component-wrapper .content #grdResults tr:first-of-type {
+                background-color: #bab8b8;
+            }
+
+            .component-wrapper .content #grdResults td,
+            .component-wrapper .content #grdResults th {
+                padding-left: 1em;
+                padding-right: 1em;
+                text-align: left;
+            }
+
+            .component-wrapper .content #grdResults th {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+                font-size: 14px;
+            }
+
+            .component-wrapper .content #grdResults .gridview-checkbox input {
+                width: 15px;
+                height: 15px;
+                margin-left: 50%;
+                margin-top: 0.2em;
+            }
+
         .component-wrapper .content > .left,
         .component-wrapper .content .content-top > .left {
             position: absolute;
@@ -68,6 +100,11 @@ td {
             .component-wrapper .content li .filter.input {
                 margin-left: 15px;
             }
+
+                .component-wrapper .content li .filter.input select,
+                .component-wrapper .content li .filter.input table {
+                    width: 250px;
+                }
 
         .component-wrapper .content .buttons {
             cursor: pointer;

@@ -39,7 +39,18 @@
                         <div class="content">
                             <div class="top">
                                 <div class="center">
-                                    <asp:GridView ID="grdResults" runat="server">
+                                    <asp:GridView ID="grdResults" runat="server" AutoGenerateColumns="False" OnRowCommand="grdResults_RowCommand">
+                                        <Columns>
+                                            <asp:BoundField DataField="id" HeaderText="ID" />
+                                            <asp:BoundField DataField="cursusNaam" HeaderText="Cursusnaam" />
+                                            <asp:BoundField DataField="kindAchternaam" HeaderText="Achternaam" />
+                                            <asp:BoundField DataField="kindVoornaam" HeaderText="Voornaam" />
+                                            <asp:CheckBoxField DataField="heeftBetaald" HeaderText="Heeft betaald?">
+                                            <ControlStyle CssClass="gridview-checkbox" />
+                                            </asp:CheckBoxField>
+                                            <asp:ButtonField ButtonType="Button" CommandName="paySubscription" HeaderText="Betalen" Text="betalen" />
+                                            <asp:ButtonField ButtonType="Button" CommandName="removeSubscription" HeaderText="Verwijderen" Text="verwijderen" />
+                                        </Columns>
                                     </asp:GridView>
                                     &nbsp;
                                 </div>

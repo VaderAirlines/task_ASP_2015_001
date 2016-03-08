@@ -57,6 +57,9 @@ namespace NinaSubscriptions.Pages.Admin {
 			grdResults.DataBind();
 
 			resultsFor.InnerText = ddCourseNames.SelectedItem.Text;
+
+			ddUserProfiles.SelectedIndex = -1;
+			cldrDates.SelectedDate = DateTime.Now;
 		}
 
 		protected void ddUserProfiles_SelectedIndexChanged(object sender, EventArgs e) {
@@ -70,6 +73,8 @@ namespace NinaSubscriptions.Pages.Admin {
 			grdResults.DataBind();
 
 			resultsFor.InnerText = ddUserProfiles.SelectedItem.Text;
+			ddCourseNames.SelectedIndex = -1;
+			cldrDates.SelectedDate = DateTime.Now;
 		}
 
 		protected void cldrDates_SelectionChanged(object sender, EventArgs e) {
@@ -84,10 +89,9 @@ namespace NinaSubscriptions.Pages.Admin {
 
 			resultsFor.InnerText = selectedDate.ToShortDateString();
 
-			//grdResults.DataSource = crud.getCoursesWithNrOfSubscriptionsOnDate(selectedDate);
-			//grdResults.DataBind();
+			ddCourseNames.SelectedIndex = -1;
+			ddUserProfiles.SelectedIndex = -1;
 		}
-
 
 		// helpers
 		private DataTable getSubscriptionBaseTable() {
@@ -117,6 +121,36 @@ namespace NinaSubscriptions.Pages.Admin {
 			}
 
 			return table;
+		}
+
+		protected void grdResults_RowCommand(object sender, GridViewCommandEventArgs e) {
+			int index = Convert.ToInt32(e.CommandArgument);
+			GridViewRow row = grdResults.Rows[index];
+			int subscriptionID = Convert.ToInt32(row.Cells[0].Text);
+
+			switch (e.CommandName) {
+				case "paySubscription":
+					crud crud = new crud();
+					subscription subscription = crud.selectSubscription(subscriptionID);
+					subscription.paymentConfirmed = true;
+					crud.updateSubscription(subscription);
+					break;
+				case "removeSubscription":
+					new crud().deleteSubscription(subscriptionID);
+					break;
+				default:
+					break;
+			}
+
+			if (ddCourseNames.SelectedIndex > 0) { 
+				ddCourseNames_SelectedIndexChanged(sender, EventArgs.Empty);
+				return;
+			} else if (ddUserProfiles.SelectedIndex > 0) { 
+				ddUserProfiles_SelectedIndexChanged(sender, EventArgs.Empty);
+				return;
+			} else {
+				cldrDates_SelectionChanged(sender, EventArgs.Empty);
+			}
 		}
 
 	}

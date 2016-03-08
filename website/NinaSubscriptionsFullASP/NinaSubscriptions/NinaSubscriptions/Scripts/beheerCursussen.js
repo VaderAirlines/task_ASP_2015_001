@@ -15,13 +15,7 @@
 		$(".component-wrapper .hour").mask("99:99", { placeholder: "hh:hh" });
 
 		// DROPDOWN INIT/HANDLERS
-		var $dropdowns = $('.component-wrapper').find('select');
-		$dropdowns.each(function () {
-			var $this = $(this);
-			var originalValue = $this.prev('.originalValue').text();
-			$this.val(originalValue);
-			$this.attr('data-originalValue', originalValue);
-		});
+		setDropdownValues();
 
 		// BUTTON HANDLERS
 		$('.edit-course').click(function () {
@@ -99,6 +93,16 @@
 
 	});
 
+	function setDropdownValues() {
+		var $dropdowns = $('.component-wrapper').find('select');
+		$dropdowns.each(function () {
+			var $this = $(this);
+			var originalValue = $this.prev('.originalValue').text();
+			$this.val(originalValue);
+			$this.attr('data-originalValue', originalValue);
+		});
+	}
+
 	function saveChangesToCourse($wrapper, courseID, description, courseType, startDate, endDate, locationID, maxSubscriptions, price, startHour, endHour, name) {
 		var $ready = $wrapper.find('.ready');
 		var $saving = $wrapper.find('.saving');
@@ -162,20 +166,23 @@
 			var newValue = $(this).val();
 			var id = $(this).attr('id');
 			if (typeof id == "undefined") return false;
-			
-			var firstClass = getFirstClass(id);
-			var $label = $(this).prev('.' + firstClass + '-lbl');
 
-			$label.css('background-color', 'red');
+			var firstClass = getFirstClass(id);
+			var $label = $wrapper.find('.' + firstClass + '-lbl');
+
+			$label.text(newValue);
+			$(this).attr('data-originalValue', newValue);
 		});
 
 		$selects.each(function () {
+			var newText = $(this).find('option:selected').text();
 			var newValue = $(this).val();
 			var id = $(this).attr('id');
 			var firstClass = getFirstClass(id);
-			var $label = $(this).prev('.' + firstClass + '-lbl');
+			var $label = $wrapper.find('.' + firstClass + '-lbl');
 
-			$label.css('background-color', 'red');
+			$label.text(newText);
+			$(this).attr('data-originalValue', newValue);
 		});
 	}
 

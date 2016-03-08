@@ -1,4 +1,8 @@
 /* CONTENT -----------------------------------------------  */
+td {
+    vertical-align: top;
+}
+
 #divMain {
     padding: 0em 0.5em;
 }
@@ -30,6 +34,31 @@
         .component-wrapper .content td {
             padding: 0em 1em 0em 0em;
         }
+
+        .component-wrapper .content #grdResults {
+            margin-left: 8px;
+        }
+
+            .component-wrapper .content #grdResults tr:nth-child(odd) {
+                background-color: #fbc5d6;
+            }
+
+            .component-wrapper .content #grdResults tr:first-of-type {
+                background-color: #bab8b8;
+            }
+
+            .component-wrapper .content #grdResults td,
+            .component-wrapper .content #grdResults th {
+                padding-left: 1em;
+                padding-right: 1em;
+                text-align: left;
+            }
+
+            .component-wrapper .content #grdResults th {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+                font-size: 14px;
+            }
 
         .component-wrapper .content > .left,
         .component-wrapper .content .content-top > .left {
@@ -65,6 +94,11 @@
                 margin-left: 15px;
             }
 
+                .component-wrapper .content li .filter.input select,
+                .component-wrapper .content li .filter.input table {
+                    width: 250px;
+                }
+
         .component-wrapper .content .buttons {
             cursor: pointer;
         }
@@ -96,6 +130,14 @@
                         margin-top: 0.3em;
                     }
 
+    .component-wrapper .has-error {
+        border-color: #f75f5f;
+    }
+
+    .component-wrapper .error-message {
+        color: #f75f5f;
+    }
+
 .button-accordion.title {
     font-size: 14pt;
     color: #DF4A79;
@@ -106,6 +148,9 @@
 }
 
 
-td {
-    vertical-align: top;
+.gridview-checkbox input {
+    width: 15px;
+    height: 15px;
+    margin-left: 50%;
+    margin-top: 0.2em;
 }
