@@ -100,6 +100,14 @@ td {
                         margin-top: 0.3em;
                     }
 
+    .component-wrapper .has-error {
+        border-color: #f75f5f;
+    }
+
+    .component-wrapper .error-message {
+        color: #f75f5f;
+    }
+
 .button-accordion.title {
     font-size: 14pt;
     color: #DF4A79;

@@ -66,6 +66,19 @@ namespace NinaSubscriptions.BLL {
 			return Convert.ToInt32(getFirstRow(dal.deleteSubscription(id))["id"]);
 		}
 
+		public List<subscription> getSubscriptionOnCourseAndChild(int courseID, int childID) {
+			DataTable table = dal.getSubscriptionOnCourseAndChild(courseID, childID);
+			List<subscription> retlist = new List<subscription>();
+
+			if (Convert.ToInt32(table.Rows[0]["id"]) != -1) {
+				foreach (DataRow row in table.Rows) {
+					retlist.Add(getSubscriptionFromDatarow(row));
+				}
+			}
+
+			return retlist;
+		}
+
 		public List<subscription> getAllSubscriptionsForUserProfile(int userProfileID) {
 			DataTable table = dal.getAllSubscriptionsForUserProfile(userProfileID);
 			List<subscription> retlist = new List<subscription>();
@@ -219,13 +232,13 @@ namespace NinaSubscriptions.BLL {
 			course.id = Convert.ToInt32(row["id"]);
 			course.name = row["naam"].ToString();
 			course.endDateInclusive = Convert.ToDateTime(row["datum_tot"]);
-			course.endHour = Convert.ToInt32(row["einduur"]);
+			course.endHour = row["einduur"].ToString();
 			course.location = selectLocation(Convert.ToInt32(row["locatieID"]));
 			course.maxSubscriptions = Convert.ToInt32(row["max_deelnemers"]);
 			course.openSubscriptions = Convert.ToInt32(row["openAantalDeelnemers"]);
 			course.price = Convert.ToInt32(row["kostprijs"]);
 			course.startDate = Convert.ToDateTime(row["datum_van"]);
-			course.startHour = Convert.ToInt32(row["startuur"]);
+			course.startHour = row["startuur"].ToString();
 
 			return course;
 		}

@@ -18,6 +18,7 @@ namespace NinaSubscriptions.Interfaces {
 		subscription selectSubscription(int id);
 		int updateSubscription(subscription subscription);
 		int deleteSubscription(int id);
+		List<subscription> getSubscriptionOnCourseAndChild(int courseID, int childID);
 		List<subscription> getAllSubscriptionsForUserProfile(int userProfileID);
 		List<subscription> getAllSubscriptionsForCourse(int courseID);
 		List<subscription> getAllSubscriptionsForCoursesOnDate(DateTime courseDate);

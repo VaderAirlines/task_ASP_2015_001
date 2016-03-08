@@ -98,11 +98,14 @@
                                         </table>
                                     </div>
                                 </div>
+                                <!-- REMOVED BECAUSE THIS SHOULD ONLY BE DONE BY AN ADMINISTRATOR
                                 <div class="buttons">
                                     <asp:LinkButton runat="server" ID="btnRemoveChild" CssClass="button bottom"
                                         Text="verwijderen" CommandName="removeChild" CommandArgument='<%#Eval("id") %>' />
                                 </div>
+                                -->
                             </div>
+                        </div>
                     </ItemTemplate>
                 </asp:ListView>
             </div>
@@ -199,7 +202,8 @@
             <%--CONFIRM SUBSCRIPTIONS BUTTON--%>
             <div class="buttons">
                 <asp:Label ID="lblMessage" runat="server" Text=""></asp:Label>
-                <asp:LinkButton ID="btnSaveSubscriptions" CssClass="button bottom full" runat="server" OnClick="btnSaveSubscriptions_Click" >
+                <asp:LinkButton ID="btnSaveSubscriptions" CssClass="button bottom full" runat="server" 
+                    OnClientClick="return conditionsAccepted();" OnClick="btnSaveSubscriptions_Click" >
                     Ik schrijf me in!
                 </asp:LinkButton>
             </div>

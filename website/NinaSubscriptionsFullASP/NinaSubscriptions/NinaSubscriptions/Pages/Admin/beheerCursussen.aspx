@@ -10,7 +10,7 @@
             <div class="component-wrapper" runat="server">
                 <div class="title">
                     <div class="no-edit">
-                        <span><%#Eval("name") %></span>
+                        <span class="name-lbl"><%#Eval("name") %></span>
                     </div>
                     <div class="edit">
                         <asp:TextBox ID="txtName" MaxLength="50" CssClass="name" runat="server" Text='<%#Eval("name") %>' data-originalValue='<%#Eval("name") %>'></asp:TextBox>
@@ -25,7 +25,7 @@
                                     <td>beschrijving</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large"><%#Eval("description") %></span>
+                                            <span class="large description-lbl"><%#Eval("description") %></span>
                                         </div>
                                         <div class="edit">
                                             <asp:TextBox ID="txtDescription" MaxLength="200" CssClass="description" runat="server" Text='<%#Eval("description") %>' data-originalValue='<%#Eval("description") %>'></asp:TextBox>
@@ -36,7 +36,7 @@
                                     <td>cursustype</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large"><%#Eval("courseType.referrer") %></span>
+                                            <span class="large courseType-lbl"><%#Eval("courseType.referrer") %></span>
                                         </div>
                                         <div class="edit">
                                             <asp:Label ID="ddCourseTypeOriginalValue" CssClass="originalValue" runat="server" Text='<%#Eval("courseType.id") %>' />
@@ -49,15 +49,15 @@
                                     <td>datum van/tot</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large">van <%#Eval("startDate", "{0:dd MMMM yyyy}") %> tem <%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %></span>
+                                            <span class="large">van <span class="startDate-lbl"><%#Eval("startDate", "{0:dd/MM/yyyy}") %></span> tem <span class="endDate-lbl"><%#Eval("endDateInclusive", "{0:dd/MM/yyyy}") %></span></span>
                                         </div>
                                         <div class="edit">
                                             van
-                                            <asp:TextBox ID="txtStartDate" MaxLength="9" CssClass="startDate" runat="server"
-                                                Text='<%#Eval("startDate", "{0:dd MMMM yyyy}") %>' data-originalValue='<%#Eval("startDate", "{0:dd MMMM yyyy}") %>'></asp:TextBox>&nbsp;
+                                            <asp:TextBox ID="txtStartDate" MaxLength="9" CssClass="startDate date" runat="server"
+                                                Text='<%#Eval("startDate", "{0:dd/MM/yyyy}") %>' data-originalValue='<%#Eval("startDate", "{0:dd/MM/yyyy}") %>'></asp:TextBox>&nbsp;
                                             tem
-                                            <asp:TextBox ID="txtEndDateInclusive" MaxLength="9" CssClass="endDate" runat="server"
-                                                Text='<%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %>' data-originalValue='<%#Eval("endDateInclusive", "{0:dd MMMM yyyy}") %>'></asp:TextBox>
+                                            <asp:TextBox ID="txtEndDateInclusive" MaxLength="9" CssClass="endDate date" runat="server"
+                                                Text='<%#Eval("endDateInclusive", "{0:dd/MM/yyyy}") %>' data-originalValue='<%#Eval("endDateInclusive", "{0:dd/MM/yyyy}") %>'></asp:TextBox>
                                         </div>
                                     </td>
                                 </tr>
@@ -65,14 +65,14 @@
                                     <td>begin/einduur</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large">van <%#Eval("startHour") %> tem <%#Eval("endHour") %></span>
+                                            <span class="large">van <span class="startHour-lbl"><%#Eval("startHour") %></span> tem <span class="endHour-lbl"><%#Eval("endHour") %></span></span>
                                         </div>
                                         <div class="edit">
                                             van
-                                            <asp:TextBox ID="txtStartHour" MaxLength="5" CssClass="startHour" runat="server"
+                                            <asp:TextBox ID="txtStartHour" MaxLength="5" CssClass="startHour hour" runat="server"
                                                 Text='<%#Eval("startHour") %>' data-originalValue='<%#Eval("startHour") %>'></asp:TextBox>&nbsp;
                                             tem
-                                            <asp:TextBox ID="txtEndHour" MaxLength="5" CssClass="endHour" runat="server"
+                                            <asp:TextBox ID="txtEndHour" MaxLength="5" CssClass="endHour hour" runat="server"
                                                 Text='<%#Eval("endHour") %>' data-originalValue='<%#Eval("endHour") %>'></asp:TextBox>
                                         </div>
                                     </td>
@@ -81,7 +81,7 @@
                                     <td>locatie</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large"><%#Eval("location.name") %></span>
+                                            <span class="large location-lbl"><%#Eval("location.name") %></span>
                                         </div>
                                         <div class="edit">
                                             <asp:Label ID="ddLocationOriginalValue" CssClass="originalValue" runat="server" Text='<%#Eval("location.id") %>' />
@@ -94,9 +94,7 @@
                                     <td>beschikbare plaatsen</td>
                                     <td>
                                         <span class="large">
-                                            <div class="no-edit">
-                                                <%#Eval("maxSubscriptions") %>
-                                            </div>
+                                            <div class="no-edit maxSubscriptions-lbl"><%#Eval("maxSubscriptions") %></div>
                                         </span>
                                         <div class="edit">
                                             <asp:TextBox ID="txtMaxSubscriptions" MaxLength="2" CssClass="maxSubscriptions" runat="server" Text='<%#Eval("maxSubscriptions") %>' data-originalValue='<%#Eval("maxSubscriptions") %>' TextMode="Number"></asp:TextBox>
@@ -107,7 +105,7 @@
                                     <td>prijs</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large">€&nbsp;<%#Eval("price") %></span>
+                                            <span class="large price-lbl">€&nbsp;<%#Eval("price") %></span>
                                         </div>
                                         <div class="edit">
                                             €&nbsp;<asp:TextBox ID="txtPrice" MaxLength="2" CssClass="price" runat="server" Text='<%#Eval("price") %>' data-originalValue='<%#Eval("price") %>' TextMode="Number"></asp:TextBox>
@@ -137,7 +135,7 @@
     </asp:ListView>
 
     <%-- NEW COURSE --%>
-    <div id="divNewCourse" class="component-wrapper" runat="server">
+    <div id="divNewCourse" class="component-wrapper new-course" runat="server">
         <div class="title">
             Titel: <asp:TextBox ID="txtNewName" CssClass="description" runat="server" Text=""></asp:TextBox>
         </div>
@@ -161,17 +159,17 @@
                         <tr>
                             <td>datum van/tot</td>
                             <td>van
-                                <asp:TextBox ID="txtNewStartDate" CssClass="startDate" runat="server" Text=""></asp:TextBox>&nbsp;
+                                <asp:TextBox ID="txtNewStartDate" CssClass="startDate date" runat="server" Text=""></asp:TextBox>&nbsp;
                                 tem
-                                <asp:TextBox ID="txtNewEndDateInclusive" CssClass="endDate" runat="server" Text=""></asp:TextBox>
+                                <asp:TextBox ID="txtNewEndDateInclusive" CssClass="endDate date" runat="server" Text=""></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
                             <td>begin/einduur</td>
                             <td>van
-                                <asp:TextBox ID="txtNewStartHour" CssClass="startHour" runat="server" Text=""></asp:TextBox>&nbsp;
+                                <asp:TextBox ID="txtNewStartHour" CssClass="startHour hour" runat="server" Text=""></asp:TextBox>&nbsp;
                                 tem
-                                <asp:TextBox ID="txtNewEndHour" CssClass="endHour" runat="server" Text=""></asp:TextBox>
+                                <asp:TextBox ID="txtNewEndHour" CssClass="endHour hour" runat="server" Text=""></asp:TextBox>
                             </td>
                         </tr>
                         <tr>
@@ -197,8 +195,8 @@
             </div>
 
             <div class="buttons right">
-                <asp:LinkButton runat="server" ID="btnSaveNewCourse" CssClass="button bottom full save-course"
-                    Text="Sla deze nieuwe cursus op" OnClick="btnSaveNewCourse_Click" />
+                <asp:LinkButton runat="server" ID="btnSaveNewCourse" CssClass="button bottom full save-new-course"
+                    Text="Sla deze nieuwe cursus op" OnClientClick="return validateForm('component-wrapper.new-course');" OnClick="btnSaveNewCourse_Click" />
             </div>
         </div>
     </div>

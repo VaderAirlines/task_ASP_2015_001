@@ -1,7 +1,7 @@
 (function ($) {
 
 	$(function () {
-		/* HIDE NECESSARY FIELDS*/
+		// HIDE NECESSARY FIELDS
 		$('.edit').hide();
 		$('.no-edit-course').hide();
 		$('.save-course').hide();
@@ -10,15 +10,20 @@
 		$('.saving').hide();
 		$('.callbackMessage').hide();
 
+		// FIELD MASKS
+		$(".component-wrapper .date").mask("99/99/9999", { placeholder: "mm/dd/yyyy" });
+		$(".component-wrapper .hour").mask("99:99", { placeholder: "hh:hh" });
+
 		// DROPDOWN INIT/HANDLERS
 		var $dropdowns = $('.component-wrapper').find('select');
 		$dropdowns.each(function () {
 			var $this = $(this);
 			var originalValue = $this.prev('.originalValue').text();
 			$this.val(originalValue);
+			$this.attr('data-originalValue', originalValue);
 		});
 
-		/* BUTTON HANDLERS */
+		// BUTTON HANDLERS
 		$('.edit-course').click(function () {
 			var $wrapper = $(this).parent().parent().parent();
 			var $labels = $wrapper.find('.no-edit');
@@ -43,21 +48,28 @@
 		$('.no-edit-course').click(function () {
 			var $wrapper = $(this).parent().parent().parent();
 			var $labels = $wrapper.find('.no-edit');
-			var $textfields = $wrapper.find('.edit');
+			var $editfields = $wrapper.find('.edit');
 			var $saveButton = $wrapper.find('.save-course');
 
-			$labels.each(function () {
-				var $this = $(this);
-				var $textbox = $this.next().find('input[type=text]');
+			$editfields.each(function () {
+				var $textfields = $(this).find('input');
+				var $selects = $(this).find('select');
 
-				$textbox.each(function () {
+				$textfields.each(function () {
 					$(this).val($(this).attr('data-originalValue'));
 				});
 
-				$this.show();
+				$selects.each(function () {
+					$(this).val($(this).attr('data-originalValue'));
+				});
 			});
 
-			$textfields.each(function () {
+
+			$labels.each(function () {
+				$(this).show();
+			});
+
+			$editfields.each(function () {
 				$(this).hide();
 			});
 
@@ -111,13 +123,11 @@
 		});
 
 		req.done(function (data) {
-			console.log(data.d);
-			console.log(data.d === true);
-			
-			if (data.d == true) {
+			if (data.d == "success") {
+				updateItemData($wrapper);
 				showMessage($message, 'success', $ready, $saving, $goBack);
 			} else {
-				showMessage($message, 'failed', $ready, $saving, $goBack);
+				showMessage($message, 'failed', $ready, $saving, $goBack, data.d);
 			}
 		});
 
@@ -127,11 +137,12 @@
 		});
 	};
 
-	function showMessage($element, which, $ready, $saving, $goBack) {
+	function showMessage($element, which, $ready, $saving, $goBack, customErrorMessage) {
 		if (which == 'success') {
 			$element.text('De cursus is opgeslagen.').css('background-color', 'green');
 		} else {
-			$element.text('De cursus kon niet worden opgeslagen.').css('background-color', 'red');
+			var errorMessage = typeof customErrorMessage == 'undefined' ? 'De cursus kon niet worden opgeslagen.' : customErrorMessage;
+			$element.text(customErrorMessage).css('background-color', 'red');
 		};
 
 		$element.show();
@@ -139,8 +150,96 @@
 			$element.hide(500);
 			$ready.show();
 			$saving.hide();
-			$goBack.trigger('click');
+			if (which == 'success') $goBack.trigger('click');
 		}, 1500);
 	};
 
+	function updateItemData($wrapper) {
+		var $textfields = $wrapper.find('input');
+		var $selects = $wrapper.find('select');
+
+		$textfields.each(function () {
+			var newValue = $(this).val();
+			var id = $(this).attr('id');
+			if (typeof id == "undefined") return false;
+			
+			var firstClass = getFirstClass(id);
+			var $label = $(this).prev('.' + firstClass + '-lbl');
+
+			$label.css('background-color', 'red');
+		});
+
+		$selects.each(function () {
+			var newValue = $(this).val();
+			var id = $(this).attr('id');
+			var firstClass = getFirstClass(id);
+			var $label = $(this).prev('.' + firstClass + '-lbl');
+
+			$label.css('background-color', 'red');
+		});
+	}
+
+	function getFirstClass(id) {
+		var classList = document.getElementById(id).className.split(/\s+/);
+		if (classList.length > 0) return classList[0];
+		return '';
+	}
+
 })(jQuery);
+
+// VALIDATION
+function validateForm(wrapperClass) {
+	var max50chars = "dit veld mag niet meer dan 50 karakters bevatten";
+	var mustComplete = "gelieve dit veld in te vullen";
+	var giveEmail = "gelieve een geldig emailadres in te vullen";
+	var validDate = "gelieve een geldige datum in te vullen";
+	var validHour = "gelieve een geldig uur in te vullen (hh:mm)";
+	var numeric = "gelieve een positief geheel getal in te vullen";
+
+	var fields = [
+		{
+			id: 'txtNewName',
+			checks: [{ required: true }, { maxLength: 50 }],
+			messages: { required: mustComplete, maxLength: max50chars }
+		},
+		{
+			id: 'txtNewDescription',
+			checks: [{ required: true }, { maxLength: 50 }],
+			messages: { required: mustComplete, maxLength: max50chars }
+		},
+		{
+			id: 'txtNewStartDate',
+			checks: [{ required: true }, { validDate: true }],
+			messages: { required: mustComplete, validDate: validDate }
+		},
+		{
+			id: 'txtNewEndDateInclusive',
+			checks: [{ required: true }, { validDate: true }],
+			messages: { required: mustComplete, validDate: validDate }
+		},
+		{
+			id: 'txtNewStartHour',
+			checks: [{ required: true }, { hour: true }],
+			messages: { required: mustComplete, hour: validHour }
+		},
+		{
+			id: 'txtNewEndHour',
+			checks: [{ required: true }, { hour: true }],
+			messages: { required: mustComplete, hour: validHour }
+		},
+		{
+			id: 'txtNewMaxSubscriptions',
+			checks: [{ required: true }, { numeric: true }],
+			messages: { required: mustComplete, numeric: numeric }
+		},
+		{
+			id: 'txtNewPrice',
+			checks: [{ required: true }, { numeric: true }],
+			messages: { required: mustComplete, numeric: numeric }
+		}
+	];
+
+	var retval = validateFields(wrapperClass, fields);
+
+	return retval;
+};

@@ -103,6 +103,7 @@ namespace NinaSubscriptions.DAL {
 		update,
 		delete,
 		selectAll,
+		selectAllForCourseAndChild,
 		selectAllForUserProfile,
 		selectAllForCourse,
 		selectAllForCoursesOnDate,

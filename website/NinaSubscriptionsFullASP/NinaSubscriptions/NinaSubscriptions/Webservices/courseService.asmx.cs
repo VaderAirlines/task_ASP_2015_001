@@ -1,5 +1,6 @@
 ﻿using NinaSubscriptions.BLL;
 using NinaSubscriptions.BO;
+using NinaSubscriptions.Custom_validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,38 @@ namespace NinaSubscriptions.Webservices {
 	public class courseService : System.Web.Services.WebService {
 
 		[WebMethod]
-		public bool saveChangesToCourse(string courseID, string description, string courseTypeID,
+		public string saveChangesToCourse(string courseID, string description, string courseTypeID,
 										string startDate, string endDate, string locationID,
-										string maxSubscriptions, string price, string startHour, 
+										string maxSubscriptions, string price, string startHour,
 										string endHour, string name) {
 
+			const string success = "success";
+			const string failed = "failed";
+
+			// validate fields before continuing
+			if (string.IsNullOrWhiteSpace(courseID) ||
+				string.IsNullOrWhiteSpace(description) ||
+				string.IsNullOrWhiteSpace(courseTypeID) ||
+				string.IsNullOrWhiteSpace(startDate) ||
+				string.IsNullOrWhiteSpace(endDate) ||
+				string.IsNullOrWhiteSpace(locationID) ||
+				string.IsNullOrWhiteSpace(maxSubscriptions) ||
+				string.IsNullOrWhiteSpace(price) ||
+				string.IsNullOrWhiteSpace(startHour) ||
+				string.IsNullOrWhiteSpace(endHour) ||
+				string.IsNullOrWhiteSpace(name)) {
+					return "Gelieve alle velden in te vullen";
+			}
+
+			customValidator validator = new customValidator();
+			if (!validator.validDate(startDate) || !validator.validDate(endDate))
+				return "Gelieve geldige datums in te vullen (dd/mm/yyyy)";
+
+			if (!validator.hour(startHour) || !validator.hour(endHour))
+				return "Gelieve geldige uren in te vullen (hh:mm)";
+
+
+			// if all is validated, continue...
 			crud crud = new crud();
 			course course = crud.selectCourse(Convert.ToInt32(courseID));
 
@@ -34,12 +62,12 @@ namespace NinaSubscriptions.Webservices {
 			course.location = crud.selectLocation(Convert.ToInt32(locationID));
 			course.maxSubscriptions = Convert.ToInt32(maxSubscriptions);
 			course.price = Convert.ToInt32(price);
-			course.startHour = Convert.ToInt32(startHour);
-			course.endHour = Convert.ToInt32(endHour);
+			course.startHour = startHour;
+			course.endHour = endHour;
 
-			if (crud.updateCourse(course) > 0) { return true; };
+			if (crud.updateCourse(course) > 0) { return success; };
 
-			return false;
+			return failed;
 		}
 	}
 }

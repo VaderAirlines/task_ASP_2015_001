@@ -62,8 +62,8 @@ namespace NinaSubscriptions.Pages.Admin {
 				location = crud.selectLocation(Convert.ToInt32(ddNewLocation.SelectedValue)),
 				startDate = Convert.ToDateTime(txtNewStartDate.Text),
 				endDateInclusive = Convert.ToDateTime(txtNewEndDateInclusive.Text),
-				startHour = Convert.ToInt32(txtNewStartHour.Text),
-				endHour = Convert.ToInt32(txtNewEndHour.Text),
+				startHour = txtNewStartHour.Text,
+				endHour = txtNewEndHour.Text,
 				maxSubscriptions = Convert.ToInt32(txtNewMaxSubscriptions.Text),
 				price = Convert.ToInt32(txtNewPrice.Text)
 			};

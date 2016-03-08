@@ -24,19 +24,19 @@ namespace NinaSubscriptions.Custom_validation {
 			return errors;
 		}
 
-		internal void addValidationRule(customValidationRule rule) {
+		public void addValidationRule(customValidationRule rule) {
 			this.rules.Add(rule);
 		}
 
 		// usable checker functions
-		internal bool required(Control control, string parameter) {
+		public bool required(Control control, string parameter) {
 			if (control is TextBox) {
-				if ((control as TextBox).Text.Length < 1) { 
-					return false; 
+				if ((control as TextBox).Text.Length < 1) {
+					return false;
 				}
 			} else if (control is DropDownList) {
-				if ((control as DropDownList).SelectedIndex < 0) { 
-					return false; 
+				if ((control as DropDownList).SelectedIndex < 0) {
+					return false;
 				}
 			} else {
 				return false;
@@ -45,7 +45,7 @@ namespace NinaSubscriptions.Custom_validation {
 			return true;
 		}
 
-		internal bool maxLength(Control control, string parameter) {
+		public bool maxLength(Control control, string parameter) {
 			if (control is TextBox) {
 				if ((control as TextBox).Text.Length > Convert.ToInt32(parameter)) { return false; }
 			} else { return false; }
@@ -53,7 +53,7 @@ namespace NinaSubscriptions.Custom_validation {
 			return true;
 		}
 
-		internal bool email(Control control, string parameter) {
+		public bool email(Control control, string parameter) {
 			if (control is TextBox) {
 				return Regex.IsMatch(
 					(control as TextBox).Text, @"\A(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\Z", RegexOptions.IgnoreCase);
@@ -62,38 +62,51 @@ namespace NinaSubscriptions.Custom_validation {
 			return true;
 		}
 
-		internal bool hour(Control control, string parameter) {
+		public bool hour(Control control, string parameter) {
 			if (control is TextBox) {
-				return Regex.IsMatch((control as TextBox).Text, @"^\d\d:\d\d$", RegexOptions.None);
+				return hour((control as TextBox).Text);
 			}
 
 			return false;
 		}
 
-		internal bool validDate(Control control, string parameter) {
+		public bool hour(string value) {
+			return Regex.IsMatch(value, @"^\d\d:\d\d$", RegexOptions.None);
+		}
+
+		public bool numeric(Control control, string parameter) {
 			if (control is TextBox) {
-				string val = (control as TextBox).Text;
-
-				if (!Regex.IsMatch(val, @"^\d\d\/\d\d\/\d\d\d\d$", RegexOptions.None))
-					return false;
-
-				string[] split = val.Split('/');
-				int day = Convert.ToInt32(split[0]);
-				int month = Convert.ToInt32(split[1]);
-				int year = Convert.ToInt32(split[2]);
-
-				try {
-					DateTime date = new DateTime(year, month, day);
-					if (date < DateTime.Now)
-						return true;
-				} catch {
-					return false;
-				}
-
-				return false;
+				return Regex.IsMatch((control as TextBox).Text, @"^[+]?\d+$", RegexOptions.None);
 			}
 
 			return false;
+		}
+
+		public bool validDate(Control control, string parameter) {
+			if (control is TextBox) {
+				string val = (control as TextBox).Text;
+
+				return validDate(val);
+			}
+
+			return false;
+		}
+
+		public bool validDate(string value) {
+			if (!Regex.IsMatch(value, @"^\d\d\/\d\d\/\d\d\d\d$", RegexOptions.None))
+				return false;
+
+			string[] split = value.Split('/');
+			int day = Convert.ToInt32(split[0]);
+			int month = Convert.ToInt32(split[1]);
+			int year = Convert.ToInt32(split[2]);
+
+			try {
+				DateTime date = new DateTime(year, month, day);
+				return true;
+			} catch {
+				return false;
+			}
 		}
 	}
 

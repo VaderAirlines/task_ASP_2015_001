@@ -39,7 +39,8 @@ namespace NinaSubscriptions.Pages.Public {
 			if (string.Equals(e.CommandName, "removeChild")) {
 				List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 				subscribedChildren.Remove(subscribedChildren.Find(x => x.id == Convert.ToInt32(e.CommandArgument.ToString())));
-
+				Session["subscribedChildren"] = subscribedChildren;
+				
 				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
 			}
 		}
@@ -47,11 +48,30 @@ namespace NinaSubscriptions.Pages.Public {
 		protected void btnAddExistingChild_Click(object sender, EventArgs e) {
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 			List<int> selectedChildIndices = lstAllChildren.GetSelectedIndices().ToList();
+			List<child> childrenToAdd = new List<child>();
 
-			selectedChildIndices.ForEach(childIndex => subscribedChildren.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));
+			int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
+			course course = new crud().selectCourse(courseID);
+
+			selectedChildIndices.ForEach(childIndex => childrenToAdd.Add(new crud().selectChild(Convert.ToInt32(lstAllChildren.Items[childIndex].Value))));
+
+			bool containsErroneousChild = false;
+			foreach (child child in childrenToAdd) {
+				if (childHasCorrectAge(child.dateOfBirth, course.courseType.ageFrom, course.courseType.ageToInclusive)) {
+					subscribedChildren.Add(child);
+				} else {
+					containsErroneousChild = true;
+				}
+			}
+
+			if (containsErroneousChild) {
+				lblMessage.ForeColor = Color.Red;
+				lblMessage.Text = "Enkel de kinderen met een toegelaten leeftijd werden toegevoegd.";
+			}
+
 			Session["subscribedChildren"] = subscribedChildren;
 
-			refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
+			refreshLists(courseID);
 		}
 
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
@@ -73,23 +93,29 @@ namespace NinaSubscriptions.Pages.Public {
 			}
 
 			// if all is validated, continue...
-
 			List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
 
 			try {
 				child newChild = new child();
 				newChild.name = txtName.Text;
 				newChild.firstName = txtFirstName.Text;
-				newChild.dateOfBirth = Convert.ToDateTime(txtDateOfBirth.Text);
+				newChild.dateOfBirth = CreateDate(txtDateOfBirth.Text);
 				newChild.id = generateTemporaryChildID(subscribedChildren.Select(child => child.id).ToList());
 				newChild.userProfileID = Convert.ToInt32(Session["userID"]);
 
-				subscribedChildren.Add(newChild);
+				int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
+				course course = new crud().selectCourse(courseID);
 
-				Session["subscribedChildren"] = subscribedChildren;
+				if (childHasCorrectAge(newChild.dateOfBirth, course.courseType.ageFrom, course.courseType.ageToInclusive)) {
+					subscribedChildren.Add(newChild);
+					Session["subscribedChildren"] = subscribedChildren;
 
-				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
-				clearNewChildUI();
+					refreshLists(courseID);
+					clearNewChildUI();
+				} else {
+					lblMessage.ForeColor = Color.Red;
+					lblMessage.Text = "Het kind dat u wil toevoegen heeft niet de toegelaten leeftijd.";
+				}
 
 			} catch {
 				lblMessage.ForeColor = Color.Red;
@@ -113,7 +139,9 @@ namespace NinaSubscriptions.Pages.Public {
 
 			foreach (child child in subscribedChildren) {
 				subscription.child = child;
-				crud.insertSubscription(subscription);
+				if (new crud().getSubscriptionOnCourseAndChild(course.id, child.id).Count < 1) {
+					crud.insertSubscription(subscription);
+				}
 			};
 
 			lblMessage.Text = "De inschrijvingen zijn bewaard.";
@@ -143,6 +171,7 @@ namespace NinaSubscriptions.Pages.Public {
 			subscribedChildren = subscribedChildren.Where(sChild => childrenForUserProfile.Find(uChild => uChild.id == sChild.id) != null ? true : sChild.id > int.MaxValue - 10001 ? true : false).ToList<child>();
 			subscribedChildren.ForEach(sChild => childrenForUserProfile.Remove(childrenForUserProfile.Find(uChild => uChild.id == sChild.id)));
 
+			Session["subscribedChildren"] = subscribedChildren;
 
 			// fill select box (all children for user profile)
 			if (childrenForUserProfile.Count < 1) {
@@ -178,5 +207,24 @@ namespace NinaSubscriptions.Pages.Public {
 			}
 		}
 
+		private DateTime CreateDate(string value) {
+			string[] split = value.Split('/');
+			int day = Convert.ToInt32(split[0]);
+			int month = Convert.ToInt32(split[1]);
+			int year = Convert.ToInt32(split[2]);
+
+			return new DateTime(year, month, day);
+		}
+
+		private bool childHasCorrectAge(DateTime birthDate, int ageFrom, int ageToInclusive) {
+			DateTime yearFrom = DateTime.Now.AddYears(-ageFrom);
+			DateTime yearTo = DateTime.Now.AddYears(-ageToInclusive);
+
+			if ((yearTo < birthDate && birthDate < yearFrom) || (birthDate.Equals(yearTo))) {
+				return true;
+			}
+
+			return false;
+		}
 	}
 }

@@ -32,6 +32,11 @@ function validateForm(wrapperClass) {
 	return retval;
 };
 
+function conditionsAccepted() {
+	console.log($('#chkConditions').is(':checked'));
+	return $('#chkConditions').is(':checked');
+}
+
 
 // DOCUMENT READY ------------------------------------------------------------------------------------------------
 (function ($) {

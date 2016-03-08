@@ -9,7 +9,7 @@ namespace NinaSubscriptions.DAL {
 
 		string sqlDateFormat = "yyyy-MM-dd HH:MM:ss";
 
-		public DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, int startHour, int endHour,
+		public DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, string startHour, string endHour,
 									  int locationID, int maxSubscriptions, int price, string description, string name) {
 
 			Dictionary<string, string> parameters = new Dictionary<string, string>() {
@@ -34,8 +34,8 @@ namespace NinaSubscriptions.DAL {
 			});
 		}
 
-		public DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive, int startHour,
-			int endHour, int locationID, int maxSubscriptions, int price, string description, string name) {
+		public DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive, string startHour,
+			string endHour, int locationID, int maxSubscriptions, int price, string description, string name) {
 
 			Dictionary<string, string> parameters = new Dictionary<string, string>() {
 				{ "id", id.ToString() },
@@ -94,6 +94,13 @@ namespace NinaSubscriptions.DAL {
 		public DataTable deleteSubscription(int id) {
 			return DAC.execute(spBase.subscription, spCommand.delete, new Dictionary<string, string>() { 
 				{ "id", id.ToString() } 
+			});
+		}
+
+		public DataTable getSubscriptionOnCourseAndChild(int courseID, int childID) {
+			return DAC.execute(spBase.subscription, spCommand.selectAllForCourseAndChild, new Dictionary<string, string>() { 
+				 { "courseID", courseID.ToString() },
+				 {	"childID", childID.ToString() }
 			});
 		}
 

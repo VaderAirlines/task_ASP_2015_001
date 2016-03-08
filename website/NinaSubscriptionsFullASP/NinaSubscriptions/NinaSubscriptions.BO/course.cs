@@ -10,8 +10,8 @@ namespace NinaSubscriptions.BO {
 		public courseType courseType { get; set; }
 		public DateTime startDate { get; set; }
 		public DateTime endDateInclusive { get; set; }
-		public int startHour { get; set; }
-		public int endHour { get; set; }
+		public string startHour { get; set; }
+		public string endHour { get; set; }
 		public location location { get; set; }
 		public int maxSubscriptions { get; set; }
 		public int openSubscriptions { get; set; }

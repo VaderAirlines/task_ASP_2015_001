@@ -8,13 +8,13 @@ namespace NinaSubscriptions.Interfaces {
 
 		// COURSES -------------------------------------------------------------------------------------
 		DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, 
-						  int startHour, int endHour, int locationID, int maxSubscriptions, int price, 
+						  string startHour, string endHour, int locationID, int maxSubscriptions, int price, 
 						  string description, string name);
 
 		DataTable selectCourse(int id);
 
 		DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive, 
-						  int startHour, int endHour, int locationID, int maxSubscriptions, int price, 
+						  string startHour, string endHour, int locationID, int maxSubscriptions, int price, 
 						  string description, string name);
 
 		DataTable deleteCourse(int id);
@@ -30,6 +30,8 @@ namespace NinaSubscriptions.Interfaces {
 		DataTable updateSubscription(int id, int courseID, int childID, bool hasPayed);
 
 		DataTable deleteSubscription(int id);
+
+		DataTable getSubscriptionOnCourseAndChild(int courseID, int childID);
 
 		DataTable getAllSubscriptionsForUserProfile(int userProfileID);
 

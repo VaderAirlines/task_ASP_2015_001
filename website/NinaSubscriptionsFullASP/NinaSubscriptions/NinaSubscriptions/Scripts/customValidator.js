@@ -85,7 +85,7 @@ function validDate($element) {
 	
 	try {
 		var date = new Date(year, month, day, 0, 0, 0, 0);
-		if (date < Date.now) return true;
+		return true;
 	} catch (e) {
 		return false;
 	}
@@ -95,6 +95,10 @@ function validDate($element) {
 
 function hour($element) {
 	return /^\d\d:\d\d$/.test($element.val());
+}
+
+function numeric($element) {
+	return /^[+]?\d+$/.test($element.val());
 }
 
 // error removers
