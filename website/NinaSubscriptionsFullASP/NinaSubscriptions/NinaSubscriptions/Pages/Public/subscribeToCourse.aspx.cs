@@ -37,9 +37,20 @@ namespace NinaSubscriptions.Pages.Public {
 		// UI handlers
 		protected void lstSubscribedChildren_ItemCommand(object sender, ListViewCommandEventArgs e) {
 			if (string.Equals(e.CommandName, "removeChild")) {
-				List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
-				subscribedChildren.Remove(subscribedChildren.Find(x => x.id == Convert.ToInt32(e.CommandArgument.ToString())));
-				Session["subscribedChildren"] = subscribedChildren;
+				int childID = Convert.ToInt32(e.CommandArgument.ToString());
+				int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
+
+				List<subscription> subscriptions = new crud().getSubscriptionOnCourseAndChild(courseID, childID);
+				subscription subscription = null;
+				if (subscriptions.Count > 0) { subscription = subscriptions[0]; };
+
+				if (subscription == null || !subscription.paymentConfirmed) {
+					List<child> subscribedChildren = (List<child>) Session["subscribedChildren"] ?? new List<child>();
+					subscribedChildren.Remove(subscribedChildren.Find(x => x.id == childID));
+					Session["subscribedChildren"] = subscribedChildren;
+				} else {
+					lblMessage.Text = "Inschrijvingen die reeds betaald werden kunnen niet worden verwijderd.";
+				}
 				
 				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
 			}

@@ -98,12 +98,10 @@
                                         </table>
                                     </div>
                                 </div>
-                                <!-- REMOVED BECAUSE THIS SHOULD ONLY BE DONE BY AN ADMINISTRATOR
                                 <div class="buttons">
                                     <asp:LinkButton runat="server" ID="btnRemoveChild" CssClass="button bottom"
                                         Text="verwijderen" CommandName="removeChild" CommandArgument='<%#Eval("id") %>' />
                                 </div>
-                                -->
                             </div>
                         </div>
                     </ItemTemplate>

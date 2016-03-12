@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/NinaSubscriptionsMaster.Master" AutoEventWireup="true" CodeBehind="bekijkInschrijvingen.aspx.cs" Inherits="NinaSubscriptions.Pages.Admin.bekijkInschrijvingen" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master_Pages/NinaSubscriptionsMaster.Master" AutoEventWireup="true" CodeBehind="bekijkInschrijvingen.aspx.cs" Inherits="NinaSubscriptions.Pages.Admin.bekijkInschrijvingen"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="phHead" runat="server">
 </asp:Content>
