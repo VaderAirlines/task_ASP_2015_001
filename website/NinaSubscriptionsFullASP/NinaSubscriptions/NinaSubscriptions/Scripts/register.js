@@ -7,6 +7,7 @@ function validateForm(wrapperClass) {
 	var max50chars = "dit veld mag niet meer dan 50 karakters bevatten";
 	var mustComplete = "gelieve dit veld in te vullen";
 	var giveEmail = "gelieve een geldig emailadres in te vullen";
+	var mustBeNumber = "gelieve een nummer in te vullen";
 
 	var fields = [
 		{
@@ -41,8 +42,8 @@ function validateForm(wrapperClass) {
 		},
 		{
 			id: 'txtNumber',
-			checks: [{ required: true }, { maxLength: 50 }],
-			messages: {	required: mustComplete, maxLength: max50chars }
+			checks: [{ required: true }, { maxLength: 50 }, { numeric: true }],
+			messages: { required: mustComplete, maxLength: max50chars, numeric: mustBeNumber }
 		},
 		{
 			id: 'txtPostalCode',

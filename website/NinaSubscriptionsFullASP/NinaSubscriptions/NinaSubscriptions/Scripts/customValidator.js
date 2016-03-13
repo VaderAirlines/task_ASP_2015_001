@@ -98,6 +98,7 @@ function hour($element) {
 }
 
 function numeric($element) {
+	if ($element.val() == '') return false;
 	return /^[+]?\d+$/.test($element.val());
 }
 

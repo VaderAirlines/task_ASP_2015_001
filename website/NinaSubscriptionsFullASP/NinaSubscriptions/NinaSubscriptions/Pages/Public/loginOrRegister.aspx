@@ -27,7 +27,8 @@
             </div>
         </div>
         <div class="buttons">
-            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClientClick="return validateForm('component-wrapper');" OnClick="btnLogin_Click" />
+            <%--<asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClientClick="return validateForm('component-wrapper');" OnClick="btnLogin_Click" />--%>
+            <asp:LinkButton runat="server" ID="btnLogin" CssClass="button top full" Text="Aanmelden" OnClick="btnLogin_Click" />
             <asp:LinkButton runat="server" ID="btnRegister" CssClass="button bottom full smaller-text" Text="Of registreren" OnClick="btnRegister_Click"/>
         </div>
     </div>

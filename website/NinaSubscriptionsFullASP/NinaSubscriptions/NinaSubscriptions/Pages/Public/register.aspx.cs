@@ -26,19 +26,25 @@ namespace NinaSubscriptions.Pages.Public {
 			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, "Gelieve een voornaam in te vullen"));
 			validator.addValidationRule(new customValidationRule(txtEmailAddress, validator.required, null, "Gelieve een emailadres in te vullen"));
 			validator.addValidationRule(new customValidationRule(txtEmailAddress, validator.email, null, "Gelieve een geldig emailadres in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtPhone, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtStreet, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtNumber, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtPostalCode, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtPlace, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtPassword, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtPasswordRepeat, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPhone, validator.required, null, "Gelieve een telefoonnummer in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtStreet, validator.required, null, "Gelieve een straat in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNumber, validator.required, null, "Gelieve een huisnummer in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNumber, validator.numeric, null, "Gelieve een geheel getal in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPostalCode, validator.required, null, "Gelieve een postcode in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPlace, validator.required, null, "Gelieve een plaats in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPassword, validator.required, null, "Gelieve een wachtwoord in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtPasswordRepeat, validator.required, null, "Gelieve een wachtwoord in te vullen"));
 
 			List<string> errors = validator.validate();
 			if (errors.Count > 0) {
 				foreach (string error in errors) {
 					lblErrorMessage.Text += error + "<br>";
 				}
+				return;
+			}
+
+			if (txtPassword.Text != txtPasswordRepeat.Text) {
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "De ingegeven wachtwoorden komen niet overeen.");
 				return;
 			}
 
@@ -67,13 +73,12 @@ namespace NinaSubscriptions.Pages.Public {
 				string redirectUrl = "bekijkAanbod.aspx";
 				if (Session["urlBeforeLogin"] != null) { redirectUrl = Session["urlBeforeLogin"].ToString(); };
 
-				HyperLink redirect = new HyperLink();
-				redirect.NavigateUrl = redirectUrl;
-				redirect.Text = "U heeft zich succesvol geregistreerd. Klik hier om terugkeren naar de vorige pagina.";
-				successMessage.Controls.Add(redirect);
+				string redirect = "<a href=\"" + redirectUrl + "\">U heeft zich succesvol geregistreerd. Klik hier om terugkeren naar de vorige pagina.</a>";
+				master.setMessage(messageClasses.messageSuccess, redirect);
 
 			} else {
-				lblErrorMessage.Text = "Gelieve alle velden correct in te vullen.";
+				NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
+				master.setMessage(messageClasses.messageError, "Gelieve alle velden correct in te vullen.");
 			};
 		}
 

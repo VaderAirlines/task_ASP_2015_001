@@ -75,6 +75,7 @@
     <Content Include="Pages\Public\subscribeToCourse.aspx" />
     <Content Include="Scripts\beheerCursussen.js" />
     <Content Include="Scripts\bekijkAanbod.js" />
+    <Content Include="Scripts\master.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Scripts\customValidator.js" />
     <Content Include="Scripts\loginOrRegister.js" />

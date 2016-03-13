@@ -17,9 +17,11 @@ namespace NinaSubscriptions.Master_Pages {
 
 		// initializers
 		protected void Page_Load(object sender, EventArgs e) {
+			hfMessage.Value = "";
+
 			loggedInUser = getLoggedInUserProfile();
 			setLoggedInUserTitle();
-			
+
 
 			if (!IsPostBack) {
 				setLoginUI();
@@ -41,7 +43,7 @@ namespace NinaSubscriptions.Master_Pages {
 
 			if (id > 0) {
 				Session["userID"] = id;
-				return true; 
+				return true;
 			};
 
 			return false;
@@ -73,6 +75,10 @@ namespace NinaSubscriptions.Master_Pages {
 			setLoginUI();
 			setUserNavigation();
 			setAdminNavigation();
+		}
+
+		internal void setMessage(messageClasses cssClass, string message) {
+			hfMessage.Value = cssClass.ToString() + "|" + message;
 		}
 
 		// UI handlers
@@ -127,4 +133,10 @@ namespace NinaSubscriptions.Master_Pages {
 			liBekijkInschrijvingen.Visible = showAdminSection;
 		}
 	}
+
+	public enum messageClasses {
+		messageError,
+		messageSuccess
+	}
+
 }
