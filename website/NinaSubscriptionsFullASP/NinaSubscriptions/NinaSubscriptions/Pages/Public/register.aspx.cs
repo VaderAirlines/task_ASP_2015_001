@@ -67,16 +67,18 @@ namespace NinaSubscriptions.Pages.Public {
 			profile.isAdmin = false;
 
 			if (crud.insertUserProfile(profile) > 0) {
-				clearUI();
-
 				NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
-				if (master.login(txtUsername.Text, txtPassword.Text)) { master.setUIatLogin(); };
+				if (master.login(txtUsername.Text, txtPassword.Text)) { 
+					master.setUIatLogin(); 
+				};
 
 				string redirectUrl = "bekijkAanbod.aspx";
 				if (Session["urlBeforeLogin"] != null) { redirectUrl = Session["urlBeforeLogin"].ToString(); };
 
 				string redirect = "<a href=\"" + redirectUrl + "\">U heeft zich succesvol geregistreerd. Klik hier om terugkeren naar de vorige pagina.</a>";
 				master.setMessage(messageClasses.messageSuccess, redirect);
+
+				clearUI();
 
 			} else {
 				NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
