@@ -1,9 +1,11 @@
 ﻿using NinaSubscriptions.BLL;
 using NinaSubscriptions.BO;
+using NinaSubscriptions.Custom_validation;
 using NinaSubscriptions.Master_Pages;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -53,6 +55,34 @@ namespace NinaSubscriptions.Pages.Admin {
 		}
 
 		protected void btnSaveNewCourse_Click(object sender, EventArgs e) {
+			customValidator validator = new customValidator();
+			validator.addValidationRule(new customValidationRule(txtNewName, validator.required, null, "Gelieve een naam in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewDescription, validator.required, null, "Gelieve een omschrijving in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewStartDate, validator.required, null, "Gelieve een startdatum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewStartDate, validator.validDate, null, "Gelieve een geldige startdatum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewEndDateInclusive, validator.required, null, "Gelieve een einddatum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewEndDateInclusive, validator.validDate, null, "Gelieve een geldige einddatum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewStartHour, validator.required, null, "Gelieve een startuur in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewStartHour, validator.hour, null, "Gelieve een geldig startuur in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewEndHour, validator.required, null, "Gelieve een einduur in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewEndHour, validator.hour, null, "Gelieve een geldig einduur in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewMaxSubscriptions, validator.required, null, "Gelieve het maximum aantal inschrijvingen in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewMaxSubscriptions, validator.numeric, null, "Gelieve het maximum aantal inschrijvingen in te vullen als geheel getal"));
+			validator.addValidationRule(new customValidationRule(txtNewPrice, validator.required, null, "Gelieve een prijs in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtNewPrice, validator.numeric, null, "Gelieve een prijs in te vullen als geheel getal"));
+
+			List<string> errors = validator.validate();
+			StringBuilder messageText = new StringBuilder();
+			if (errors.Count > 0) {
+				foreach (string error in errors) {
+					messageText.Append(error + "<br>");
+				}
+
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, messageText.ToString());
+
+				return;
+			}
+
 			crud crud = new crud();
 
 			course course = new course() {

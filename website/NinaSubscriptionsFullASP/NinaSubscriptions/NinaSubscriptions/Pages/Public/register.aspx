@@ -66,15 +66,6 @@
                             <td>
                                 <asp:TextBox ID="txtPasswordRepeat" MaxLength="50" class="large" TextMode="Password" runat="server"></asp:TextBox></td>
                         </tr>
-                        <tr>
-                            <td>&nbsp;</td>
-                            <td class="errorMessage">
-                                <asp:Label ID="lblErrorMessage" runat="server" Text=""></asp:Label></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="successMessage">
-                                <div id="successMessage" runat="server"></div></td>
-                        </tr>
                     </table>
                 </div>
             </div>

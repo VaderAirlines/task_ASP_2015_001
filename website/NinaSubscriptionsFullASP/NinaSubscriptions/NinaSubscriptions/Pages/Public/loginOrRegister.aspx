@@ -18,11 +18,6 @@
                         <td>wachtwoord</td>
                         <td><asp:TextBox ID="txtPassword" name="password" MaxLength="50" class="large" runat="server" TextMode="Password"></asp:TextBox></td>
                     </tr>
-                    <tr>
-                        <td>&nbsp;</td>
-                        <td class="errorMessage">
-                            <asp:Label ID="lblErrorMessage" runat="server" Text=""></asp:Label></td>
-                    </tr>
                 </table>
             </div>
         </div>

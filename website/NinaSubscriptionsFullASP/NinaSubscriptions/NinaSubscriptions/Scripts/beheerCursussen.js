@@ -129,19 +129,19 @@
 		req.done(function (data) {
 			if (data.d == "success") {
 				updateItemData($wrapper);
-				showMessage($message, 'success', $ready, $saving, $goBack);
+				showLocalMessage($message, 'success', $ready, $saving, $goBack);
 			} else {
-				showMessage($message, 'failed', $ready, $saving, $goBack, data.d);
+				showLocalMessage($message, 'failed', $ready, $saving, $goBack, data.d);
 			}
 		});
 
 		req.fail(function (xhr, status, error) {
 			console.log('course saving failed: ' + xhr.ResponseText);
-			showMessage($message, 'failed', $ready, $saving);
+			showLocalMessage($message, 'failed', $ready, $saving);
 		});
 	};
 
-	function showMessage($element, which, $ready, $saving, $goBack, customErrorMessage) {
+	function showLocalMessage($element, which, $ready, $saving, $goBack, customErrorMessage) {
 		if (which == 'success') {
 			$element.text('De cursus is opgeslagen.').css('background-color', 'green');
 		} else {

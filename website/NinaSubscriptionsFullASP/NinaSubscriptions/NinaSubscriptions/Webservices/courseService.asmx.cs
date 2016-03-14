@@ -39,7 +39,7 @@ namespace NinaSubscriptions.Webservices {
 				string.IsNullOrWhiteSpace(startHour) ||
 				string.IsNullOrWhiteSpace(endHour) ||
 				string.IsNullOrWhiteSpace(name)) {
-					return "Gelieve alle velden in te vullen";
+					return "Gelieve alle velden in te vullen of na te kijken";
 			}
 
 			customValidator validator = new customValidator();

@@ -9,6 +9,7 @@ using NinaSubscriptions.BLL;
 using System.Timers;
 using NinaSubscriptions.Master_Pages;
 using NinaSubscriptions.Custom_validation;
+using System.Text;
 
 namespace NinaSubscriptions.Pages.Public {
 	public partial class register : System.Web.UI.Page {
@@ -17,9 +18,6 @@ namespace NinaSubscriptions.Pages.Public {
 		}
 
 		protected void btnRegister_Click(object sender, EventArgs e) {
-			// validate fields before continuing
-			lblErrorMessage.Text = string.Empty;
-
 			customValidator validator = new customValidator();
 			validator.addValidationRule(new customValidationRule(txtUsername, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
 			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, "Gelieve een naam in te vullen"));
@@ -36,10 +34,14 @@ namespace NinaSubscriptions.Pages.Public {
 			validator.addValidationRule(new customValidationRule(txtPasswordRepeat, validator.required, null, "Gelieve een wachtwoord in te vullen"));
 
 			List<string> errors = validator.validate();
+			StringBuilder messageText = new StringBuilder();
 			if (errors.Count > 0) {
 				foreach (string error in errors) {
-					lblErrorMessage.Text += error + "<br>";
+					messageText.Append(error + "<br>");
 				}
+
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, messageText.ToString());
+
 				return;
 			}
 

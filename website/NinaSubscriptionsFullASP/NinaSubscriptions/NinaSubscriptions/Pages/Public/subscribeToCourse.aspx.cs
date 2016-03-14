@@ -9,6 +9,7 @@ using NinaSubscriptions.BLL;
 using NinaSubscriptions.Master_Pages;
 using System.Drawing;
 using NinaSubscriptions.Custom_validation;
+using System.Text;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -49,7 +50,7 @@ namespace NinaSubscriptions.Pages.Public {
 					subscribedChildren.Remove(subscribedChildren.Find(x => x.id == childID));
 					Session["subscribedChildren"] = subscribedChildren;
 				} else {
-					lblMessage.Text = "Inschrijvingen die reeds betaald werden kunnen niet worden verwijderd.";
+					((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Inschrijvingen die reeds betaald werden kunnen niet worden verwijderd.");
 				}
 				
 				refreshLists(Convert.ToInt32(Request.QueryString["courseID"]));
@@ -76,8 +77,7 @@ namespace NinaSubscriptions.Pages.Public {
 			}
 
 			if (containsErroneousChild) {
-				lblMessage.ForeColor = Color.Red;
-				lblMessage.Text = "Enkel de kinderen met een toegelaten leeftijd werden toegevoegd.";
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Enkel de kinderen met een toegelaten leeftijd werden toegevoegd.");
 			}
 
 			Session["subscribedChildren"] = subscribedChildren;
@@ -87,8 +87,6 @@ namespace NinaSubscriptions.Pages.Public {
 
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
 			// validate fields before continuing
-			lblErrorMessage.Text = string.Empty;
-
 			customValidator validator = new customValidator();
 			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, "Gelieve een naam in te vullen"));
 			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, "Gelieve een voornaam in te vullen"));
@@ -96,10 +94,14 @@ namespace NinaSubscriptions.Pages.Public {
 			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.validDate, null, "Gelieve een geldige datum in te vullen"));
 
 			List<string> errors = validator.validate();
+			StringBuilder messageText = new StringBuilder();
 			if (errors.Count > 0) {
 				foreach (string error in errors) {
-					lblErrorMessage.Text += error + "<br>";
+					messageText.Append(error + "<br>");
 				}
+
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, messageText.ToString());
+
 				return;
 			}
 
@@ -124,13 +126,11 @@ namespace NinaSubscriptions.Pages.Public {
 					refreshLists(courseID);
 					clearNewChildUI();
 				} else {
-					lblMessage.ForeColor = Color.Red;
-					lblMessage.Text = "Het kind dat u wil toevoegen heeft niet de toegelaten leeftijd.";
+					((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Het kind dat u wil toevoegen heeft niet de toegelaten leeftijd.");
 				}
 
 			} catch {
-				lblMessage.ForeColor = Color.Red;
-				lblMessage.Text = "Gelieve alle velden na te kijken en correct in te vullen.";
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Gelieve alle velden na te kijken en correct in te vullen.");
 			}
 		}
 
@@ -155,7 +155,7 @@ namespace NinaSubscriptions.Pages.Public {
 				}
 			};
 
-			lblMessage.Text = "De inschrijvingen zijn bewaard.";
+			((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageSuccess, "De inschrijvingen zijn bewaard.");
 		}
 
 		// HELPERS

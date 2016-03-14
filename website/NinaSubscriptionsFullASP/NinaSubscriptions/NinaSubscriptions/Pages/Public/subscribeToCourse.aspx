@@ -171,11 +171,6 @@
                                                 <asp:TextBox ID="txtDateOfBirth" MaxLength="9" class="large" runat="server"></asp:TextBox>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>&nbsp;</td>
-                                            <td>
-                                                <asp:Label ID="lblErrorMessage" runat="server" Text="Label"></asp:Label></td>
-                                        </tr>
                                     </table>
                                 </div>
                             </div>

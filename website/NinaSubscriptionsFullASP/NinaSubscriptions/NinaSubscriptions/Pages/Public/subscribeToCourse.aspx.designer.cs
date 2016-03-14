@@ -211,15 +211,6 @@ namespace NinaSubscriptions.Pages.Public {
         protected global::System.Web.UI.WebControls.TextBox txtDateOfBirth;
         
         /// <summary>
-        /// lblErrorMessage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
-        
-        /// <summary>
         /// btnAddNewChild control.
         /// </summary>
         /// <remarks>
