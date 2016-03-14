@@ -12,10 +12,16 @@ namespace NinaSubscriptions.Pages.Public {
 
 	public partial class loginOrRegister : System.Web.UI.Page {
 
-		protected void btnLogin_Click(object sender, EventArgs e) {
-			//// validate fields before continuing
-			//lblErrorMessage.Text = string.Empty;
+		// initializers
+		protected void Page_Load(object sender, EventArgs e) {
+			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
+			// set page title
+			master.setHeaderTitle("Log in of registreer");
+		}
+
+		// UI handlers
+		protected void btnLogin_Click(object sender, EventArgs e) {
 			customValidator validator = new customValidator();
 			validator.addValidationRule(new customValidationRule(txtUsername, validator.required, null, "Gelieve een gebruikersnaam in te vullen"));
 			validator.addValidationRule(new customValidationRule(txtUsername, validator.maxLength, "50", "Gebruikersnaam mag niet langer zijn dan 50 karakters"));

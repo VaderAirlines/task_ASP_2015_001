@@ -14,6 +14,11 @@ using System.Text;
 namespace NinaSubscriptions.Pages.Public {
 	public partial class register : System.Web.UI.Page {
 		protected void Page_Load(object sender, EventArgs e) {
+			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
+
+			// set page title
+			master.setHeaderTitle("Registratie");
+
 			String username = Request.QueryString["username"] ?? "";
 		}
 
