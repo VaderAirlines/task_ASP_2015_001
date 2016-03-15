@@ -9,10 +9,14 @@ namespace NinaSubscriptions.DAL {
 	public static class connectionManager {
 
 		public static SqlConnection getConnection() {
-			return new SqlConnection(new PNV_Cryptor.PNV_Cryptor(
-				"fghls", 
-				PNV_Cryptor.PNV_Cryptor.EncryptionMethods.TripleDes)
-				.DecryptData(Properties.Settings.Default.connectionString));
+			try {
+				return new SqlConnection(new PNV_Cryptor.PNV_Cryptor(
+					"fghls",
+					PNV_Cryptor.PNV_Cryptor.EncryptionMethods.TripleDes)
+					.DecryptData(Properties.Settings.Default.connectionString));
+			} catch {
+				throw new ArgumentException("Kon de connectiestring niet ontrafelen.");
+			}
 		}
 
 	}

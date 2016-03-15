@@ -1,6 +1,7 @@
 ﻿using NinaSubscriptions.BLL;
 using NinaSubscriptions.BO;
 using NinaSubscriptions.Master_Pages;
+using NinaSubscriptions.SettingsHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace NinaSubscriptions.Pages.Public {
 		// initializers
 		protected void Page_Load(object sender,EventArgs e) {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
-			master.setHeaderTitle("Mijn gegevens");
+			master.setHeaderTitle(settingsHelper.get("title_mijn_gegevens"));
 
 			userProfile user = master.getLoggedInUserProfile();
 			if (user == null) { Response.Redirect("~/Pages/Public/bekijkAanbod.aspx"); };

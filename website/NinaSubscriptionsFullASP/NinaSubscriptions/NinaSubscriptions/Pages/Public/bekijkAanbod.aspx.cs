@@ -7,6 +7,8 @@ using System.Data;
 using NinaSubscriptions.Master_Pages;
 using NinaSubscriptions.BO;
 using NinaSubscriptions.BLL;
+using System.Configuration;
+using NinaSubscriptions.SettingsHelper;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -16,7 +18,7 @@ namespace NinaSubscriptions.Pages.Public {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
 			// set page title
-			master.setHeaderTitle("Bekijk aanbod");
+			master.setHeaderTitle(settingsHelper.get("title_bekijk_aanbod"));
 
 			// load courses
 			crud crud = new crud();

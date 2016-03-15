@@ -10,6 +10,7 @@ using System.Timers;
 using NinaSubscriptions.Master_Pages;
 using NinaSubscriptions.Custom_validation;
 using System.Text;
+using NinaSubscriptions.SettingsHelper;
 
 namespace NinaSubscriptions.Pages.Public {
 	public partial class register : System.Web.UI.Page {
@@ -17,7 +18,7 @@ namespace NinaSubscriptions.Pages.Public {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
 			// set page title
-			master.setHeaderTitle("Registratie");
+			master.setHeaderTitle(settingsHelper.get("title_register"));
 
 			String username = Request.QueryString["username"] ?? "";
 		}

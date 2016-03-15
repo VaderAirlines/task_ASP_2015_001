@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using NinaSubscriptions.Master_Pages;
 using NinaSubscriptions.Custom_validation;
 using System.Text;
+using NinaSubscriptions.SettingsHelper;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -17,7 +18,7 @@ namespace NinaSubscriptions.Pages.Public {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
 
 			// set page title
-			master.setHeaderTitle("Log in of registreer");
+			master.setHeaderTitle(settingsHelper.get("title_login_or_register"));
 		}
 
 		// UI handlers

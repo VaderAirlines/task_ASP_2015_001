@@ -4,23 +4,23 @@ using System.Data;
 using System.Text;
 
 namespace NinaSubscriptions.Interfaces {
+
 	public interface IDAL {
 
-		// COURSES -------------------------------------------------------------------------------------
-		DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive, 
-						  string startHour, string endHour, int locationID, int maxSubscriptions, int price, 
-						  string description, string name);
+		// COURSES --------------------------------------------------------------------------------------
+		DataTable insertCourse(int courseTypeID, DateTime startDate, DateTime endDateInclusive,
+				  string startHour, string endHour, int locationID, int maxSubscriptions, int price,
+				  string description, string name);
 
 		DataTable selectCourse(int id);
 
-		DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive, 
-						  string startHour, string endHour, int locationID, int maxSubscriptions, int price, 
+		DataTable updateCourse(int id, int courseTypeID, DateTime startDate, DateTime endDateInclusive,
+						  string startHour, string endHour, int locationID, int maxSubscriptions, int price,
 						  string description, string name);
 
 		DataTable deleteCourse(int id);
 
 		DataTable selectAllCourses();
-
 
 		// SUBSCRIPTIONS --------------------------------------------------------------------------------
 		DataTable insertSubscription(int courseID, int childID, bool hasPayed);

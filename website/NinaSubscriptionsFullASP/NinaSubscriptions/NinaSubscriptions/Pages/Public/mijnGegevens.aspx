@@ -107,7 +107,7 @@
                                         <div class="center">
                                             <table>
                                                 <tr>
-                                                    <td>Ingeschreven kind</td>
+                                                    <td><strong>Ingeschreven kind</strong></td>
                                                     <td>
                                                         <span class="large"><%#Eval("child.name") %> <%#Eval("child.firstName") %></span>
                                                     </td>

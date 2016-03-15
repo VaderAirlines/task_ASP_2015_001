@@ -10,6 +10,7 @@ using NinaSubscriptions.Master_Pages;
 using System.Drawing;
 using NinaSubscriptions.Custom_validation;
 using System.Text;
+using NinaSubscriptions.SettingsHelper;
 
 namespace NinaSubscriptions.Pages.Public {
 
@@ -18,10 +19,10 @@ namespace NinaSubscriptions.Pages.Public {
 		// initializers
 		protected void Page_Load(object sender, EventArgs e) {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
-			master.setHeaderTitle("Inschrijven op een cursus");
+			master.setHeaderTitle(settingsHelper.get("title_subscribe_to_course"));
 
 			userProfile user = master.getLoggedInUserProfile();
-			if (user == null) { Response.Redirect("~/Pages/Public/bekijkAanbod.aspx"); };
+			if (user == null) { Response.Redirect(settingsHelper.get("default_redirect_page")); };
 
 			int courseID = Convert.ToInt32(Request.QueryString["courseID"]);
 
@@ -88,10 +89,10 @@ namespace NinaSubscriptions.Pages.Public {
 		protected void btnAddNewChild_Click(object sender, EventArgs e) {
 			// validate fields before continuing
 			customValidator validator = new customValidator();
-			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, "Gelieve een naam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, "Gelieve een voornaam in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.required, null, "Gelieve een geboortedatum in te vullen"));
-			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.validDate, null, "Gelieve een geldige datum in te vullen"));
+			validator.addValidationRule(new customValidationRule(txtName, validator.required, null, settingsHelper.get("validator_required_name")));
+			validator.addValidationRule(new customValidationRule(txtFirstName, validator.required, null, settingsHelper.get("validator_required_firstname")));
+			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.required, null, settingsHelper.get("validator_required_date_of_birth")));
+			validator.addValidationRule(new customValidationRule(txtDateOfBirth, validator.validDate, null, settingsHelper.get("validator_valid_date")));
 
 			List<string> errors = validator.validate();
 			StringBuilder messageText = new StringBuilder();
@@ -126,11 +127,11 @@ namespace NinaSubscriptions.Pages.Public {
 					refreshLists(courseID);
 					clearNewChildUI();
 				} else {
-					((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Het kind dat u wil toevoegen heeft niet de toegelaten leeftijd.");
+					((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, settingsHelper.get("error_child_wrong_age"));
 				}
 
 			} catch {
-				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Gelieve alle velden na te kijken en correct in te vullen.");
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, settingsHelper.get("error_complete_all_fields"));
 			}
 		}
 
@@ -155,7 +156,7 @@ namespace NinaSubscriptions.Pages.Public {
 				}
 			};
 
-			((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageSuccess, "De inschrijvingen zijn bewaard.");
+			((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageSuccess, settingsHelper.get("success_subscriptions_saved"));
 		}
 
 		// HELPERS
@@ -164,13 +165,13 @@ namespace NinaSubscriptions.Pages.Public {
 			lblDescription.Text = course.description;
 			lblAgeFrom.Text = course.courseType.ageFrom.ToString();
 			lblAgeTo.Text = course.courseType.ageToInclusive.ToString();
-			lblDateFrom.Text = course.startDate.ToString("dd MMMM yyyy");
-			lblDateTo.Text = course.endDateInclusive.ToString("dd MMMM yyyy");
+			lblDateFrom.Text = course.startDate.ToString(settingsHelper.get("format_date"));
+			lblDateTo.Text = course.endDateInclusive.ToString(settingsHelper.get("format_date"));
 			lblLocationName.Text = course.location.name;
 			lblLocationAddress.Text = course.location.street + " " + course.location.number + ", " +
 									  course.location.postalCode + " " + course.location.place;
-			lblSubscriptionsLeft.Text = course.openSubscriptions.ToString() + " plaatsen vrij";
-			lblPrice.Text = "€ " + course.price;
+			lblSubscriptionsLeft.Text = course.openSubscriptions.ToString() + settingsHelper.get("places_free");
+			lblPrice.Text = settingsHelper.get("currency_symbol") + course.price;
 		}
 
 		private void refreshLists(int courseID) {

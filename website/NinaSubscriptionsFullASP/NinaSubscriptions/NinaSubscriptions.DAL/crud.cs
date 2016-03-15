@@ -5,6 +5,7 @@ using System.Text;
 using NinaSubscriptions.Interfaces;
 
 namespace NinaSubscriptions.DAL {
+
 	public class crud : IDAL {
 
 		string sqlDateFormat = "yyyy-MM-dd HH:MM:ss";

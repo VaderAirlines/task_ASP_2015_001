@@ -3,6 +3,11 @@ td {
     vertical-align: top;
 }
 
+input:not([type=checkbox]):not(.login), 
+select {
+    width: 250px;
+}
+
 #divMain {
     padding: 0em 0.5em;
 }

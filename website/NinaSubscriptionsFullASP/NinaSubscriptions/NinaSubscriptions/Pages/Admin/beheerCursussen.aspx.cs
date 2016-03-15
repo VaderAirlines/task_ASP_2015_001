@@ -2,6 +2,7 @@
 using NinaSubscriptions.BO;
 using NinaSubscriptions.Custom_validation;
 using NinaSubscriptions.Master_Pages;
+using NinaSubscriptions.SettingsHelper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace NinaSubscriptions.Pages.Admin {
 		// initializers
 		protected void Page_Load(object sender, EventArgs e) {
 			NinaSubscriptionsMaster master = this.Master as NinaSubscriptionsMaster;
-			master.setHeaderTitle("Beheer cursussen");
+			master.setHeaderTitle(settingsHelper.get("title_beheer_cursussen"));
 
 			userProfile user = master.getLoggedInUserProfile();
 			if (user == null || user.isAdmin == false) { Response.Redirect("~/Pages/Public/bekijkAanbod.aspx"); };

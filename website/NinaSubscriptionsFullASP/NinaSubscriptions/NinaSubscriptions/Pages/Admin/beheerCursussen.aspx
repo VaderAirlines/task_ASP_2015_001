@@ -105,7 +105,7 @@
                                     <td>prijs</td>
                                     <td>
                                         <div class="no-edit">
-                                            <span class="large price-lbl">€&nbsp;<%#Eval("price") %></span>
+                                            €&nbsp;<span class="large price-lbl"><%#Eval("price") %></span>
                                         </div>
                                         <div class="edit">
                                             €&nbsp;<asp:TextBox ID="txtPrice" MaxLength="2" CssClass="price" runat="server" Text='<%#Eval("price") %>' data-originalValue='<%#Eval("price") %>' TextMode="Number"></asp:TextBox>
