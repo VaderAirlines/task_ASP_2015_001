@@ -14,47 +14,47 @@
                         <tr>
                             <td>gebruikersnaam</td>
                             <td>
-                                <asp:Label ID="lblUsername" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblUsername" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>naam</td>
                             <td>
-                                <asp:Label ID="lblName" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblName" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>voornaam</td>
                             <td>
-                                <asp:Label ID="lblFirstname" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblFirstname" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>emailadres</td>
                             <td>
-                                <asp:Label ID="lblEmailAddress" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblEmailAddress" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>telefoon/gsm</td>
                             <td>
-                                <asp:Label ID="lblPhone" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblPhone" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>straat</td>
                             <td>
-                                <asp:Label ID="lblStreet" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblStreet" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>nummer</td>
                             <td>
-                                <asp:Label ID="lblNumber" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblNumber" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>postcode</td>
                             <td>
-                                <asp:Label ID="lblPostalCode" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblPostalCode" runat="server" Text=""></asp:Label></td>
                         </tr>
                         <tr>
                             <td>plaats</td>
                             <td>
-                                <asp:Label ID="lblPlace" runat="server" Text="Label"></asp:Label></td>
+                                <asp:Label ID="lblPlace" runat="server" Text=""></asp:Label></td>
                         </tr>
                     </table>
                 </div>
@@ -78,7 +78,7 @@
                                                 <tr>
                                                     <td>Geboortedatum</td>
                                                     <td>
-                                                        <span class="large"><%#Eval("dateOfBirth") %></span>
+                                                        <span class="large"><%#Eval("dateOfBirth", "{0:dd MMMM yyyy}") %></span>
                                                     </td>
                                                 </tr>
                                             </table>

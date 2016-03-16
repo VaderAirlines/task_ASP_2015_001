@@ -35,6 +35,7 @@ namespace NinaSubscriptions.Pages.Public {
 
 		// helpers
 		private void fillPersonalData(userProfile user) {
+			lblUsername.Text = user.userName;
 			lblName.Text = user.name;
 			lblFirstname.Text = user.firstName;
 			lblEmailAddress.Text = user.emailAddress;

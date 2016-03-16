@@ -92,7 +92,7 @@
                                             <tr>
                                                 <td>Geboortedatum</td>
                                                 <td>
-                                                    <span class="large"><%#Eval("dateOfBirth") %></span>
+                                                    <span class="large"><%#Eval("dateOfBirth", "{0:dd MMMM yyyy}") %></span>
                                                 </td>
                                             </tr>
                                         </table>

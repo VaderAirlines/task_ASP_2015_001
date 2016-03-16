@@ -33,7 +33,7 @@ function validateForm(wrapperClass) {
 };
 
 function conditionsAccepted() {
-	console.log($('#chkConditions').is(':checked'));
+	showMessage('messageError', 'Gelieve de voorwaarden te accepteren (vinkje boven deze knop).');
 	return $('#chkConditions').is(':checked');
 }
 

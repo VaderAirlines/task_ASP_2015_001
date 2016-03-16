@@ -18,6 +18,8 @@ namespace NinaSubscriptions.Pages.Admin {
 		// fields
 		List<location> locations = new List<location>();
 		List<courseType> courseTypes = new List<courseType>();
+		courseType selectedCourseType = null;
+		location selectedLocation = null;
 
 		// initializers
 		protected void Page_Load(object sender, EventArgs e) {
@@ -31,10 +33,16 @@ namespace NinaSubscriptions.Pages.Admin {
 			locations = crud.getAllLocations();
 			courseTypes = crud.getAllCourseTypes();
 
-			if (!IsPostBack) {
-				// load courses
+			if (IsPostBack) {
+				try {
+					selectedCourseType = crud.selectCourseType(Convert.ToInt32(ddNewCourseType.SelectedValue));
+					selectedLocation = crud.selectLocation(Convert.ToInt32(ddNewLocation.SelectedValue));
+				} catch {
+					// objecten blijven null, hierop wordt later gecontroleerd
+				}
+			} else {
 				fillCoursesList(crud);
-			};
+			}
 		}
 
 		protected void ddLocation_Init(object sender, EventArgs e) {
@@ -84,13 +92,18 @@ namespace NinaSubscriptions.Pages.Admin {
 				return;
 			}
 
+			if (selectedCourseType == null || selectedLocation == null) {
+				((NinaSubscriptionsMaster) this.Master).setMessage(messageClasses.messageError, "Gelieve een cursustype en locatie te selecteren");
+				return;
+			}
+
 			crud crud = new crud();
 
 			course course = new course() {
 				name = txtNewName.Text,
 				description = txtNewDescription.Text,
-				courseType = crud.selectCourseType(Convert.ToInt32(ddNewCourseType.SelectedValue)),
-				location = crud.selectLocation(Convert.ToInt32(ddNewLocation.SelectedValue)),
+				courseType = selectedCourseType,
+				location = selectedLocation,
 				startDate = Convert.ToDateTime(txtNewStartDate.Text),
 				endDateInclusive = Convert.ToDateTime(txtNewEndDateInclusive.Text),
 				startHour = txtNewStartHour.Text,
