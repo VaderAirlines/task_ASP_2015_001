@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="NinaSubscriptionsMaster.master.cs" Inherits="NinaSubscriptions.Master_Pages.NinaSubscriptionsMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head id="Head1" runat="server">
+    <title>Niña skateboarding organiseert! Schrijf u nu in!</title>
+
+    <%--CSS--%>
+    <link href="../css/master.css" rel="stylesheet" />
+    <link href="../css/content-general.css" rel="stylesheet" />
+
+    <asp:ContentPlaceHolder ID="phHead" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+
+<body>
+    <form id="frmMaster" runat="server">
+        <!-- message overlayer -->
+        <div id="divMessageBackground" class="messagebox"></div>
+        <div id="divMessage" class="messagebox">
+            <!--<div class="title"></div>-->
+            <div class="content">
+                <span>&nbsp;</span>
+                <div class="button">Sluiten</div>
+            </div>
+        </div>
+        <asp:HiddenField ID="hfMessage" runat="server" Value="" />
+
+        <!-- main content -->
+        <div id="divMain">
+            <!-- header -->
+            <header>
+                <div id="divLoggedInUser" runat="server"></div>
+                <div id="divBanner">
+                    <div id="divLoginForm" class="login-form">
+                        <div id="divLoginControls" runat="server">
+                            login<br />
+                            <asp:TextBox ID="txtUsername" runat="server" CssClass="login" MaxLength="50"></asp:TextBox><br />
+                            paswoord<br />
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="login" MaxLength="50" TextMode="Password"></asp:TextBox><br />
+                            <asp:LinkButton ID="lnkBannerLogin" CssClass="button-banner-loginform" runat="server" OnClick="lnkBannerLogin_Click">log in</asp:LinkButton>
+                            <asp:HyperLink ID="lnkBannerRegister" CssClass="button-banner-loginform" runat="server" NavigateUrl="~/Pages/Public/register.aspx">registreer</asp:HyperLink>
+                        </div>
+                        <div id="divLogoutControls" runat="server">
+                            <asp:LinkButton ID="lnkBannerLogout" runat="server" OnClick="lnkBannerLogout_Click">log out</asp:LinkButton>
+                        </div>
+                    </div>
+                    <div id="divPageTitle">
+                        <asp:Label ID="lblBannerTitle" runat="server" Text=""></asp:Label>
+                    </div>
+                    <div id="divCutie">
+                        <img src="../../Images/beeld_nina_skateboarding.png" alt="beeld Niña skateboarding: schattig meisje op skateboard, vectorieel" />
+                    </div>
+                </div>
+            </header>
+
+            <!-- navigation -->
+            <nav>
+                <ul>
+                    <li>
+                        <asp:HyperLink ID="lnkBekijkAanbod" runat="server" NavigateUrl="~/Pages/Public/bekijkAanbod.aspx">Bekijk aanbod</asp:HyperLink></li>
+                    <li id="liMijngegevens" runat="server">
+                        <asp:HyperLink ID="lnkMijnGegevens" runat="server" NavigateUrl="~/Pages/Public/mijnGegevens.aspx">Mijn gegevens</asp:HyperLink></li>
+                    <li id="liBeheerCursussen" runat="server">
+                        <asp:HyperLink ID="lnkBeheerCursussen" runat="server" NavigateUrl="~/Pages/Admin/beheerCursussen.aspx">Beheer cursussen</asp:HyperLink></li>
+                    <li id="liBekijkInschrijvingen" runat="server">
+                        <asp:HyperLink ID="lnkBekijkInschrijvingen" runat="server" NavigateUrl="~/Pages/Admin/bekijkInschrijvingen.aspx">Bekijk inschrijvingen</asp:HyperLink></li>
+                </ul>
+            </nav>
+
+            <section id="divBreadcrumb" runat="server">&nbsp;</section>
+
+            <!-- body placeholder -->
+            <asp:ContentPlaceHolder ID="phContent" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <!-- footer -->
+            <footer>
+                <div id="divFooterLinks">
+                    <ul>
+                        <li>regelement</li>
+                        <li>voorwaarden</li>
+                        <li>contact</li>
+                    </ul>
+                </div>
+                <div id="divCopyright">
+                    copyright&copy; 2015 - Niña skateboarding
+                </div>
+            </footer>
+
+            <%--JAVASCRIPT LIBRARIES--%>
+            <script src="<%= ResolveUrl("~/Scripts/Vendor/jquery-1.7.1.min.js") %>" type="text/javascript"></script>
+            <script src="<%= ResolveUrl("~/Scripts/vendor/jquery.maskedinput.min.js") %>" type="text/javascript"></script>
+            <script src="<%= ResolveUrl("~/Scripts/customValidator.js") %>" type="text/javascript"></script>
+            <script src="<%= ResolveUrl("~/Scripts/master.js") %>" type="text/javascript"></script>
+
+            <asp:ContentPlaceHolder ID="phScripts" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <script type="text/javascript">
+                // KEEP PAGE FROM SCROLLING TO TOP ON POSTBACK -----------------------------------------------------------------------------
+                // SOURCE: http://www.aspsnippets.com/Articles/ASPNet-MaintainScrollPositionOnPostback-not-working-in-Firefox-and-Chrome.aspx
+                window.onload = function () {
+                    var scrollY = parseInt('<%=Request.Form["scrollY"] %>');
+                    if (!isNaN(scrollY)) {
+                        window.scrollTo(0, scrollY);
+                    }
+                };
+
+                window.onscroll = function () {
+                    var scrollY = document.body.scrollTop;
+                    if (scrollY == 0) {
+                        if (window.pageYOffset) {
+                            scrollY = window.pageYOffset;
+                        }
+                        else {
+                            scrollY = (document.body.parentElement) ? document.body.parentElement.scrollTop : 0;
+                        }
+                    }
+                    if (scrollY > 0) {
+                        var input = document.getElementById("scrollY");
+                        if (input == null) {
+                            input = document.createElement("input");
+                            input.setAttribute("type", "hidden");
+                            input.setAttribute("id", "scrollY");
+                            input.setAttribute("name", "scrollY");
+                            document.forms[0].appendChild(input);
+                        }
+                        input.value = scrollY;
+                    }
+                };
+            </script>
+
+        </div>
+    </form>
+
+</body>
+
+</html>

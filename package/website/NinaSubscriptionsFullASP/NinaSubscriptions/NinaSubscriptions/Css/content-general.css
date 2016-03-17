@@ -1,0 +1,160 @@
+﻿/* CONTENT -----------------------------------------------  */
+td {
+    vertical-align: top;
+}
+
+input:not([type=checkbox]):not(.login):not([type=button]), 
+select {
+    width: 250px;
+}
+
+#divMain {
+    padding: 0em 0.5em;
+}
+
+.component-wrapper {
+    background-color: lightgray;
+    padding: 0.5em;
+    border-radius: 1em;
+    margin-bottom: 1em;
+}
+
+    .component-wrapper .title {
+        font-size: 14pt;
+        color: #DF4A79;
+        padding: 0.3em;
+        margin-bottom: 0.5em;
+        border-bottom: 2px solid gray;
+    }
+
+    .component-wrapper .second-wrapper .title {
+        font-size: 17px;
+    }
+
+    .component-wrapper .content,
+    .component-wrapper .content .content-top {
+        position: relative;
+    }
+
+        .component-wrapper .content td {
+            padding: 0em 1em 0em 0em;
+        }
+
+        .component-wrapper .content #grdResults {
+            margin-left: 8px;
+        }
+
+            .component-wrapper .content #grdResults tr:nth-child(odd) {
+                background-color: #fbc5d6;
+            }
+
+            .component-wrapper .content #grdResults tr:first-of-type {
+                background-color: #bab8b8;
+            }
+
+            .component-wrapper .content #grdResults td,
+            .component-wrapper .content #grdResults th {
+                padding-left: 1em;
+                padding-right: 1em;
+                text-align: left;
+            }
+
+            .component-wrapper .content #grdResults th {
+                padding-top: 0.3em;
+                padding-bottom: 0.3em;
+                font-size: 14px;
+            }
+
+            .component-wrapper .content #grdResults .gridview-checkbox input {
+                width: 15px;
+                height: 15px;
+                margin-left: 50%;
+                margin-top: 0.2em;
+            }
+
+        .component-wrapper .content > .left,
+        .component-wrapper .content .content-top > .left {
+            position: absolute;
+            width: 150px;
+            height: 100%;
+            border-bottom-left-radius: 0.6em;
+            display: inline-block;
+        }
+
+            .component-wrapper .content > .left.photo,
+            .component-wrapper .content .content-top > .left.photo {
+                background-image: url("../images/beeld_nina_skateboarding.png");
+                background-size: cover;
+            }
+
+        .component-wrapper .content > .right,
+        .component-wrapper .content .content-top > .right {
+            margin-left: 160px;
+        }
+
+        .component-wrapper .content li {
+            list-style-type: none;
+            margin-top: 0.6em;
+        }
+
+            .component-wrapper .content li:last-of-type {
+                margin-bottom: 1em;
+            }
+
+            .component-wrapper .content li .filter.label,
+            .component-wrapper .content li .filter.input {
+                margin-left: 15px;
+            }
+
+                .component-wrapper .content li .filter.input select,
+                .component-wrapper .content li .filter.input table {
+                    width: 250px;
+                }
+
+        .component-wrapper .content .buttons {
+            cursor: pointer;
+        }
+
+            .component-wrapper .content .buttons.right {
+                margin-left: 163px;
+            }
+
+            .component-wrapper .content .buttons .button {
+                color: white;
+                background-color: gray;
+                text-align: center;
+                margin-top: 1em;
+                padding: 0.5em;
+                display: block;
+            }
+
+                .component-wrapper .content .buttons .button.bottom.right {
+                    border-bottom-right-radius: 0.6em;
+                }
+
+                .component-wrapper .content .buttons .button.bottom.full {
+                    border-bottom-left-radius: 0.6em;
+                    border-bottom-right-radius: 0.6em;
+                }
+
+                    .component-wrapper .content .buttons .button.bottom.full.smaller-text {
+                        font-size: smaller;
+                        margin-top: 0.3em;
+                    }
+
+    .component-wrapper .has-error {
+        border-color: #f75f5f;
+    }
+
+    .component-wrapper .error-message {
+        color: #f75f5f;
+    }
+
+.button-accordion.title {
+    font-size: 14pt;
+    color: #DF4A79;
+    padding: 0.3em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid gray;
+    cursor: pointer;
+}

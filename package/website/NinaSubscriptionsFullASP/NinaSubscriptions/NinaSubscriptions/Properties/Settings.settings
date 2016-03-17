@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NinaSubscriptions.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="title_beheer_cursussen" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Beheer cursussen</Value>
+    </Setting>
+    <Setting Name="title_bekijk_inschrijvingen" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bekijk inschrijvingen</Value>
+    </Setting>
+    <Setting Name="title_error" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Foutmelding</Value>
+    </Setting>
+    <Setting Name="title_bekijk_aanbod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Bekijk aanbod</Value>
+    </Setting>
+    <Setting Name="title_login_or_register" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Log in of registreer</Value>
+    </Setting>
+    <Setting Name="title_mijn_gegevens" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Mijn gegevens</Value>
+    </Setting>
+    <Setting Name="title_register" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Registreer</Value>
+    </Setting>
+    <Setting Name="title_subscribe_to_course" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Inschrijven</Value>
+    </Setting>
+    <Setting Name="default_redirect_page" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">~/Pages/Public/bekijkAanbod.aspx</Value>
+    </Setting>
+    <Setting Name="session_subscribed_children" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">subscribedChildren</Value>
+    </Setting>
+    <Setting Name="validator_required_name" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gelieve een naam in te vullen</Value>
+    </Setting>
+    <Setting Name="validator_required_firstname" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gelieve een voornaam in te vullen</Value>
+    </Setting>
+    <Setting Name="validator_required_date_of_birth" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gelieve een geboortedatum in te vullen</Value>
+    </Setting>
+    <Setting Name="validator_valid_date" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gelieve een geldige datum in te vullen</Value>
+    </Setting>
+    <Setting Name="error_child_wrong_age" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Het kind dat u wil toevoegen heeft niet de toegelaten leeftijd.</Value>
+    </Setting>
+    <Setting Name="error_complete_all_fields" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Gelieve alle velden na te kijken en correct in te vullen.</Value>
+    </Setting>
+    <Setting Name="success_subscriptions_saved" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">De inschrijvingen zijn bewaard.</Value>
+    </Setting>
+    <Setting Name="format_date" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">dd MMMM yyyy</Value>
+    </Setting>
+    <Setting Name="places_free" Type="System.String" Scope="Application">
+      <Value Profile="(Default)"> plaatsen vrij</Value>
+    </Setting>
+    <Setting Name="currency_symbol" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">€ </Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

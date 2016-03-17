@@ -1,0 +1,15 @@
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\obj\Debug\NinaSubscriptions.csprojResolveAssemblyReference.cache
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.dll.CodeAnalysisLog.xml
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.dll.lastcodeanalysissucceeded
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.BLL.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.BO.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\Ninasubscriptions.IDAL.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.DAL.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.BLL.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.BO.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\Ninasubscriptions.IDAL.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.DAL.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\obj\Debug\NinaSubscriptions.dll
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\obj\Debug\NinaSubscriptions.pdb
