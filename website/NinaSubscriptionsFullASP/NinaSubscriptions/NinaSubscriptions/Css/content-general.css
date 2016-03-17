@@ -3,7 +3,7 @@ td {
     vertical-align: top;
 }
 
-input:not([type=checkbox]):not(.login), 
+input:not([type=checkbox]):not(.login):not([type=button]), 
 select {
     width: 250px;
 }
