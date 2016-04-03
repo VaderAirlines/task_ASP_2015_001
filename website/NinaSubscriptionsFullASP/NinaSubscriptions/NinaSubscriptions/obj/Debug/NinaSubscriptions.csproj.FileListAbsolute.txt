@@ -13,3 +13,4 @@ C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaS
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.DAL.pdb
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\obj\Debug\NinaSubscriptions.dll
 C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\obj\Debug\NinaSubscriptions.pdb
+C:\school\Graduaat Informatica\000 - Github repo\task_ASP_2015_001\website\NinaSubscriptionsFullASP\NinaSubscriptions\NinaSubscriptions\bin\NinaSubscriptions.dll.config
